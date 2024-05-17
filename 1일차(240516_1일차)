@@ -195,3 +195,102 @@ int -> long -> float -> double
 : 깃허브 주소 먼저 복사 후 위의 순서 진행하기 !!!
 
 : 폴더 우클릭 -> import project 클릭하면 위에 깃과 연동된 프로젝트가 생김
+
+
+public class Test {
+
+	public static void main(String[] args) {
+	
+/*
+		int 숫자 = 1;
+		System.out.println(숫자 + "");
+		int 숫자2;
+		// System.out.println(숫자2 + "");
+		숫자2 = 숫자;
+		System.out.println(숫자2 + "");
+*/
+		
+/*
+ * 변수 : 숫자, 숫자2
+ * 
+ *
+ * 
+ * ************/
+		
+		// 상수
+		final int aAbcD = 100;
+		//aAbcD = 1;
+		
+		// 형변환
+		int 몸무게 = 80;
+		float 실수 = 몸무게; // 암묵적 형변환
+		
+		몸무게 = (int)실수; // 명시적 형변환
+		
+		// 산술연산자
+		
+/*		
+		int 변수 = 0;
+		System.out.println(변수); // 0
+		// 전위
+		int a = ++변수;
+		System.out.println(변수); // 1
+		System.out.println(a); // 1
+*/
+
+		int 변수 = 0;
+		System.out.println(변수); // 0
+		// 후위
+		int a = 변수++;
+		System.out.println(변수); // 1
+		System.out.println(a); // 0
+		
+		// 대입 연산자(변수 초기값 필요)
+		int b = 0;
+		
+		int c = a + b;
+		//      0 + 0 >> 0
+		int d = 5;
+		d += c; 
+		// 5 + 0 >> 5
+		System.out.println(d); //5
+		
+		int no = 10; // 변수 초기값
+		
+		// 오른쪽에 있는 값 또는 식을 왼쪽에 있는 변수에 대입
+		no = no +2 ; // 12
+		System.out.println(no);
+		
+		// (왼쪽 + 오른쪽)결과를 왼쪽에 대입
+		no += 2; // 14
+		System.out.println(no);
+		
+		// (왼쪽 - 오른쪽)결과를 왼쪽에 대입
+		no -= 2; // 12
+		System.out.println(no);
+		
+		// (왼쪽 * 오른쪽)결과를 왼쪽에 대입
+		no *= 2; //24
+		System.out.println(no);
+		
+		// (왼쪽 / 오른쪽)결과를 왼쪽에 대입
+		no /= 2; // 12
+		System.out.println(no);
+		
+		// (왼쪽 % 오른쪽)결과를 왼쪽에 대입
+		no %= 2; //0
+		System.out.println(no);
+		
+		int t = 3/2;
+		System.out.println(t);
+		
+		float t1 = 3/2;
+		System.out.println(t1);
+		
+		double t2 = (double)3.0/2;
+		System.out.println(t2);
+		
+	}
+
+}
+
