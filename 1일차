@@ -1,0 +1,197 @@
+20240516
+
+# 쉘폴더(강의노트에 있음)
+
+# spring.io
+
+# eclipse에서 23.09버전 다운
+
+# jdk.java.net에서 java SE 21 버전
+
+# 내PC -> 우클릭 네트워크 드라이브 연결 -> \\192.168.0.56\공유(계정: hi / 비밀번호: 1)
+
+​
+
+1. 환경설정(내PC > 우클릭 설정 > 고급 시스템 설정)
+
+환경 변수 -> 시스템 변수 -> 새로만들기
+
+이름 : JAVA_HOME
+
+값 : C:\IDE\jdk-21
+
+Path : %JAVA_HOME%\bin
+
+​
+
+2. cmd창에서 java -version으로 자바 버전 확인
+
+​
+
+3. 이클립스는 작업폴더가 필요 !
+
+work 폴더 생성 보통 workspace로 생성함
+
+​
+
+4. Window -> Preference -> show heap status 체크
+
+: 메모리 확인 가능
+
+​
+
+4.1 Text file encoding
+
+: other -> UTF-8로 설정
+
+​
+
+4.2 New text file line delimiter
+
+: other -> Unix로 설정(Unix가 최상위 부모라서)
+
+​
+
+5. Window -> Preference-> web -> CSS Files, HTML Files, JSP Files
+
+: UTF-8로 설정 
+
+​
+
+6. Window -> Preference-> General -> Appearance -> Colors an Fonts -> Basic -> Text Font -> Edit
+
+: 폰트 16으로 설정
+
+​
+
+7. eclipse.ini -> 연결프로그램 -> 워드패드 
+
+: 메모리 2GB로 설정
+
+: -Xms2048m(256 -> 2048로)
+
+ -Xmx2048m
+
+​
+
+8. vscode 설치(vscode -> Download -> Windows)
+
+​
+
+9. github에서 강의메모 관리하기 / 유튜브 계정 생성 / 노트(obsidian) : 개인용
+
+​
+
+10. java project 생성시 버전 설정(File -> New -> java project)
+
+: Window -> Preference-> java -> installed JREs에서 jdk-21 체크
+
+​
+
+11. 클래스 생성시 메인 메서드 자동 생성 체크하기
+
+​
+
+12. 메인 메서드는 각 클래스 마다 하나만 존재해야한다. 실행 시 각 파일에서 Run As 실행
+
+​
+
+13. 자바로 만들어진 파일이 컴파일(실행되면) 자동으로 클래스 파일이 된다.
+
+​
+
+14. cmd 창에서 출력하는 방법 
+
+: cmd창 -> cd .. -> cd .. -> dir -> cd IDE\work -> dir -> cd Test\src -> javac Test.java -> java Test
+
+​
+
+15. https://github.com/JosephBean -> 쉘폴더 강의노트
+
+​
+
+16. JAVA
+
+1. 자료형과 변수
+
+- 문자열(String)
+
+- 숫자(int, double)
+
+- 논리형(boolean)
+
+​
+
+- 기본자료형
+
+: 실제 데이터 값을 저장(int, long, float, double, boolean,...)
+
+​
+
+- 참조 자료형
+
+: 데이터가 저장된 메모리 주소 값을 저장(클래스, 인터페이스, 배열, 열거형, String)
+
+​
+
+17. 주석
+
+1. // 한줄 주석
+
+2. /* 어떤문장 */ 여러줄 주석
+
+​
+
+18. 변수명
+
+1. 밑줄, 문자, 숫자 사용 가능(공백 사용 불가)
+
+2. 밑줄 또는 문자로 시작 가능
+
+3. 한 단어 또는 2개 이상 단어의 연속
+
+4. 각 단어의 시작 글자는 대문자(첫 단어는 제외)
+
+5. 예약어 사용 불가(public, static, void, int, double, float...)
+
+6. 대소문자 구분(myName 등)
+
+​
+
+19. 상수(final)
+
+: final 자료형 변수명 = 값;
+
+: 값 변경 불가(고정으로 사용할 것을 상수로 지정)
+
+​
+
+20. 형 변환
+
+: (자료형) 변수명 or 값;
+
+int 몸무게 =  78;
+
+float 몸무게1 = (float) 몸무게;
+
+​
+
+묵시적 형 병환(자동 형 변환)
+
+int -> long -> float -> double
+
+​
+
+21. Java 연산자
+
+1. 산술연산자
+
+2. 대입 연산자(변수 초기값 필요)
+
+​
+
+22. window -> show view -> other -> Git -> Git Repositories
+
+: 깃허브 주소 먼저 복사 후 위의 순서 진행하기 !!!
+
+: 폴더 우클릭 -> import project 클릭하면 위에 깃과 연동된 프로젝트가 생김
