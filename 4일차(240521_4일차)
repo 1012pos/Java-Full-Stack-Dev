@@ -465,7 +465,7 @@ public class Study09 {
 		}
 		
 		for(int i = 0; i<배열.length; i++) {
-			for(int j =0; j<배열[i].length; j++) {
+			for(int j =0; j<배열[i].length; j++) { // 배열[i].length의 의미는 컬럼이라고 생각하기
 				if(배열[i][j] ==0) { // 0을 지우고 싶어서 사용
 					continue;
 				}
