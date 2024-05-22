@@ -1073,13 +1073,13 @@ public class Study12 {
 						System.out.println("값이 1입니다."); 
 						break;
 				case 2: 
-						System.out.println("값이 1입니다."); 
+						System.out.println("값이 2입니다."); 
 						break; 
 				case 3: 
-						System.out.println("값이 1입니다."); 
+						System.out.println("값이 3입니다."); 
 						break; 
 				case 4: 
-						System.out.println("값이 1입니다."); 
+						System.out.println("값이 4입니다."); 
 						break; 
 			default:
 				System.out.println("잘못된 값입니다.");
