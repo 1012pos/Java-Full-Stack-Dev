@@ -177,3 +177,364 @@ public class Study02 {
   }
 
 }
+
+package java0522;
+
+public class Study03 {
+
+  public static void main(String[] args) {
+
+		/***********************************************
+		 * 문제3) 2차원 배열를 이용하여 별(★)를 출력하시오
+		 * 출력 예시)
+	     * ★★★★★
+	     *  ★★★★
+	     *   ★★★
+	     *    ★★
+	     *     ★
+		 ************************************************/
+
+		// 해결 코드 작성 시작
+
+    String 별 = "★";
+
+    /*** 코드 시작 ***/
+//    String[][] 배열 = new String[5][5];
+//    for(int i = 0; i<배열.length; i++) {
+//    	for(int j = 0; j<배열[i].length; j++) {
+//    	if(i==0 && j<=4) {
+//    		배열[i][j] = 별;
+//    	}else if(i==1 && (j==1 || j==2 || j==3 || j==4)) {
+//    		배열[i][j] = 별;
+//    	}else if(i==2 && (j==2 || j==3 || j==4)) {
+//    		배열[i][j] = 별;
+//    	}else if(i==3 && (j==3 || j==4)) {
+//    		배열[i][j] = 별;
+//    	}else if(i==4 && j==4) {
+//		배열[i][j] = 별;
+//    	}else {
+//    	배열[i][j] = " ";
+//    	}
+//	    System.out.print(배열[i][j]);
+//	   }
+//	    System.out.println();
+//    }
+//    }
+//  }
+    /*** 코드 종료 ***/
+
+
+	/*** 코드 시작 ***/
+    // 강사님 코드
+    String[][] 배열 = new String[5][5];
+    for(int i = 0; i<배열.length; i++) {
+    	for(int j = 0; j<배열[i].length; j++) {
+    		String 빈공간 = " ";
+    		if(i == 1 && j == 0) {
+    			배열[i][j] = 빈공간;
+    		}else if(i == 2 && j <= 1) {
+    			배열[i][j] = 빈공간;
+    		}else if(i == 3 && j <= 2) {
+    			배열[i][j] = 빈공간;
+    		}else if(i == 4 && j <= 3) {
+    			배열[i][j] = 빈공간;
+    		}else {
+    			배열[i][j] = 별;
+    		}
+    	}
+    }
+    
+    for(int i = 0; i<배열.length; i++) {
+    	for(int j = 0; j<배열[i].length; j++) {
+    		System.out.print(배열[i][j]);
+    	}
+    	System.out.println();
+    }
+	/*** 코드 종료 ***/
+    
+	}
+	
+}
+	
+package java0522;
+
+public class Study04 {
+
+  public static void main(String[] args) {
+
+		/***********************************************
+		 * 문제4) 2차원 배열를 이용하여 별(★)를 출력하시오
+		 * 출력 예시)
+	     *     ★
+	     *    ★★
+	     *   ★★★
+	     *  ★★★★
+	     * ★★★★★
+		 ************************************************/
+
+		// 해결 코드 작성 시작
+
+    String 별 = "★";
+        
+    /*** 코드 시작 ***/
+ // 강사님 코드
+    String[][] 배열 = new String[5][5];
+    for(int i = 0; i<배열.length; i++) {
+    	for(int j = 0; j<배열[i].length; j++) {
+    		String 빈공간 = " ";
+    		if(i == 0 && j == 4) {
+    			배열[i][j] = 별;
+    		}else if(i == 1 && j >= 3) {
+    			배열[i][j] = 별;
+    		}else if(i == 2 && j >= 2) {
+    			배열[i][j] = 별;
+    		}else if(i == 3 && j >= 1) {
+    			배열[i][j] = 별;
+    		}else if(i == 4 && j >= 0) {
+    			배열[i][j] = 별;
+    		}else {
+    			배열[i][j] = 빈공간;
+    		}
+    	}
+    }
+    
+    for(int i = 0; i<배열.length; i++) {
+    	for(int j = 0; j<배열[i].length; j++) {
+    		System.out.print(배열[i][j]);
+    	}
+    	System.out.println();
+    }
+
+    /*** 코드 종료 ***/
+
+  }
+
+}
+
+package java0522;
+
+public class Study05 {
+
+  public static void main(String[] args) {
+
+		/***********************************************
+		 * 문제5) 2차원 배열를 이용하여 별(★)를 출력하시오
+		 * 출력 예시)
+	     * ★★★★★★★★★ 	0
+	     *  ★★★★★★★		1
+	     *   ★★★★★		2
+	     *    ★★★		3
+	     *     ★		4
+		 ************************************************/
+
+		// 해결 코드 작성 시작
+
+	    String 별 = "★";
+	
+//	    /*** 코드 시작 ***/
+//	    // 내가 작성한 코드
+//	    String[][] 배열 = new String[5][9];
+//	    for(int i = 0; i<배열.length; i++) {
+//	    	for(int j = 0; j<배열[i].length; j++) {
+//	    		String 빈공간 = " ";
+//	    		if(i==1 && (j==0 || j==8)) {
+//	    			배열[i][j] = 빈공간;
+//	    		}else if(i==2 && (j==0 || j==1 || j==7 || j==8)) {
+//	    			배열[i][j] = 빈공간;
+//	    		}else if(i==3 &&(j==0 || j==1 || j==2 || j==6 || j==7 || j==8)) {
+//	    			배열[i][j] = 빈공간;
+//	    		}else if(i==4 &&(j==0 || j==1 || j==2 || j==3 || j==5 || j==6 || j==7 || j==8)) {
+//	    			배열[i][j] = 빈공간;
+//	    		}else {
+//	    			배열[i][j] = 별;
+//	    		}
+//	    		System.out.print(배열[i][j]);
+//	    	}
+//	    	System.out.println();
+//	    }
+//	
+//	    /*** 코드 종료 ***/
+
+	    /*** 코드 시작 ***/
+	    // 강사님 코드
+	    String[][] 배열 = new String[5][9];
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		String 빈공간 = " ";
+	    		if(i == 1 && (j<=0 || j>=8)) {
+	    			배열[i][j] = 빈공간;		
+	    		}else if(i == 2 && (j<=1 || j>=7)) {
+	    			배열[i][j] = 빈공간;
+	    		}else if(i == 3 && (j<=2 || j>=6)) {
+	    			배열[i][j] = 빈공간;
+	    		}else if(i == 4 && (j<=3 || j>=5)) {
+	    			배열[i][j] = 빈공간;
+	    		}
+	    		else {
+	    			배열[i][j] = 별;
+	    		}
+	    	}
+	    }
+	    
+	    // 출력 부분
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		System.out.print(배열[i][j]);
+	    	}
+	    	System.out.println();
+	    }
+	
+	    /*** 코드 종료 ***/
+	    
+	    
+	    
+  }
+
+}
+
+package java0522;
+
+public class Study06 {
+
+  public static void main(String[] args) {
+
+		/***********************************************
+		 * 문제6) 2차원 배열를 이용하여 별(★)를 출력하시오
+		 * 출력 예시)
+	     *     ★
+	     *    ★★★
+	     *   ★★★★★
+	     *  ★★★★★★★
+	     * ★★★★★★★★★
+		 ************************************************/
+
+		// 해결 코드 작성 시작
+
+	    String 별 = "★";
+	
+	    /*** 코드 시작 ***/
+//	    // 내가 작성한 코드
+//	    String[][] 배열 = new String[5][9];
+//	    for(int i = 0; i<배열.length; i++) {
+//	    	for(int j = 0; j<배열[i].length; j++) {
+//	    		String 빈공간 = " ";
+//	    		if(i==0 && j==4) {
+//	    			배열[i][j] = 별;
+//	    		}else if(i==1 && (j==3 || j==4 || j==5)) {
+//	    			배열[i][j] = 별;
+//	    		}else if(i==2 &&(j==2 || j==3 || j==4 || j==5 || j==6)) {
+//	    			배열[i][j] = 별;
+//	    		}else if(i==3 &&(j==1 || j==2 || j==3 || j==4 || j==5 || j==6 || j==7)) {
+//	    			배열[i][j] = 별;
+//	    		}else if(i==4 && j<=8) {
+//	    			배열[i][j] = 별;
+//	    		}
+//	    		else {
+//	    			배열[i][j] = 빈공간;
+//	    		}
+//	    		System.out.print(배열[i][j]);
+//	    	}
+//	    	System.out.println();
+//	    }
+//	
+//	
+//	    /*** 코드 종료 ***/
+	    
+	    /*** 코드 시작 ***/
+	    // 강사님 코드
+	    String[][] 배열 = new String[5][9];
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		String 빈공간 = " ";
+	    		if(i == 0 && (j<=3 || j>=5)) {
+	    			배열[i][j] = 빈공간;		
+	    		}else if(i == 1 && (j<=2 || j>=6)) {
+	    			배열[i][j] = 빈공간;
+	    		}else if(i == 2 && (j<=1 || j>=7)) {
+	    			배열[i][j] = 빈공간;
+	    		}else if(i == 3 && (j<=0 || j>=8)) {
+	    			배열[i][j] = 빈공간;
+	    		}
+	    		else {
+	    			배열[i][j] = 별;
+	    		}
+	    	}
+	    }
+	    
+	    // 출력 부분
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		System.out.print(배열[i][j]);
+	    	}
+	    	System.out.println();
+	    }
+	
+	    /*** 코드 종료 ***/
+	    
+	    
+
+  }
+
+}
+
+package java0522;
+
+public class Study07 {
+
+  public static void main(String[] args) {
+
+		/***********************************************
+		 * 문제7) 2차원 배열를 이용하여 별(★)를 출력하시오
+		 * 출력 예시)
+	     * ★★★★★
+	     * ★★★★
+	     * ★★★
+	     * ★★
+	     * ★
+	     * ★★
+	     * ★★★
+	     * ★★★★
+	     * ★★★★★
+		 ************************************************/
+
+		// 해결 코드 작성 시작
+
+	    String 별 = "★";
+	
+	    /*** 코드 시작 ***/
+	    // 값 넣는 부분
+	    String[][] 배열 = new String[9][5];
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		String 빈공간 = " ";
+	    		if((i==1 || i==7) && j==4) {
+	    			배열[i][j] = 빈공간;
+	    		}else if((i==2 || i==6) && j>=3){
+	    			배열[i][j] = 빈공간;
+	    		}else if((i==3 || i == 5) && j>=2){
+	    			배열[i][j] = 빈공간;
+	    		}else if(i==4 && j>=1){
+	    			배열[i][j] = 빈공간;
+	    		}else {
+	    			배열[i][j] = 별;
+	    		}
+	    	}
+	    	
+	    }
+	    
+	    
+	 // 출력 부분
+	    for(int i = 0; i<배열.length; i++) {
+	    	for(int j = 0; j<배열[i].length; j++) {
+	    		System.out.print(배열[i][j]);
+	    	}
+	    	System.out.println();
+	    }
+	
+	    /*** 코드 종료 ***/
+
+  }
+
+}
+
+
