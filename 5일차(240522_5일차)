@@ -147,7 +147,6 @@ public class Study02 {
     String[][] 배열 = new String[5][5]; 
     for(int i = 0; i<배열.length; i++) {
     	for(int j = 0; j<배열[i].length; j++) {
-    		배열[i][j] = 별;
     		if(i==0 && j<=0) {
     			배열[i][j]=별;
     		}else if(i==1 && j<=1) {
