@@ -21,7 +21,7 @@
 값 : C:\IDE\jdk-21
 
 Path : %JAVA_HOME%\bin
-
+: 실행할수 있는 명령어가 있기 때문에 설정해야한다.
 ​
 
 2. cmd창에서 java -version으로 자바 버전 확인
