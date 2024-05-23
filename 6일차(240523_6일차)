@@ -309,7 +309,7 @@ public class Study05 {
 					break;
 			case 4:
 					d = a + 곱하기 + c + "=" + (a * c);
-				break;
+					break;
 			default:
 				
 			}
