@@ -54,6 +54,66 @@ public class Study01 {
 
 }
 
+package java0524;
+
+public class Study02 {
+	
+	
+	static int b = 0; // 전역변수
+
+	public static void main(String[] args) {
+		
+		a();
+		
+	}
+	
+	static void a() {
+		
+		// 메소드를 이용한 재귀 반복문 (overflow 오류 : 자바가 실행하다가 멈춤)
+		if(b < 5) {
+			System.out.println("안녕!" + b);
+			b++;
+			a();
+		}
+		
+	}
+	
+
+}
+
+
+package java0524;
+
+public class Study03 {
+
+	public static void main(String[] args) {
+		
+		a(); // a()
+		a(1); // a(int a)
+		a(""); // a(String a)
+
+	}
+	// 오버로딩
+    // 자료형(매개변수의 타입(int, String 등)) 및 전달값(매개변수)개수에 영향을 받는다.
+	
+	static void a() {
+		
+	}
+	
+	static void a(int a) {
+			
+	}
+
+	static void a(String a) {
+		
+	}
+	
+	
+	
+
+}
+
+
 
 package java0524;
 
@@ -78,6 +138,7 @@ public class Study04 {
 	}
 	
 }
+
 
 
 
