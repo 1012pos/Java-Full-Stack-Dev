@@ -34,7 +34,8 @@ public class Study01 {
 		
 	}
 	
-	static int 합(int a , int b) {
+	// static 이 붙어야 메모리에 할당됨
+	private static int 합(int a , int b) {
 		return ( a + b );
 	}
 	
