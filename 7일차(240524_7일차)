@@ -499,8 +499,8 @@ public class Study09 {
 
 	public static void main(String[] args) {
 
-		//new Study09_1().구구단(3,6);
-		new Study09_1(3,6);
+		//new Study09_1().구구단(3,6); // 객체로 접근해서 메서드 실행
+		new Study09_1(3,6); // 생성자로 실행
 	}
 	
 }
