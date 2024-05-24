@@ -109,6 +109,19 @@ new 키워드를 이용하여 생성된 인스턴스 주소값을 변수 값으�
     static 키워드 생각하기(new 키워드 없이 메모리에 생성되게 하는 키워드는 static이다.)
     사용방법은 Study06_2.함수(); 이다.
 
+24. extends : 클래스 / public class Study07 extends Study07_1
+     implements : 인터페이스
+
+25. 메인메소드(여기에 static이 있음) 때문에 여기서 메서드 앞에 static을 작성함
+만약 메인메소드가 아니었다면 static을 작성하지 않아도 사용할 수있다.
+보통 메인메소드에서 상속받지 않는다. 이유는 static 때문이다.
+
+26. 추상
+: 이름만 정의한것을 추상이라고 생각하기
+
+27. 상속
+
+
 
 package java0524;
 
