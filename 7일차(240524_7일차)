@@ -121,6 +121,16 @@ new 키워드를 이용하여 생성된 인스턴스 주소값을 변수 값으�
 
 27. 상속
 
+28. 메인메서드에서 생성자를 사용하는 방법 new 키워드를 사용해서 생성자를 생성한다.
+
+29. new를 사용해서 생성자를 만들고, 참조변수를 사용해서 참조변수.메서드를 이용해서 사용한다.
+ex) Study08_2 s8 = new Study08_2();
+     s8.함수();
+     s8.함수2();
+
+30. new를 사용해서 객체를 생성 한다는 의미는 new를 사용해서 생성자를 생성한다라는 말과 같은것 같음(내생각)
+
+31. 클래스를 가지고 와서 사용하려면 new 키워드 필요하다.
 
 
 package java0524;
@@ -423,6 +433,108 @@ public class Study07_2 extends Study07_1 {
 	}
 	
 }
+
+package java0524;
+
+public class Study08 {
+
+	public static void main(String[] args) {
+
+		//Study08_2 s8 = new Study08_2(5);
+		Study08_2 s8 = new Study08_2();
+		s8.함수();
+		s8.함수2();
+		
+	}
+
+}
+
+
+package java0524;
+
+public class Study08_1 {
+
+	
+	Study08_1(){}
+	Study08_1(int a){this.a = a;}
+	
+	int a;
+	
+	void 함수() {
+		System.out.println(a);
+	}
+	
+}
+
+
+package java0524;
+
+public class Study08_2 extends Study08_1 {
+
+	int a;
+	
+	// Study08_2()는 자식의 생성자이다.
+	// super(4)는 생성자 안에서만 사용가능하다. 메서드 안에서는 사용 불가하다.
+	Study08_2(){super(4);} 
+	
+	Study08_2(int a){
+		// super 키워드는 부모의 전역변수를 사용하기 위한 키워드
+		// super 키워드는 부모에 있는 전역변수(인스턴스 변수)를 사용하기 위함
+		super.a = a; 
+	}
+	
+	void 함수2() {
+		//System.out.println(a); // 자식의 a의 값을 출력 // 0출력
+		//System.out.println(super.a); // 부모의 a를 출력하기 위함 // 5출력
+	}
+	
+	
+	
+}
+
+
+package java0524;
+
+public class Study09 {
+
+	public static void main(String[] args) {
+
+		//new Study09_1().구구단(3,6);
+		new Study09_1(3,6);
+	}
+	
+}
+
+
+package java0524;
+
+public class Study09_1 {
+	
+//	void 구구단(int a, int b) {
+//		단(a,b);
+//	}
+	
+	Study09_1(int a, int b) {
+		단(a,b);
+	}
+	
+	
+	private void 단(int a, int b) { 
+		for(; a<=b; a++) {
+			System.out.println(a+ " 단");
+			계산(a);
+		}
+		
+	}
+	
+	private void 계산(int a) {
+		for(int i =1; i<=9; i++) {
+			System.out.println(a + " * " + i + " = " + (a * i));
+		}
+		System.out.println();
+	}
+}
+
 
 
 
