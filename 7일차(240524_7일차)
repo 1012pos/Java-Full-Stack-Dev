@@ -17,16 +17,19 @@ public class Study01 {
 	public static void main(String[] args) {
 
 		// 대입을 해서 값을 받아온다.
+		// 메소드이름(전달값); 이부분이 입력이면서, 호출이다.
+		// 출력 부분은 반환값
+		
 		int 값 = 합(1,2); // 3
 		System.out.println(값);
 		
-		int 값1 = 빼기(10,5); // 5
+		int 값1 = 빼기(1,2); // -1
 		System.out.println(값1);
 		
-		int 값2 = 나누기(10,5); // 2
+		int 값2 = 나누기(1,2); // 0
 		System.out.println(값2);
 		
-		int 값3 = 곱하기(10,5); // 50
+		int 값3 = 곱하기(1,2); // 2
 		System.out.println(값3);
 		
 	}
@@ -49,3 +52,5 @@ public class Study01 {
 	
 
 }
+
+
