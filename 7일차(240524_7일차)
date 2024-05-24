@@ -1,2 +1,51 @@
 240524
 1.
+
+
+
+
+
+
+
+
+
+
+package java0524;
+
+public class Study01 {
+
+	public static void main(String[] args) {
+
+		// 대입을 해서 값을 받아온다.
+		int 값 = 합(1,2); // 3
+		System.out.println(값);
+		
+		int 값1 = 빼기(10,5); // 5
+		System.out.println(값1);
+		
+		int 값2 = 나누기(10,5); // 2
+		System.out.println(값2);
+		
+		int 값3 = 곱하기(10,5); // 50
+		System.out.println(값3);
+		
+	}
+	
+	static int 합(int a , int b) {
+		return ( a + b );
+	}
+	
+	static int 빼기(int a , int b) {
+		return ( a - b );
+	}
+	
+	static int 나누기(int a , int b) {
+		return ( a / b );
+	}
+	
+	static int 곱하기(int a , int b) {
+		return ( a * b );
+	}
+	
+
+}
