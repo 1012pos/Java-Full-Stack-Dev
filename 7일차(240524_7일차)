@@ -55,3 +55,29 @@ public class Study01 {
 }
 
 
+package java0524;
+
+public class Study04 {
+
+	static int a = 0; // 전역변수
+	static int c = 0; // 전역변수
+	
+	public static void main(String[] args) {
+
+		System.out.println(a);
+		int c = b();
+		System.out.println(c);
+	}
+	
+	static int b() {
+		int c = 5; // 지역변수
+	//	this.c = c; // 여기서는 사용 못하지만, class에서는 사용할수 있음 추후에 배울것임
+		System.out.println(a);
+		return c;
+		
+	}
+	
+}
+
+
+
