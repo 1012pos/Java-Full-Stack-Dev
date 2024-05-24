@@ -239,9 +239,14 @@ public class Study05 {
 		Study05_1 s51 = new Study05_1(1); 
 		System.out.println(s51);
 		s51.b();
+		
+//		Study05_2 s52 = new Study05_2(3);
+//		s52.c();
+		
 	}
 
 }
+
 package java0524;
 
 public class Study05_1 {
@@ -266,6 +271,30 @@ public class Study05_1 {
 	void b() {
 		System.out.println(this.a);
 	}
+	
+}
+
+package java0524;
+
+public class Study05_2 {
+	
+	//전역변수
+	int d;
+	
+	Study05_2(){
+		System.out.println("기본 생성자");
+	}
+	
+	Study05_2(int d){
+		System.out.println("매개변수(전달값이) 하나가 있는 생성자 " + d);
+		this.d = d; // this.d는 int d의 값인 전역변수를 의미한다.
+	}
+	
+	void c(){
+		System.out.println(this.d);
+	}
+
+	
 	
 }
 
