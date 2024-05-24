@@ -101,6 +101,13 @@ new 키워드를 이용하여 생성된 인스턴스 주소값을 변수 값으�
 
 21. 내 깃허브 주소 : https://github.com/1012pos
 
+22. HeidiSQL에서 edu라는 데이터베이스 새로 만들기
+아이디 : YoonShin
+비밀번호 : 1234
+
+23. new Study06_().함수(); // new 키워드를 사용하지 않고 메소드 실행하기
+    static 키워드 생각하기(new 키워드 없이 메모리에 생성되게 하는 키워드는 static이다.)
+
 
 
 package java0524;
