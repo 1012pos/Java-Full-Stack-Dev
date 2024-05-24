@@ -205,6 +205,48 @@ public class Study04 {
 	
 }
 
+package java0524;
+
+public class Study05 {
+	// 클래스에는 접근제어자가 필요하다. 기본적으로 public을 사용한다.
+	// 클래스 안에 있는 메소드를 확인하고 싶으면 .을 사용한다.
+	// 클래스에서 다른 클래스를 사용하고 싶으면 생성자를 new 키워드를 사용해서 생성하면 된다.
+	public static void main(String[] args) {
+		
+		//new Study05_1(); // <-- 실행 또는 호출
+		// 클래스에서 다른 클래스를 사용하고 싶으면 생성자를 new 키워드를 사용해서 생성한다.
+		Study05_1 s51 = new Study05_1(1); 
+		System.out.println(s51);
+		s51.b();
+	}
+
+}
+package java0524;
+
+public class Study05_1 {
+	
+	// 전역변수, 이 클래스(Study05_1)에서만 사용하기 위해서 private 접근제어자를 사용한다.
+	private int a;
+	
+	// 기본 생성자는 디폴트이다
+	// 생성자(메소드랑 비슷하지만, 반환값이 없으면 생성자이다(void, int, String))
+	// 기본 생성자 디폴트로 생성되지만, 매개변수를 수정해버리면 실행오류
+	// 그렇기 때문에, 수정하고 싶으면 기본 생성자(매개변수가 없는)를 반드시 작성해야 한다. 
+	
+	Study05_1(){
+		System.out.println(11111111);
+	}
+	
+	Study05_1(int a){
+		System.out.println(a);
+		this.a = a; // this.a는 위에 있는 전역변수 int a;를 의미한다.
+	}
+	
+	void b() {
+		System.out.println(this.a);
+	}
+	
+}
 
 
 
