@@ -78,4 +78,9 @@ OS : Platform Indepenpendent로 설정
 구글에서 Gradle 검색 후 - > Installation -> releases page -> binary-only 다운
 
 
-19. 
+19. build.gradle 은 Gradle 프로젝트임
+
+20. 이클립스에서 new 해서 Gradle를 만들지 말고 다운 받은 gradle-8.7 파일을 work 파일과
+동일한 곳에 복사 붙여 넣기 한다.
+그리고 내 PC -> 고급 시스템 설정 -> 환경 변수에서 변수 이름 : GRADLE_HOME 변수 값: C:\IDE\gradle-8.7
+그리고 path에서 %GRADLE_HOME%\bin 추가해야 함
