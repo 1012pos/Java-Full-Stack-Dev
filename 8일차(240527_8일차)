@@ -155,12 +155,7 @@ String sql1 ="create OR REPLACE table test (no int)"; // 데이터 베이스 공
 
 31 자바에서 데이터를 담는 그릇을 DTO라고 한다.(DTO는 데이터를 담는 바구니)
 : 클래스명DTO.java을 만들면 여기에는 변수, getter and settter, toString이 있다.
-     
-32. 
-
-
-
-
+      
 
 
 
