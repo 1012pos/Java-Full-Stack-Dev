@@ -338,3 +338,35 @@ public class Study01_1 {
 	
 }
 
+
+package java0527;
+
+// 데이터를 자바에서 처리하는 바구니
+public class TestDTO {
+
+	private int no; // 다른곳에서 사용못하도록 접근제어자 private 사용
+	private String name; // 다른곳에서 사용못하도록 접근제어자 private 사용
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	// toString 메서드를 사용하면 주솟값이 아닌 그 안에 담긴 데이터를 출력 가능하게 할 수 있다.
+	public String toString() {
+		return "TestDTO [no=" + no + ", name=" + name + "]";
+	}
+	
+	
+	
+}
+
+
