@@ -34,4 +34,16 @@
 : Maven, Gradle
 Maven, Gradle : 프로젝트 관리, 버전관리, 배포 관리
 
-9. 
+9. https://mariadb.com/downloads/connectors/
+Product : java 8+로 설정
+OS : Platform Indepenpendent로 설정
+: 파일은 .jar로 받아야 한다.
+
+10. 우리의 프로젝트에 파일은 .jar을 저장한 후 적용해야 하는데
+다운 받은 파일에서 우측키 -> Build path -> add ~~ 클릭하면 Referenced Libraries가 
+생성되면서 거기 밑으로 다운 받은 파일이 적용된다.
+
+11. 동일한 버전의 라이브러리로 사용하기 위한 기술(다른 분들과 같이 협업하기 위한 기술)
+: Maven, Gradle
+
+12. 
