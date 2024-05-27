@@ -143,7 +143,22 @@ public class Study01_1 {
 
 27. 트라이 캐치문은 "외부코드"를 사용할때 많이 사용한다.
 
-28. 
+28. 구글에서 mariadb create table 검색
+: OR REPLACE 이 코드는 만약에 같은 테이블 있으면 대체하라
+String sql1 ="create OR REPLACE table test (no int)"; // 데이터 베이스 공간(테이블) 생성
+
+29. Getters와 Setters 생성 방법
+: Source -> Generate Getters and Setters
+
+30. toString 메서드를 사용하면 주솟값이 아닌 그 안에 담긴 데이터를 출력 가능하게 할 수 있다.
+: Source -> Generate toString()
+
+31 자바에서 데이터를 담는 그릇을 DTO라고 한다.(DTO는 데이터를 담는 바구니)
+: 클래스명DTO.java을 만들면 여기에는 변수, getter and settter, toString이 있다.
+     
+32. 
+
+
 
 
 
