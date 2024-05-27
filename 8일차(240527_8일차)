@@ -97,3 +97,10 @@ OS : Platform Indepenpendent로 설정
 
 : 그다음부터는 해당되는 곳 번호 입력
 
+23. import -> gradle -> 경로 선택 후 -> finish
+
+24. app프로젝트 -> close project 설정하기
+
+25. JavaStudy3 -> Build Path - > Configure Build Path
+
+26.
