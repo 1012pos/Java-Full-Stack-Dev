@@ -224,7 +224,8 @@ public class Study01_1 {
 			Class.forName(드라이버); // 클래스 확인부분
 			Connection conn = DriverManager.getConnection(주소, 사용자, 비밀번호); // 생성
 			
-			String sql1 ="create table test (no int)"; // 데이터 베이스 공간(테이블) 생성
+			// OR REPLACE 이 코드는 만약에 같은 테이블 있으면 대체하라
+			String sql1 ="create OR REPLACE table test (no int)"; // 데이터 베이스 공간(테이블) 생성
 			
 			PreparedStatement ps = conn.prepareStatement(sql1); // sql문을 담는다.
 			ps.execute(); // 실행
@@ -239,5 +240,4 @@ public class Study01_1 {
 	}
 	
 }
-
 
