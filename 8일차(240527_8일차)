@@ -225,10 +225,16 @@ public class Study01_1 {
 			Connection conn = DriverManager.getConnection(주소, 사용자, 비밀번호); // 생성
 			
 			// OR REPLACE 이 코드는 만약에 같은 테이블 있으면 대체하라
-			String sql1 ="create OR REPLACE table test (no int)"; // 데이터 베이스 공간(테이블) 생성
+			// no는 컬럼명이며 뒤에 int는 컬럼 no가 int형이라는 뜻이다.
+			String sql1 ="create OR REPLACE table test (no int, name varchar(50))"; // 데이터 베이스 공간(테이블) 생성
 			
 			PreparedStatement ps = conn.prepareStatement(sql1); // sql문을 담는다.
 			ps.execute(); // 실행
+			
+			String sql2 = "insert into test (name, no) value('하이', 1)"; // 데이터 추가
+			ps = conn.prepareStatement(sql2);
+			int result = ps.executeUpdate(); // insert, update, delete 를 사용할 때 사용
+			System.out.println(result); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
 			
 			conn.close(); // 종료
 		} catch (ClassNotFoundException e) {
@@ -240,4 +246,3 @@ public class Study01_1 {
 	}
 	
 }
-
