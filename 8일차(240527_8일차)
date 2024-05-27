@@ -374,4 +374,283 @@ public class TestDTO {
 	
 }
 
+package java0527;
+
+public class Study02 {
+
+	public static void main(String[] args) {
+
+		// mariaDB 접속!!
+		new Study02_1().접속();
+		
+		
+	}
+
+}
+
+package java0527;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Study02_1 {
+	
+	String 드라이버 ="org.mariadb.jdbc.Driver";
+	String 주소 ="jdbc:mariadb://localhost:3306/edu";
+	String 사용자 ="root";
+	String 비밀번호 ="1234";
+
+	public void 접속() {
+		System.out.println("접속 시작!");
+		try {
+			Class.forName(드라이버); // 클래스 확인부분
+			Connection conn = DriverManager.getConnection(주소, 사용자, 비밀번호); // 생성
+			
+			// OR REPLACE 이 코드는 만약에 같은 테이블 있으면 대체하라
+			// no는 컬럼명이며 뒤에 int는 컬럼 no가 int형이라는 뜻이다.
+			
+			
+			 
+			// 테이블 생성
+			String sql1 ="create OR REPLACE table list (no int, name varchar(100), gender varchar(100), feature varchar(100), pirates varchar(100), role varchar(100))"; // 데이터 베이스 공간(테이블) 생성
+			
+			PreparedStatement ps = conn.prepareStatement(sql1); // sql문을 담는다.
+			ps.execute(); // 실행
+			
+			// 데이터 추가
+			String sql2 = "insert into list (no, name, gender, feature, pirates, role) value(1, '몽키 D 루피', '남자', '고무고무 열매', '밀집모자', '선장')"; // 데이터 추가
+			ps = conn.prepareStatement(sql2);
+			
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result = ps.executeUpdate();
+			//System.out.println(result); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql3 = "insert into list (no, name, gender, feature, pirates, role) value(2, '롤로노아 조로', '남자', '삼도류', '밀집모자', '부선장')"; // 데이터 추가
+			ps = conn.prepareStatement(sql3);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result1 = ps.executeUpdate();
+			//System.out.println(result1); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			
+			// 데이터 추가
+			String sql4 = "insert into list (no, name, gender, feature, pirates, role) value(3, '상디', '남자', '요리사', '밀집모자', '요리사')"; // 데이터 추가
+			ps = conn.prepareStatement(sql4);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result2 = ps.executeUpdate();
+			//System.out.println(result2); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			
+			// 데이터 추가
+			String sql5 = "insert into list (no, name, gender, feature, pirates, role) value(4, '나미', '여자', '항해사', '밀집모자', '항해사')"; // 데이터 추가
+			ps = conn.prepareStatement(sql5);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result3 = ps.executeUpdate();
+			//System.out.println(result3); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql6 = "insert into list (no, name, gender, feature, pirates, role) value(5, '우솝', '남자', '사격', '밀집모자', '저격수')"; // 데이터 추가
+			ps = conn.prepareStatement(sql6);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result4 = ps.executeUpdate();
+			//System.out.println(result4); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql7 = "insert into list (no, name, gender, feature, pirates, role) value(6, '토니토니 쵸파', '미정', '사람사람 열매', '밀집모자', '의사')"; // 데이터 추가
+			ps = conn.prepareStatement(sql7);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result5 = ps.executeUpdate();
+			//System.out.println(result5); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql8 = "insert into list (no, name, gender, feature, pirates, role) value(7, '니코 로빈', '여자', '꽃꽃 열매', '밀집모자', '고고학자')"; // 데이터 추가
+			ps = conn.prepareStatement(sql8);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result6 = ps.executeUpdate();
+			//System.out.println(result6); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql9 = "insert into list (no, name, gender, feature, pirates, role) value(8, '프랑키', '남자', '사이보그', '밀집모자', '조선공')"; // 데이터 추가
+			ps = conn.prepareStatement(sql9);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result7 = ps.executeUpdate();
+			//System.out.println(result7); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql10 = "insert into list (no, name, gender, feature, pirates, role) value(9, '브록', '남자', '연주자', '밀집모자', '선원')"; // 데이터 추가
+			ps = conn.prepareStatement(sql10);						
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result8 = ps.executeUpdate();
+			//System.out.println(result8); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// 데이터 추가
+			String sql11 = "insert into list(no, name, gender, feature, pirates, role) value(10, '버기', '남자', '동강동강 열매', '버기', '선장')"; // 데이터 추가
+			ps = conn.prepareStatement(sql11);	
+			int result9 = ps.executeUpdate();
+			System.out.println(result9);
+			
+			
+			
+			// 데이터 조회
+			String sql12 = "select * from list";
+			//String sql12 = "select * from list where pirates = '밀집모자'";
+			//String sql12 = "select * from list where no = 10";
+			ps = conn.prepareStatement(sql12);
+			
+			// ResultSet는 import 해줘야 한다.
+			// executeQuery()는 select 사용시 사용한다.
+			ResultSet rs = ps.executeQuery(); 
+			
+			// next()는 다음줄이 있으면 데이터를 가져온다라는 의미
+			// next()의 함수를 사용할때는 while문을 사용한다.
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				String gender = rs.getString("gender"); // getString는 gender 컬럼의 자료형이 String이라서 작성
+				String feature = rs.getString("feature"); // getString는 feature 컬럼의 자료형이 String이라서 작성
+				String pirates = rs.getString("pirates"); // getString는 pirates 컬럼의 자료형이 String이라서 작성
+				String role = rs.getString("role"); // getString는 role 컬럼의 자료형이 String이라서 작성
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				ListDTO listDto = new ListDTO();
+				listDto.setNo(no); // 데이터 셋팅
+				listDto.setName(name); // 데이터 셋팅
+				listDto.setGender(gender); // 데이터 셋팅
+				listDto.setPirates(pirates); // 데이터 셋팅
+				listDto.setRole(role); // 데이터 셋팅
+				System.out.println(listDto);
+			}
+			
+			
+			// 데이터 수정
+			String sql13 = "update list set role ='광대' where no = 10";
+			ps = conn.prepareStatement(sql13);	
+			result = ps.executeUpdate();
+			System.out.println(result);
+			
+			
+			// 데이터 확인
+			sql13 = "select * from list where no = 10";
+			ps = conn.prepareStatement(sql13);
+			rs = ps.executeQuery(); 
+			
+			// next()는 다음줄이 있으면 데이터를 가져온다라는 의미
+			// next()의 함수를 사용할때는 while문을 사용한다.
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				String gender = rs.getString("gender"); // getString는 gender 컬럼의 자료형이 String이라서 작성
+				String feature = rs.getString("feature"); // getString는 feature 컬럼의 자료형이 String이라서 작성
+				String pirates = rs.getString("pirates"); // getString는 pirates 컬럼의 자료형이 String이라서 작성
+				String role = rs.getString("role"); // getString는 role 컬럼의 자료형이 String이라서 작성
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				ListDTO listDto = new ListDTO();
+				listDto.setNo(no); // 데이터 셋팅
+				listDto.setName(name); // 데이터 셋팅
+				listDto.setGender(gender); // 데이터 셋팅
+				listDto.setPirates(pirates); // 데이터 셋팅
+				listDto.setRole(role); // 데이터 셋팅
+				System.out.println(listDto);
+				//System.out.println(no + ", "+ name);
+			}
+			
+			
+			/*
+			// 데이터 삭제
+			String sql5 = "delete from test";
+			ps = conn.prepareStatement(sql5);	
+			result = ps.executeUpdate();
+			System.out.println(result);
+			
+			// 데이터 확인
+			ps = conn.prepareStatement(sql3);
+			rs = ps.executeQuery(); 
+			int cnt = 0;
+			
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				TestDTO testDto = new TestDTO();
+				testDto.setNo(no); // 데이터 셋팅
+				testDto.setName(name); // 데이터 셋팅
+				System.out.println(testDto);
+				cnt++;
+				//System.out.println(no + ", "+ name);
+			}
+			System.out.println("행수: " +cnt);
+			
+			*/
+			conn.close(); // 종료
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+}
+
+package java0527;
+
+// 데이터를 자바에서 처리하는 바구니
+// 테이블명 list(명단)
+public class ListDTO {
+
+	private int no; // 번호
+	private String name; // 이름
+	private String gender; // 성별
+	private String feature; // 특징
+	private String pirates; // 해적단
+	private String role; // 역할
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getFeature() {
+		return feature;
+	}
+	public void setFeature(String feature) {
+		this.feature = feature;
+	}
+	public String getPirates() {
+		return pirates;
+	}
+	public void setPirates(String pirates) {
+		this.pirates = pirates;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "ListDTO [no=" + no + ", name=" + name + ", gender=" + gender + ", feature=" + feature + ", pirates="
+				+ pirates + ", role=" + role + "]";
+	}
+	
+}
+
 
