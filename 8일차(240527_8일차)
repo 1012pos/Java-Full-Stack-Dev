@@ -267,8 +267,65 @@ public class Study01_1 {
 			while(rs.next()) { 
 				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
 				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
-				System.out.println(no + ", "+ name);
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				TestDTO testDto = new TestDTO();
+				testDto.setNo(no); // 데이터 셋팅
+				testDto.setName(name); // 데이터 셋팅
+				System.out.println(testDto);
+				//System.out.println(no + ", "+ name);
+				
 			}
+			
+			// 수정
+			String sql4 = "update test set name ='안녕'";
+			ps = conn.prepareStatement(sql4);	
+			result = ps.executeUpdate();
+			System.out.println(result);
+			
+			// 데이터 확인
+			ps = conn.prepareStatement(sql3);
+			rs = ps.executeQuery(); 
+			
+			// next()는 다음줄이 있으면 데이터를 가져온다라는 의미
+			// next()의 함수를 사용할때는 while문을 사용한다.
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				TestDTO testDto = new TestDTO();
+				testDto.setNo(no); // 데이터 셋팅
+				testDto.setName(name); // 데이터 셋팅
+				System.out.println(testDto);
+				//System.out.println(no + ", "+ name);
+				
+			}
+			
+			// 삭제
+			String sql5 = "delete from test";
+			ps = conn.prepareStatement(sql5);	
+			result = ps.executeUpdate();
+			System.out.println(result);
+			
+			// 데이터 확인
+			ps = conn.prepareStatement(sql3);
+			rs = ps.executeQuery(); 
+			int cnt = 0;
+			
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				
+				// 다른곳에 있는 클래스를 사용하기 위해서 new 키워드를 사용해서 객체 생성
+				TestDTO testDto = new TestDTO();
+				testDto.setNo(no); // 데이터 셋팅
+				testDto.setName(name); // 데이터 셋팅
+				System.out.println(testDto);
+				cnt++;
+				//System.out.println(no + ", "+ name);
+			}
+			System.out.println("행수: " +cnt);
 			
 			conn.close(); // 종료
 		} catch (ClassNotFoundException e) {
