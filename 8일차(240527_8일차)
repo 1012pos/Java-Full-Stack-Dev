@@ -88,4 +88,12 @@ OS : Platform Indepenpendent로 설정
 
 21. cmd창에서 cd -> cd C:\IDE\work -> dir 확인하기
 
-22. 
+22. cmd 창에서 파일 생성  및 이동 방법
+: cmd창에서 -> mkdir JavaStudy3
+
+: cd JavaStudy3
+
+: gradle init
+
+: 그다음부터는 해당되는 곳 번호 입력
+
