@@ -84,3 +84,4 @@ OS : Platform Indepenpendent로 설정
 동일한 곳에 복사 붙여 넣기 한다.
 그리고 내 PC -> 고급 시스템 설정 -> 환경 변수에서 변수 이름 : GRADLE_HOME 변수 값: C:\IDE\gradle-8.7
 그리고 path에서 %GRADLE_HOME%\bin 추가해야 함
+그리고 나서 cmd 창에서 gradle 검색후 설치 됬는지 확인하기
