@@ -46,4 +46,30 @@ OS : Platform Indepenpendent로 설정
 11. 동일한 버전의 라이브러리로 사용하기 위한 기술(다른 분들과 같이 협업하기 위한 기술)
 : Maven, Gradle
 
-12. 
+12. Maven 프로젝트로 라이브러리 가져오기(java 프로젝트가 아닌)
+: 우측키 -> new -> Maven project
+
+13. jar
+: 자바 아카이브라는 의미
+
+14. src/main/java : 자바 파일
+
+15. src/main/resources : 자바 파일 외 파일
+
+16. pom.xml 파일이 있으면 Maven 파일이다.
+
+17. 구글에서 maven repository -> 1. MariaDB Java Client -> 3.4.0 -> Maven 탭에 있는 내용 복사 후
+-> pom.xml 에서 Maven 탭에 있던 내용을 추가해야 함
+
+<dependencies>
+	  
+	  <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+	<dependency>
+	    <groupId>org.mariadb.jdbc</groupId>
+	    <artifactId>mariadb-java-client</artifactId>
+	    <version>3.4.0</version>
+	</dependency>
+	  
+  </dependencies>
+-> 
+
