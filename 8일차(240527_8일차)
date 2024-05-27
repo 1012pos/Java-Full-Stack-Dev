@@ -208,6 +208,7 @@ package java0527;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Study01_1 {
@@ -216,7 +217,6 @@ public class Study01_1 {
 	String 주소 ="jdbc:mariadb://localhost:3306/edu";
 	String 사용자 ="root";
 	String 비밀번호 ="1234";
-
 
 	public void 접속() {
 		System.out.println("접속 시작!");
@@ -233,8 +233,27 @@ public class Study01_1 {
 			
 			String sql2 = "insert into test (name, no) value('하이', 1)"; // 데이터 추가
 			ps = conn.prepareStatement(sql2);
-			int result = ps.executeUpdate(); // insert, update, delete 를 사용할 때 사용
+			
+			// executeUpdate()는 insert, update, delete 를 사용할 때 사용
+			int result = ps.executeUpdate();
 			System.out.println(result); // 콘솔창에 1이라고 표시되면 행이 한개가 추가됬다는 의미(1이 뜨면 정상동작 됬다는 의미)
+			
+			// sql = select 문 실행해서 위의 insert된 데이터를 출력 하시오!
+			
+			String sql3 = "select * from test";
+			ps = conn.prepareStatement(sql3);
+			
+			// ResultSet는 import 해줘야 한다.
+			// executeQuery()는 select 사용시 사용한다.
+			ResultSet rs = ps.executeQuery(); 
+			
+			// next()는 다음줄이 있으면 데이터를 가져온다라는 의미
+			// next()의 함수를 사용할때는 while문을 사용한다.
+			while(rs.next()) { 
+				int no = rs.getInt("no"); // getInt는 no 컬럼의 자료형이 int라서 작성
+				String name = rs.getString("name"); // getString는 name 컬럼의 자료형이 String이라서 작성
+				System.out.println(no + ", "+ name);
+			}
 			
 			conn.close(); // 종료
 		} catch (ClassNotFoundException e) {
