@@ -58,7 +58,8 @@ OS : Platform Indepenpendent로 설정
 
 16. pom.xml 파일이 있으면 Maven 파일이다.
 
-17. 구글에서 maven repository -> 1. MariaDB Java Client -> 3.4.0 -> Maven 탭에 있는 내용 복사 후
+17. Maven 프로젝트에서 외부라이브러리 다운 방법
+: 구글에서 maven repository -> 1. MariaDB Java Client -> 3.4.0 -> Maven 탭에 있는 내용 복사 후
 -> pom.xml 에서 Maven 탭에 있던 내용을 추가해야 함
 
 <dependencies>
@@ -71,5 +72,10 @@ OS : Platform Indepenpendent로 설정
 	</dependency>
 	  
   </dependencies>
--> 
 
+18. Gradle 프로젝트에서 외부라이브러리 다운 방법
+우측키 -> new -> Gradle
+구글에서 Gradle 검색 후 - > Installation -> releases page -> binary-only 다운
+
+
+19. 
