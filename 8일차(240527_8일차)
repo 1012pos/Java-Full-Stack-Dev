@@ -177,7 +177,7 @@ public class Study01_1 {
 		System.out.println("접속 시작!");
 		String 드라이버 ="org.mariadb.jdbc.Driver";
 		try {
-			Class.forName(드라이버);
+			Class.forName(드라이버); // 클래스 확인부분
 			System.out.println("드라이버 클래스 존재 합니다.");
 			
 			// 데이터 베이스 접속
@@ -188,7 +188,7 @@ public class Study01_1 {
 			String 비밀번호 ="1234";
 			
 			//DriverManager.getConnection 검색
-			DriverManager.getConnection(주소, 사용자, 비밀번호);
+			DriverManager.getConnection(주소, 사용자, 비밀번호); // 데이터 베이스 접근
 			System.out.println("섹션 생성 완료!");
 			
 		} catch (ClassNotFoundException e) {
@@ -200,5 +200,4 @@ public class Study01_1 {
 	}
 	
 }
-
 
