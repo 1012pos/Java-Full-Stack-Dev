@@ -34,6 +34,23 @@ Team - > show in history -> 주석 알아보기 파일에서 우측키 -> Reset 
 
 15. try ~ catch는 외부 라이브러리를 사용할때나, 인, 아웃 발생할 때 사용하는 자바문법
 
+16. list는 배열이라고 생각하면 되고, 객체를 담는다.
+
+17. DTO 같은 배열을 담을수 있는것이 list 이다.
+
+18. .size( )는 행의 수이다.
+
+19. cud기능(입력, conn, (DataDto) list.get(i), "I"); 
+: (DataDto) list.get(i)는 List라는 객체에서 하나씩 뽑아올 때 get(i) 사용한다.
+
+20. List는 "object"인데, 형변환하기 위해 (DataDto)를 붙여 줬다.
+
+21. 객체를 List에 담을때는 무조건 "new" 해야 한다. (DataDto data = new DataDto();)
+
+22. 객체를 배열에 담으려면 List를 사용한다.
+
+23. DataDto 같은 객체(클래스)는 List에 담아야 한다.
+
 
 package java0528;
 
