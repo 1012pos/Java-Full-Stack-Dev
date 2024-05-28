@@ -281,8 +281,8 @@ public class DbController {
 				// DML >> CRUD
 				// 1단계 데이터 넣기 (insert)
 				// sql = 데이터생성();
-				// cud기능(sql, conn); // <<
-				  cud기능(데이터생성(), conn);
+				// cud기능(sql, conn); 
+				  cud기능(데이터생성(), conn); // <<
 			   }else{
 				System.out.println("테이블 생성 실패");
 			   }
