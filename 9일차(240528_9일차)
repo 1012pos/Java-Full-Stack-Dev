@@ -19,6 +19,8 @@
 
 8. 외부 라이브러리를 사용하게 되면 try ~ catch를 사용해야 한다.
 
+9. 서로 다른 자료형을 한번에 처리하려면 DTO가 필요하다.(setter, getter)
+
 package java0528;
 
 public class Study01 {
