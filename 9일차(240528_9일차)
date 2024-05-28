@@ -464,7 +464,7 @@ public class DbController {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute(); // 실행
 			ps.close(); // ps를 종료
-			return true; // << 성공
+			return true; // << 성공 // return은 끝이라는 뜻이기 때문에, return 값 뒤에는 아무것도 오지 못한다고 생각하면 쉬움
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
