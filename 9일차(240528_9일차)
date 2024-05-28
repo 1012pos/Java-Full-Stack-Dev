@@ -51,6 +51,17 @@ Team - > show in history -> 주석 알아보기 파일에서 우측키 -> Reset 
 
 23. DataDto 같은 객체(클래스)는 List에 담아야 한다.
 
+24. List<DataDto> list = 데이터생성();
+	for(int i = 0; i < list.size(); i++) {
+	cud기능(입력, conn, (DataDto) list.get(i), "I"); 
+	}
+
+// List가 object 타입이라, 형변화를 해줘야 하는데 여기서 방법이 2가지가 있다.
+1. (DataDto) list.get(i) 이것처럼 list 앞에 (DataDto) 를 작성해서 형변환 해주면 된다.
+2. List<DataDto> list = 데이터생성(); 이것처럼, List의 자료형을 <DataDto>로 작성해서 형변환 시켜 주면 된다.
+
+25. List 타입 확인 방법은  list.get(i)여기 부분에 마우스를 갖다 되면 된다.
+
 
 package java0528;
 
