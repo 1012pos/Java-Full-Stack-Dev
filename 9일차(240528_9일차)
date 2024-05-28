@@ -80,13 +80,13 @@ public class DbController {
 	private void 기능제어(Connection conn) {
 		System.out.println("테이블 생성 합니다.");
 		String sql = "create OR REPLACE table 명단(";
-		sql += " 번호 	 int,";
-		sql += " 이름 	 varchar(50),";
-		sql += " 성별 	 varchar(50),";
-		sql += " 특징 	 varchar(50),";
-		sql += " 해적단    varchar(50),";
-		sql += " 역할 	 varchar(50)";
-		sql += ")";
+			   sql += " 번호 	 int,";
+			   sql += " 이름 	 varchar(50),";
+			   sql += " 성별 	 varchar(50),";
+			   sql += " 특징 	 varchar(50),";
+			   sql += " 해적단    varchar(50),";
+			   sql += " 역할 	 varchar(50)";
+			   sql += ")";
 		테이블생성(sql, conn);
 	}
 	
