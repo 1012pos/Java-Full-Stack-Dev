@@ -1,2 +1,8 @@
 20240529
-1. 
+1. Class.forName(드라이버);
+: 존재 여부 확인(존재 여부이기 때문에 필수는 아님)
+
+2. Connection conn = DriverManager.getConnection(주소, 사용자, 비밀번호);
+: conn에는 세션이라는 정보가 담겨 있음
+
+3.
