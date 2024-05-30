@@ -1,1 +1,68 @@
 20240530
+1. 개인플? or 강화훈련?(한달반 동안)
+
+2. 순차적으로 문제해결 해야 함, 접고 시작
+
+3. 행이 많기 때문에 List를 사용해서 가지고 온다. (select문)
+
+4. scanner 때문에 테스트할때 한번 실행하고 끄기
+
+5.  create OR REPLACE table에서 OR REPLACE 구문을 사용하면 테이블을 계속 생성할수 있지만 비 생산적이기 때문에
+테이블 생성하는 부분을 주석처리 하는게 좋음 강사님이 만들어주신 부분
+
+6. org에서 오류가 발생할때 Build Path로 설정하기 -> Referenced Libraries에 mariadb-java-client-3.4.0.jar 확인하기(classpath)
+
+7. 매개변수 잘 확인하기
+
+8. 전체적인 흐름 및 로직 생각하기
+
+9. insert하는 부분에서 new는 그릇인데,  한번만 하면 된다 이유는 그릇을 비웠기 때문에 재사용한다.
+ new를 사용해서 for문을 돌려도 되지만, 메모리 낭비이다.
+
+// 2단계 생성된 테이블에 데이터 입력하기
+	private void 입력하기(Connection conn) {
+		sql = "insert into 명단 value (?,?,?,?,?,?)"; // DML 추가
+		
+		System.out.println("SQL문 확인 : " + sql);
+		
+		
+		DbTable data = new DbTable();
+		/*****************************************
+		 *  Scanner 사용시 추가
+		 *****************************************/
+		for(int i = 0; i<10; i++) {
+			data.set번호(1);
+			data.set이름("몽키 D 루피");
+			data.set성별("남자");
+			data.set특징("고무고무 열매");
+			data.set해적단("밀짚모자");
+			data.set역활("선장");
+			
+			System.out.println(data);
+			// 코드추가를 확인 후 아래의 주석을 풀고 실행하세요.
+			db.데이터입력하기(conn, sql, data);
+		}
+	
+	}
+
+
+10. scanner로도 해보기
+
+11. 구분자는 콤마(,)이다.
+
+12. 데이터 삽입할때 2개 이상 넣어보기 for문을 이용해서
+
+13. scanner로 하기
+
+14. 회사에서는 sql에서 delete 사용하지 않고, update 로 삭제처리한다. 
+
+15. boolean 타입은 get으로 가져오지 않고, is로 가져온다.
+ex) pstmt.setBoolean(4, data.isDelYn());
+
+16. 물음표, 스캔, 맵핑순서 다 일치해야함
+
+17. 스캐너에서 Boolean도 Int처럼 하나 입력하고 scan.nextLine(); 처럼 개행처리 해줘야함
+data.setDelYn(scan.nextBoolean());
+                scan.nextLine(); // 개행처리 해줘야함
+data.setNo(scan.nextInt());
+	  scan.nextLine(); // 개행처리 해줘야함
