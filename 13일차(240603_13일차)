@@ -28,4 +28,7 @@
 
 ect 업슴
 
-2. 
+2. tomcat 설정 확인
+: C:\IDE\etc\apache-tomcat-10.1.23\bin -> startup.bat -> 크롬에서 http://localhost:8080 -> 고양이 그림 떠야함
+
+3. C:\IDE\Apache24\bin -> httpd.exe -> 크롬에서 localhost 입력후 -> 안녕하세요 떠야함
