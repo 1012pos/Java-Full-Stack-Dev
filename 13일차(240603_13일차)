@@ -1,0 +1,31 @@
+20240603
+1. 자리 옮겨서 새로 경로 설정 및 파일 셋팅
+[환경 변수 등록] 
+- 제어판 > 시스템 > 고급 시스템 설정 > 환경 변수
+
+1. JAVA
+이름	: JAVA_HOME
+값	: C:\IDE\etc\java-22
+
+2. MAVEN
+이름	: MAVEN_HOME
+값	: C:\IDE\etc\apache-maven-3.6.2
+
+3. GRADLE
+이름 	: GRADLE_HOME
+값	: C:\IDE\etc\gradle-8.8
+
+4. TOMCAT
+이름	: CATALINA_HOME
+값	: C:\IDE\etc\apache-tomcat-10.1.23
+
+5. PATH (편집 -> 추가)
+이름	: Path
+값	: %JAVA_HOME%\bin
+	  %MAVEN_HOME%\bin
+	  %GRADLE_HOME%\bin
+	  %CATALINA_HOME%\bin
+
+ect 업슴
+
+2. 
