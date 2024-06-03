@@ -47,9 +47,8 @@ work 폴더 생성 보통 workspace로 생성함
 
 ​
 
-4.2 New text file line delimiter
-
-: other -> Unix로 설정(Unix가 최상위 부모라서)
+4.2 Window -> Preference-> General -> workspace ->New text file line delimiter -> other -> Unix로 설정
+: (Unix가 최상위 부모라서)
 
 ​
 
