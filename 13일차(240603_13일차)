@@ -148,6 +148,8 @@ ect 업슴
 46. W3school에서 공부하기
 : HTML, CSS, JAVASCRIPT 통달해야함.....
 
+47. 다른 패키지에 있는 class를 가지고 오고 싶으면 import 패키지명 클래스명 작성하면 된다.
+
 
 <html>
     <head>
