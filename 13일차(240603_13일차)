@@ -37,3 +37,13 @@ ect 업슴
 4. 이클립스 확인
 : C:\IDE\eclipse -> work
 : C:\IDE\eclipse\work
+
+5. Window -> Preferences -> Java -> Installed JREs 에서 자바 버전 확인하기
+
+6. 웹서버(톰캣) 설정
+: Window -> Preferences -> server -> Runtime Enviroment -> Add
+추가적으로 크롬에서 tomcat 검색 -> 다운로드 -> tomcat9 -> 64-bit Windows zip  다운
+그리고 다시 톰캣위치로 옮기긴 톰캣 10번전에서 9버전으로 수정
+그다음 Severs 탭에서 톰캣 추가하면 됨
+
+7. 지구본모양(open web browser) -> localhost:8080 검색 -> 웹 페이지를 표시할 수 없습니다. 떠야함
