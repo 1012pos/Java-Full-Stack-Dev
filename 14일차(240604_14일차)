@@ -120,7 +120,25 @@
 
 40. localhost:8080/WebServlet/에서 "WebServlet"는 프로젝트명이다.
 
-41. 
+41. 이클립스 상에서 WEB-INF안에 lib폴더와, web.xml파일이 있어야 한다.
+
+42. servelt을 사용하기 위해 extends를 사용해야함
+: source -> Override/implement Methods - > do Get 체크
+
+43. web.xml파일에서 아래처럼 맵핑해줘야 함.
+  <servlet>
+  	<servlet-name>Page1</servlet-name>
+  	<servlet-class>Page1</servlet-class>
+  </servlet>
+  
+  
+  <servlet-mapping>
+	  <servlet-name>Page1</servlet-name>
+	  <url-pattern>/page1</url-pattern>
+  </servlet-mapping>
+
+
+44. 
 
 
 <!DOCTYPE html>
