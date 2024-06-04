@@ -155,6 +155,10 @@
 
 47. Dynamic Web Project에서는 web.xml 파일이 필수적으로 필요하다.(설정파일이기 때문에)
 
+48. Dynamic Web Project 생성 방법: 우측키 -> other -> web -> Dynamic Web -> Next -> Next -> Generate web.xml deployment descriptor 체크해야함
+여기서 Generate web.xml deployment descriptor 체크를 해야만 web.xml 파일이 생성된다.
+
+49. web.xml 파일 위치는 WebContent -> WEB-INF 안에 위치한다.
 
 <!DOCTYPE html>
 <html lang="ko">
