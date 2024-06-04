@@ -96,7 +96,22 @@
 32. 이클립스에서 Server 탭 안보일시
 : Window -> Show view -> Other -> Server
 
-33. 
+33. servlet을 사용하려면 외부라이브러리가 필요하다.
+: C:\IDE\etc\apache-tomcat-9.0.89\lib -> servlet-api.jar 을 복사 한후 -> 이클립스에서 servlet-api.jar 를 추가한 후 -> Build path에서 Add -> Referenced Libraries가 생긴다. 
+
+34. 상속을 받았기 때문에 오버라이드
+
+35. cmd 창에서 servlet파일 컴파일 하는 방법
+: cd C:\IDE\eclipse\work\Test\src -> dir
+: javac -cp ../servlet-api.jar Page.java
+
+36. Dynamic Web Project 생성 방법
+우측키 -> other -> web -> Dynamic Web -> Next -> Next -> Generate web.xml deployment descriptor 체크해야함
+
+37. servelt을 사용할 때 자바 버전이 다를경우
+: https://jdk.java.net/archive/에서 11.0.2 windows 64-bit zip 파일 다운
+
+38. 
 
 
 <!DOCTYPE html>
