@@ -138,7 +138,20 @@
   </servlet-mapping>
 
 
-44. 
+44. servlet 웹 개발할때는 Dynamic Web Project 를 생성해야 한다.
+- servlet으로 된 클래스 생성 할 경우
+: new -> other -> servlet -> class name 에 클래스 이름 작성하고 -> Next -> Next -> 내가 원하는 메서드만 클릭(ex doGet)  -> Finish -> 해당파일 가서 주석 및 생성자 지우면 된다.
+
+- class로 생성할 경우
+1. extends HttpServlet으로 상속 받기 
+2. source -> Override/implement Methods - > do Get 체크
+
+45. clean은 3번해야한다.
+- Project 탭에서 -> clean
+- Tomcat v -> clean
+- Tomcat v -> clean  Tomcat Work Directory
+
+46. Run 단축키 : ctrl + F11
 
 
 <!DOCTYPE html>
