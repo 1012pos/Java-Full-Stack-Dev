@@ -90,8 +90,13 @@
 30. 이클립스에서 package Explorer 안보일시
 : window -> show view -> other -> Java -> package Explorer -> 우측상단에서 우측키 -> Java로 설정
 
-31. 
+31. 톰캣 서버 한글 깨짐 현상
+: Run -> Run Configure -> common탭 -> Other에 MS949로 설정
 
+32. 이클립스에서 Server 탭 안보일시
+: Window -> Show view -> Other -> Server
+
+33. 
 
 
 <!DOCTYPE html>
