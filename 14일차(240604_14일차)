@@ -1,1 +1,82 @@
-14일차(240604_14일차)
+20240604
+1. w3school에서 HTML, CSS, JAVASCRIPT 공부하기
+
+2. 강사님이 WebService에 파일 올릴 예정이심 
+
+3. C:\IDE\Apache24\bin에서 httpd.exe 파일이 항상 켜져 있어야함.
+
+4. 주소 http://localhost/WebService
+
+5. root아래에 하나씩 프로젝트가 등록된다.
+
+6. 프로젝트명은 우리가 사용하는 경로에 영향을 미친다.(http://localhost/WebService)
+
+7. index.html은 강력하다 그렇기 때문에 index.html파일을 만들게 되면 [Index of / Web Service 화면이] 보이지 않을것이다.
+그렇기 때문에 index.html 파일을 만들지 않아야 한다.
+
+8. 폴더와 폴더 사이에는 '/'로 구분한다. '/'이는 폴더와 폴더 사이를 구분할때 사용한다.
+
+9. HTDOCS란?
+
+10. 디폴트 페이지는 index.html 파일이다.
+
+11. html5를 사용
+
+12. 클릭이벤트
+
+13. 태그
+- a태그 : 경로(주소 관리)가 중요하다. 자유자재로 다룰줄 알아야 한다.
+링크 
+<a href="page1.html"> 같은위치에있음 	http://localhost/WebService/test.html
+<a href="temp/page2.html">Page1</a>	http://localhost/WebService/temp/page2.html
+- ../ 
+: 전단계로 이동
+<a href="../test.html">Test</a>
+<a href="/WebService/test.html">Test</a>
+// 다른 위치의 파일을 찾아 갈때 위의 방법보다는 아래의 방법인 절대위치로 경로를 지정하는게 좋다. 
+
+14. ~~~~ /WebService
+: ~~~ 의미는 도메인을 의미한다. 
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page1</title>
+</head>
+<body>
+    <a href="temp/page2.html">Page2</a>
+    <a href="test.html">Test</a>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <a href="page1.html">Page1</a>
+    <a href="temp/page2.html">Page2</a>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page2</title>
+</head>
+<body>
+    <a href="/WebService/page1.html">Page1</a>
+    <a href="/WebService/test.html">Test</a>
+    <a href="../test.html">Test</a>
+
+</body>
+</html>
+
+
