@@ -153,6 +153,8 @@
 
 46. Run 단축키 : ctrl + F11
 
+47. Dynamic Web Project에서는 web.xml 파일이 필수적으로 필요하다.(설정파일이기 때문에)
+
 
 <!DOCTYPE html>
 <html lang="ko">
