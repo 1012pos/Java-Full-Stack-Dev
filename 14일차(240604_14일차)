@@ -77,7 +77,21 @@
 
 24. 주소는 상대랑, 절대로 할수 있지만 구조가 복잡해지면 어려워지기 때문에, 절대로 작서하는걸 추천한다.
 
-25. 
+25. Web Server는 정적파일만 다룬다.
+
+26. WAS 는 변경되는(동적으로 바뀌는) 정보를 Web Server에 전달한다.
+
+27. Web Container(JSP, Servlet)
+
+28. 아파치 톰캣의 루트 폴더는 webapps 이다.
+
+29. 검색해서 흐름도 카페에 넣기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+30. 이클립스에서 package Explorer 안보일시
+: window -> show view -> other -> Java -> package Explorer -> 우측상단에서 우측키 -> Java로 설정
+
+31. 
+
 
 
 <!DOCTYPE html>
