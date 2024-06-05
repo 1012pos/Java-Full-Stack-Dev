@@ -142,6 +142,8 @@ public class ServletFilter implements Filter {
 - docker 설치 후 cmd 창 켜기
 : cd 파일경로(C:\Users\hi\Desktop\mariadb) -> docker-compose up
 
+34. Key와 Value가 있으면 Key는 변수라고 생각하면 된다.
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
