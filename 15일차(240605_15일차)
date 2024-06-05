@@ -52,7 +52,39 @@
 22. method의 get 방식과 post 방식의 차이점 중 하나가 F12(개발자 도구)에서 Network 탭에서 새로고침 후 파일 클릭하고
 Payload를 누르면 get 방식일 경우 Query String Parameters로 나오고 post 방식일 경우 Form Data라고 나온다.
 
-23. 
+23. 기능으로 분리한다? -> 메소드를 생각하기
+
+24. 아래의 부분을 따로 클래스로 만들고, 접근 제어자를 private -> public / static 이라는 키워드를 사용해서 메모리에 올린다.
+
+	private void ko(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 아래의 코드를 사용하려면 
+		// 매개변수 HttpServletRequest request, HttpServletResponse response가 필요하다.
+		// ServletException, IOException 예외 처리가 필요하다.
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+	}
+
+	 
+	import java.io.IOException;
+
+	import javax.servlet.ServletException;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+
+	public class Util {
+	public static void ko(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 아래의 코드를 사용하려면 
+		// 매개변수 HttpServletRequest request, HttpServletResponse response가 필요하다.
+		// ServletException, IOException 예외 처리가 필요하다.
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+	}
+}
+
+	그리고 나서, 메서드에 static 키워드를 작성하고, 다른곳에서 사용할때는 static으로 메모리에 올려 놓았기 때문에, new를 사용하기 않고
+	Util.ko(requst, response); 로 작성해서 사용하면 된다.
 
 
 
