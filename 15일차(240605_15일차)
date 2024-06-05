@@ -256,5 +256,21 @@ public class Result extends HttpServlet {
 
 }
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Util {
+	public static void ko(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 아래의 코드를 사용하려면 
+		// 매개변수 HttpServletRequest request, HttpServletResponse response가 필요하다.
+		// ServletException, IOException 예외 처리가 필요하다.
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+	}
+}
 
 
