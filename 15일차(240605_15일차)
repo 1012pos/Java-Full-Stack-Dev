@@ -49,7 +49,11 @@
 : post 방식은 body에 데이터가 담겨 있다.
 : post 방식은 get 방식과 달리 request.setCharacterEncoding("UTF-8"); 필요하다.
 
-22. 
+22. method의 get 방식과 post 방식의 차이점 중 하나가 F12(개발자 도구)에서 Network 탭에서 새로고침 후 파일 클릭하고
+Payload를 누르면 get 방식일 경우 Query String Parameters로 나오고 post 방식일 경우 Form Data라고 나온다.
+
+23. 
+
 
 
 
