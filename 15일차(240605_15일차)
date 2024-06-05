@@ -112,13 +112,6 @@ Payload를 누르면 get 방식일 경우 Query String Parameters로 나오고 p
 
 31. 필터는 브라우저와 Servlet 중간에서 깨짐 현상을 방지하기 위해 사용한다.(UTF 인코딩 처리 방법(필터 사용))
 
-32. VSCODE 경로
-: C:\IDE\Apache24\htdocs
-
-33. docker 실행 방법
-- docker 설치 후 cmd 창 켜기
-: cd 파일경로(C:\Users\hi\Desktop\mariadb) -> docker-compose up
-
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -143,6 +136,10 @@ public class ServletFilter implements Filter {
 
 32. VSCODE 경로
 : C:\IDE\Apache24\htdocs
+
+33. docker 실행 방법
+- docker 설치 후 cmd 창 켜기
+: cd 파일경로(C:\Users\hi\Desktop\mariadb) -> docker-compose up
 
 
 
