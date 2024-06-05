@@ -138,9 +138,9 @@ public class ServletFilter implements Filter {
 : C:\IDE\Apache24\htdocs
 
 33. docker 실행 방법
+- 로그인은 구글 계정으로
 - docker 설치 후 cmd 창 켜기
 : cd 파일경로(C:\Users\hi\Desktop\mariadb) -> docker-compose up
-
 
 
 import java.io.IOException;
