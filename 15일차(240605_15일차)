@@ -85,6 +85,35 @@ Payload를 누르면 get 방식일 경우 Query String Parameters로 나오고 p
 
 	그리고 나서, 메서드에 static 키워드를 작성하고, 다른곳에서 사용할때는 static으로 메모리에 올려 놓았기 때문에, new를 사용하기 않고
 	Util.ko(requst, response); 로 작성해서 사용하면 된다.
+	
+25. 브라우저 -------------> Servlet
+			   request
+			   
+26. 브라우저 <------------- Servlet
+			   response
+				
+27. 위의 브라우저와 Servlet 의 사이에서 한글 깨짐 현상을 해결하기 위해 필터를 정의해야 한다.
+
+28. 필터를 만드려고 할때, class 생성할 때, Add를 눌르고 Filter 인터페이스 추가 하면 된다.
+
+29. web.xml 파일에 아래의 코드를 추가해주면 된다.
+  <filter>
+	  <filter-name>ServletFilter</filter-name>
+	  <filter-class>ServletFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+	  <filter-name>ServletFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+30. '/' 는 루트를 의미한다.
+
+31. 
+
+
+
 
 
 
