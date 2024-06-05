@@ -41,7 +41,7 @@
 	
 19. 데이터를 전송할때 form 태그를 사용한다.
 
-20. 전송방식 get은 주소창에 쿼리스티링이 명시되어 있다. 
+20. 전송방식 get은 주소창에 쿼리스티링이 명시되어 있다. http://localhost:8080/WebServlet/Result?cnt=3&txt=%EC%9E%85%EB%8B%88%EB%8B%A4%
 : get 방식은 request.setCharacterEncoding("UTF-8");가 필요 없다.
 
 
@@ -53,6 +53,7 @@
 Payload를 누르면 get 방식일 경우 Query String Parameters로 나오고 post 방식일 경우 Form Data라고 나온다.
 
 23. 
+
 
 
 
