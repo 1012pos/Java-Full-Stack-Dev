@@ -144,6 +144,8 @@ public class ServletFilter implements Filter {
 
 34. Key와 Value가 있으면 Key는 변수라고 생각하면 된다.
 
+35. <T>는 제네릭 형식의 클래스이다.
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
