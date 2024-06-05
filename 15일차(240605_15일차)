@@ -1,3 +1,30 @@
 20240605
 1. http://localhost:8080/WebServlet/www/jsp/Form.jsp 입력하면 데이터를 입력하세요라는 화면이 뜨면 경로에 파일을 잘 넣은것임
-2. 
+2. 요청과 응답에 대한 흐름
+3. 전송은 요청과 같음
+4. form 태그 안에 action은 경로를 지정 method는 어떤 방식으로 보낼지를 선택하면 되고, get 과 post가 있다. 
+5. method가 get 이기때문에, servlet에서 doGet만 신경쓰면 된다. 즉, method의 방식에 따라 다른것 같음.
+
+6. input 태그에서 name 은 데이터에 관련된 "키"다. 
+7. http://localhost:8080/WebServlet/www/jsp/Result?cnt=0&txt=%EC%95%88%EB%85%95
+
+8. Result?cnt=0&txt=%EC%95%88%EB%85%95
+: Result는 form 태그에서 action에 들어가는 경로
+: cnt는 변수 뒤에는 값
+: txt는 변수 뒤에는 값
+
+9. F12(개발자 도구)에서 Network 탭에서 Payload를 보면 어떤 값을 넣긴것을 알 수 있다.
+
+10. Form 태그에서의 action 주소값과 @WebServlet("/Result") 주소값이 같아야 한다.
+
+11. 프로젝트 클릭후 -> 우측키 -> Properties -> Web Project Settings -> Context Path를 WebServlet 에서 /로 수정하면 된다.
+: <form action="/WebServlet/Result" method="get">  옆에 처럼 작성하지 않고 /Result로 작성하기 위함.
+
+12. Tomcat v9.0 더블 클릭 후 -> Modules -> Path 에서 /WebServlet 을 확인할 수 있다.
+
+
+13.form에서 보낸 변수 cnt, txt를 request.getParameter();를 사용해서 받는데, 무조건 문자로 받는다.
+: String cnt = request.getParameter("cnt");
+: String txt = request.getParameter("txt");
+
+14. 
