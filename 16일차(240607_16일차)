@@ -43,7 +43,22 @@
 
 15. a 태그는 화면 이동하기 위한 태그이다.
 
-16. 
+16. form 태그 안에 submit이 있어야 한다.
+
+17.
+<body>
+<%
+	String name = request.getAttribute("name").toString();
+	String email = request.getAttribute("email").toString();
+	String pwd = request.getAttribute("pwd").toString();
+	String gender = request.getAttribute("gender").toString();
+	out.println(name + " : " + email + " : " + pwd + " : " + gender );
+%>
+</body>
+
+18. gender 같은경우 if문 사용해서 화면 처리하기
+
+19. 강사님이 Insert 파일을 만든이유는 DB에 저장하기 위해서이다.
 
  
  
