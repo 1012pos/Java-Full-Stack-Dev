@@ -14,9 +14,7 @@
 
 6. http://localhost:8080/WebServlet/Result?cnt=2&txt=%EC%95%88%EB%85%95
 
-7. http://localhost:8080/WebServlet/Result?cnt=2&txt=%EC%95%88%EB%85%95
-
-8. 
+7. 
 
 
 package com.servlet;
