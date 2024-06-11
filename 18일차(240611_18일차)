@@ -1,0 +1,32 @@
+#20240611
+1. MyBatis 외부 라이브러리
+2. 창고를 만든다.(Factory)
+3. 자바파일이 컴파일되면 클래스패스로 이동된다.
+4. mybatis.xml은 클래스 패스에 있다.
+5. MyBatis를 사용하면 메소드로 실행 가능하다.
+6. Create.java 화면 출력용이다.
+7. url을 치고 들어가면 get 메소드이다. (doGet)
+8. post는 직접적으로 url을 치고 들어가면 안된다. post는 메소드가 존재하지 않기 때문에
+url을 치고 들어가면 안된다.(post는 메소드가 없다.)
+9. 데이터 처리는 post 방식으로 한다.
+10. form 태그에서 method를 안쓰면 get이다.
+11. form에서 post 방식으로 보내면 폼 데이터라고 한다.
+12. 폼 데이터로 보내면 post 방식으로 보내야 한다.
+13. form 태그에서 액션(action)을 실행하려면 button type이 submit이어야 한다.
+14. 이벤트 발생 / submit과 form의 action
+15. form태그 -> Servlet(getParametr로 받는다.) -> Map 방식(입력값이 많기 때문에 Map에 담아 보낸다.) 또는 DTO 생성해서 DB에 저장
+16. 입력값이 많기 때문에 Map에 담아 보낸다.
+17. user.add 는 namespace가 user 이고, insert의 id가 add여서 user.add라고 작성하는 것이다.
+18. paramterType은 객체인 HashMap으로 보내야 한다.
+19. #{name}, #{email}에서 name, email 은 변수명이다.
+20. #은 변수명과 값을 둘다 가져온다., $는 변수의 값만 가져온다. 그렇기 때문에 #을 써야한다.(MyBatis에서 사용, 데이터 바인딩)
+전달받은 객체(HashMap)의 변수명과 값을 매칭시켜준다.
+21. insert문은 결과값으로 상태값을(int로) 받는다.
+22. 강사님 코드를 따라 치지 말고, 먼저 이해부터 하기
+23. http://localhost:8080/web/Create
+24. mybatis 비밀번호 02135임 / mariaDB 비밀번호 02135이거임 // 바꾸는 방법 heidi에서 사람 모양 클릭 후 비밀번호 변경
+25. 앞으로 강사님 파일 cmd 창에서 git pull 하기
+26. SELECT LAST_INSERT_ID();
+27. sendRedirect는 get방식 호출 : 생성된 사용자 번호 전달
+28. mybatis.xml에 root / 1234로 수정하기
+29. Create -> insert - > Select (흐름)
