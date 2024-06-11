@@ -40,3 +40,13 @@ url을 치고 들어가면 안된다.(post는 메소드가 없다.)
 36. 화면 처리시 forward 메서드를 사용하는 이유는 대신 처리해달라는 의미(url 바뀌지 않고 처리), request 객체에 있다.
 37. 화면 처리시 sendRedirect는 get방식 호출(url이 들어간다.), response객체에 있다.
 38. spring.io 접속 > Projects > Tools4 > Spriong Tools 4 for Eclipse > 4.22.1 WINDOWS X86_64 다운 받기
+39. cmd 창에서 cd /IDE -> dir -> java -jar 파일명.jar
+(java -jar spring-tool-suite-4-4.22.1.RELEASE-e4.31.0-win32.win32.x86_64.self-extracting.jar)
+40. C:\IDE\sts-4.22.1.RELEASE\work // work파일 위치
+41. keep~ 선택
+42. help -> about Spring Tool suit4
+43. Dynamic Project이 없어서 Maven project 로 생성
+44. Maven 프로젝트에서 Servlet 만들기
+: web -> 우측키 Property -> Java Build Path -> Add Library 
+Server Runtime[Apache Tomcat v9.0]을 등록 -> class 생성시 -> browser 클릭 후-> Httpservlet
+-> servlet 생성
