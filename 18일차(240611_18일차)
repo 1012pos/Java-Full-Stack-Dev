@@ -39,3 +39,4 @@ url을 치고 들어가면 안된다.(post는 메소드가 없다.)
 35. 순서가 자바파일부터인가? jsp 파일부터인가 ??
 36. 화면 처리시 forward 메서드를 사용하는 이유는 대신 처리해달라는 의미(url 바뀌지 않고 처리), request 객체에 있다.
 37. 화면 처리시 sendRedirect는 get방식 호출(url이 들어간다.), response객체에 있다.
+38. spring.io 접속 > Projects > Tools4 > Spriong Tools 4 for Eclipse > 4.22.1 WINDOWS X86_64 다운 받기
