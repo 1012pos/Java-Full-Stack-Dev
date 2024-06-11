@@ -1,4 +1,4 @@
-#20240611
+20240611
 1. MyBatis 외부 라이브러리
 2. 창고를 만든다.(Factory)
 3. 자바파일이 컴파일되면 클래스패스로 이동된다.
@@ -30,3 +30,12 @@ url을 치고 들어가면 안된다.(post는 메소드가 없다.)
 27. sendRedirect는 get방식 호출 : 생성된 사용자 번호 전달
 28. mybatis.xml에 root / 1234로 수정하기
 29. Create -> insert - > Select (흐름)
+30. 흐름도 꼭 작성하기
+31. http://localhost:8080/web/Create 여기서 경로가 "/web" 인 이유는 Server 탭에서 Tomcat v9.0 더블클릭
+-> Modules탭에서 /web으로 설정되어 있어서 그런것임
+32. mariaDB 현재 쿼리 실행할때는 블록처리 한후 현재 쿼리 실행 하면됨
+33. 주소 입력 방법의 기본(화면) doGet이고, 폼으로 데이터를 전송할 때는 반드시 doPost
+34. resultType="user.UserDTO"
+35. 순서가 자바파일부터인가? jsp 파일부터인가 ??
+36. 화면 처리시 forward 메서드를 사용하는 이유는 대신 처리해달라는 의미(url 바뀌지 않고 처리), request 객체에 있다.
+37. 화면 처리시 sendRedirect는 get방식 호출(url이 들어간다.), response객체에 있다.
