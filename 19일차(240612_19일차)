@@ -12,4 +12,81 @@
 10. 내일 시험 DB와 연결하려면 pom.xml 파일에서 <dependencies>, <dependency> 이부분들 복사하기
 + mybatis.xml 파일 필요(WeServlet에 있음), web.xml복사해서 넣으면 됨(<display-name>WebServlet</display-name>) 이부분을 수정하면됨
 11. xml 파일이 이상하게 나오면 Source탭 누르면 됨
-12. 
+==========================================================
+12. 내일 시험
+12-1. Maven Project로 프로젝트 생성시 war을 설정하는 이유는 웹(web)용이기 때문에 war로 설정한다.
+12-2. WEB-INF, META-INF 필요하기 때문에 -> 프로젝트 -> 우측키 -> Properties -> Project Facets -> Dynamic Web Module 을 체크 풀고
+-> Apply 누르면 WEB-INF, META-INF 생성됨 -> 다시 Dynamic Web Module 체크 및 Version 4.0으로 설정 후 Apply
+
+12-3. 자바 버전 수정필요
+: Build Path -> Configure Build Path -> JRE System Library 클릭 후 -> Edit -> java-21로 설정
+: Add Library -> Server Runtime -> Apache Tomcat v9.0 설정
+
+12-4. src/main/java -> 클래스 파일 생성(com.java.app) + httpServlet 추가 후 -> @WebServlet("/home")
+12-5. web.xml 복사 붙여 넣기(ctrl + space) / 만약 @WebServlet("/home") 하기 싫으면 web.xml에 아래의 코드 처럼 직접 기입 방법도 있음 (택 1)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>app</display-name>
+ 
+ <servlet>
+ 	<servlet-name>Home</servlet-name>	<!-- 클래스명 기입  -->
+ 	<servlet-class>com.java.app.Home</servlet-class> <!-- 패키지명까지 넣어줘야 손모양 나옴 -->
+ </servlet>
+ 
+ <servlet-mapping>
+	<servlet-name>Home</servlet-name> <!-- 클래스명 기입  -->
+	<url-pattern>/home</url-pattern> <!-- url 기입  -->
+ </servlet-mapping>
+  
+</web-app>
+==========================================================
+
+13. 경로 수정 방법은 프로젝트 -> Properties -> Web Project Settiongs -> Context root 여기를 원하는 경로로 설정하면 됨
+
+14. 
+
+
+package com.java.app;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+//import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//@WebServlet("/home")
+public class Home extends HttpServlet {
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Home!!");
+	}
+
+	
+}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>app</display-name>
+ 
+ <servlet>
+ 	<servlet-name>Home</servlet-name>	<!-- 클래스명 기입  -->
+ 	<servlet-class>com.java.app.Home</servlet-class> <!-- 패키지명까지 넣어줘야 손모양 나옴 -->
+ </servlet>
+ 
+ <servlet-mapping>
+	<servlet-name>Home</servlet-name> <!-- 클래스명 기입  -->
+	<url-pattern>/home</url-pattern> <!-- url 기입  -->
+ </servlet-mapping>
+  
+</web-app>
+
+
+
+
+
