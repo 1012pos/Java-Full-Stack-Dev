@@ -16,16 +16,19 @@
 12. 내일 시험
 12-1. Maven Project로 프로젝트 생성시 Create a simple project 체크 꼭 해야 하고, war을 설정하는 이유는 웹(web)용이기 때문에 war로 설정한다.
 그리고 Artifact Id 와 Name 아이디는 동일해야 한다. 또한, Group Id 는 java.com를 뒤집어서 작성하신 것임 com.java로 설정했음
+그리고 패키지명 꼭 com.java.app으로 작성해야한다.
 
 12-2. WEB-INF, META-INF 필요하기 때문에 -> 프로젝트 -> 우측키 -> Properties -> Project Facets -> Dynamic Web Module 을 체크 풀고
 -> Apply 누르면 WEB-INF, META-INF 생성됨 -> 다시 Dynamic Web Module 체크 및 Version 4.0으로 설정 후 Apply
 
 12-3. 자바 버전 수정필요
-: Build Path -> Configure Build Path -> JRE System Library 클릭 후 -> Edit -> java-21로 설정
+: 프로젝트 클릭 후 -> 우측키 -> Build Path -> Configure Build Path -> JRE System Library 클릭 후 -> Edit -> java-21로 설정
 : Add Library -> Server Runtime -> Apache Tomcat v9.0 설정
 
 12-4. src/main/java -> 클래스 파일 생성(com.java.app) + httpServlet 추가 후 -> @WebServlet("/home")
-12-5. web.xml 복사 붙여 넣기(ctrl + space) / 만약 @WebServlet("/home") 하기 싫으면 web.xml에 아래의 코드 처럼 직접 기입 방법도 있음 (택 1)
+그다음 Source -> Override -> Service
+
+12-5. 기존 프로젝트 -> webapp -> WEB-INF -> web.xml을 복사 붙여 넣기(ctrl + space) / 만약 @WebServlet("/home") 하기 싫으면 web.xml에 아래의 코드 처럼 직접 기입 방법도 있음 (택 1)
 
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
@@ -44,9 +47,14 @@
 </web-app>
 ==========================================================
 
+12-6. Server탭에서 -> Tomcat v9.0 -> Add and Remove -> 서버 추가하면 됨
+
 13. 경로 수정 방법은 프로젝트 -> Properties -> Web Project Settiongs -> Context root 여기를 원하는 경로로 설정하면 됨
 
-14. 
+14. 시험 내용
+1. 개발환경 구축
+2. URL 패턴에 대한 정의
+3. 데이터 전송 관련 문제 해결
 
 
 package com.java.app;
