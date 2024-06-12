@@ -167,13 +167,29 @@
 </mapper>
 
 
+18. class 생성시 -> new -> class -> Package에 com.java입력 -> name에 Home입력 -> Browser -> Httpservlet 검색 후 finish
+-> class에서 @WebServlet("/home") -> Source -> Override -> doGet -> 아래의 코드 입력 후 -> localhost:8080/WEB3/home으로 호출
+		System.out.println("안녕");
+		
+		String resource = "mybatis.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+		String txt = sqlSessionFactory.openSession().selectOne("sql.test");
+		System.out.println("txt : " + txt);
+
+Servers탭에서 Add and Remove에서 원하는 서버 선택 하면 됨
+
 19. 아래의 코드는 구글 -> Mybatis -> Getting Started 에 있음
 	String resource = "org/mybatis/example/mybatis-config.xml";
 	InputStream inputStream = Resources.getResourceAsStream(resource);
-	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStreamm);
+	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 20. 프로젝트 우클릭 -> Maven -> UpdateProject
 : 위의 방법대로 해줘야 Maven Dependencies에 추가한 내용들이 들어감
+
+
+
 
 
 package com.java.app;
