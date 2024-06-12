@@ -1,3 +1,15 @@
-20240613
+20240612
 1. Help -> web developer -> Java and Web Developer Tools 3.33 다운 받기(이미지 있음)
-2. 
+2. resp.getWriter().append(html); 여기서 append의 의미 공부하기
+3. C:\IDE\sts-4.22.1.RELEASE\work
+: github에서 받은 자료에 대한 경로 -> 마지막은 프로젝트 -> 우측키 -> import project 해야함
+4. webapp가 루트임
+5. java가 jsp(ex, index.jsp 파일)를 만나면 알아서 해결해줌 어제처럼 할필요 없음(Result.java, html을 다 작성할 필요 없다.)처럼
+6. http://localhost:8080/web/index.jsp -> 브라우저에서 안녕하세요 나옴
+7. final은 상수
+8. 오버라이드 해서 -> service
+9. service를 호출하면 어떤것이든 열린다.
+10. 내일 시험 DB와 연결하려면 pom.xml 파일에서 <dependencies>, <dependency> 이부분들 복사하기
++ mybatis.xml 파일 필요(WeServlet에 있음), web.xml복사해서 넣으면 됨(<display-name>WebServlet</display-name>) 이부분을 수정하면됨
+11. xml 파일이 이상하게 나오면 Source탭 누르면 됨
+12. 
