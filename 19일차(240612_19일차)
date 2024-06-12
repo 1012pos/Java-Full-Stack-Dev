@@ -76,6 +76,105 @@
 4-1 프로그램 흐름
 4-2 적용 사례(강사님이 주신 자료를 가지고 만든다음 화면 캡쳐 후 넣으면 됨)
 
+======================================================
+15. 구글에서 Maven Repository 검색 -> servlet-api 검색 -> Java Servlet API -> 4.0.1 클릭 후 -> Maven탭에 있는
+코드 복사 후 -> pom.xml에 넣기(아래의 코드)
+<dependencies> 
+	
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+	
+  </dependencies>
+  
+  위의 순서대로 작성하면 web.xml 없이 servelt을 상속받을 수 있고, 그러면 강제로 Dynmic web module 버전을 4.0으로
+  변경하지 않아도 자동으로 바뀜 그리고 또 Maven Repository에서 mariaDB 검색 -> Maven탭에 있는 코드 복사 후 -> pom.xml에 넣기 
+  또, Maven Repository에서 mybatis 검색 후 -> Maven탭에 있는 코드 복사 후 -> pom.xml에 넣기
+  
+  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.java</groupId>
+  <artifactId>WEB2</artifactId>
+  <version>1</version>
+  <packaging>war</packaging>
+  <name>WEB2</name>
+  
+  
+ <dependencies> 
+	
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.mariadb.jdbc</groupId>
+	    <artifactId>mariadb-java-client</artifactId>
+	    <version>3.4.0</version> 
+	</dependency>
+	
+	
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.16</version>
+	</dependency>
+	
+  </dependencies>
+  
+</project>
+
+16. src/main/resources 여기에 new -> other -> XML -> mybatis.xml 만들기
+: 구글 -> Mybatis -> Getting Started 에서 아래의 코드 복사 후 mybatis.xml 에 넣기
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+  </mappers>
+</configuration>
+
+17. src/main/resources 여기에 new -> other -> XML -> sql.xml 만들기
+: 구글 -> Mybatis -> Getting Started 에서 아래의 코드 복사 후 sql.xml 에 넣기
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+  <select id="selectBlog" resultType="Blog">
+    select * from Blog where id = #{id}
+  </select>
+</mapper>
+
+
+19. 아래의 코드는 구글 -> Mybatis -> Getting Started 에 있음
+	String resource = "org/mybatis/example/mybatis-config.xml";
+	InputStream inputStream = Resources.getResourceAsStream(resource);
+	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStreamm);
+
+20. 프로젝트 우클릭 -> Maven -> UpdateProject
+: 위의 방법대로 해줘야 Maven Dependencies에 추가한 내용들이 들어감
+
 
 package com.java.app;
 
@@ -116,6 +215,73 @@ public class Home extends HttpServlet {
   
 </web-app>
 
+
+===================================================
+package com.java;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+@WebServlet("/home")
+public class Home extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("안녕");
+		
+		String resource = "mybatis.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+		String txt = sqlSessionFactory.openSession().selectOne("sql.test");
+		System.out.println("txt : " + txt);
+		
+	}
+
+}
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mariadb://localhost:3306/edu"/>
+        <property name="username" value="root"/>
+        <property name="password" value="1234"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="sql.xml"/>
+  </mappers>
+</configuration>
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sql">
+  <select id="test" resultType="String">
+  	select '한글' as txt
+  </select>
+  
+</mapper>
 
 
 
