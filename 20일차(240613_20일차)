@@ -83,6 +83,10 @@
 : form 태그의 action에 있는 경로의 의미는 /web은 프로젝트명을 의미하고, /Result는 매핑시키는 @WebServlet("/Result")
 경로를 의미한다.
 
+8. resp.getWriter().append(html); 여기서 "getWriter()는 쓰기를 통해 응답하겠다라는" 의미
+
+9. 
+
 
 
 [Maven으로 프로젝트 생성시]
