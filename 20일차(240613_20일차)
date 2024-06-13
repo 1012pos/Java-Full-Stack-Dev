@@ -85,7 +85,10 @@
 
 8. resp.getWriter().append(html); 여기서 "getWriter()는 쓰기를 통해 응답하겠다라는" 의미
 
-9. 
+9. http://localhost:8080/WEBS1/views1/Form.html 여기서 /WEBS1은 프로젝트명, /views1은 webapp아래에 위치 /Form.html은 views1아래에 위치하는 것을 의미한다.
+
+10.그리고 form 태그에서 옆에의 경로로 <form action="/WEBS1/Result1" method="post"> submit 하면 Result1.java 파일에서
+경로로 지정한 @WebServlet("/Result1")에 따라 http://localhost:8080/WEBS1/Result1 이 경로로 이동한다.
 
 
 
