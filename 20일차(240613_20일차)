@@ -74,6 +74,11 @@
 : 보통 client가, server가 요청하지 않는 method 를 사용했을 때 발생
 (ex, method = "get" 또는 method ="post"를 보냈을 때 받은 쪽도 doGEt 또는 doPost로 받아야 한다.)
 
+[method ="post" , doPost]
+: http://localhost:8080/web/Result
+[method ="get" , doGet]
+: http://localhost:8080/web/Study?cnt=3&txt=%E3%85%87
+
 7. 
 
 
