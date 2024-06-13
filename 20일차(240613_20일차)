@@ -79,7 +79,9 @@
 [method ="get" , doGet]
 : http://localhost:8080/web/Study?cnt=3&txt=%E3%85%87
 
-7. 
+7. <form action="/web/Result" method="post">
+: form 태그의 action에 있는 경로의 의미는 /web은 프로젝트명을 의미하고, /Result는 매핑시키는 @WebServlet("/Result")
+경로를 의미한다.
 
 
 
