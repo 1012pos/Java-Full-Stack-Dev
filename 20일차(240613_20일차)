@@ -71,7 +71,10 @@
 5. cmd 창에서 내가 가고 싶은 위치로 가고 싶으면 [cd 경로작성] 하면 된다.
 
 6. 405 에러
-: 보통 client가, server가 요청하지 않는 method 를 사용했을 때 발생(ex, get 또는 post를 보냈을 때 받은 쪽도 get 또는 post로 받아야 한다.) 
+: 보통 client가, server가 요청하지 않는 method 를 사용했을 때 발생
+(ex, method = "get" 또는 method ="post"를 보냈을 때 받은 쪽도 doGEt 또는 doPost로 받아야 한다.)
+
+7. 
 
 
 
