@@ -15,7 +15,7 @@
 -> source -> 우측키 -> override -> doGet -> 아래의 코드 작성 -> Tomcat v9.0에서 Add and remove -> 원하는 서버 넣기 -> 서버 가동
 		
 		String resource = "mybatis.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
+		InputStream inputStream = Resources.getResourceAsStream(resource); // Resources.getResourceAsStream 의 의미는 자바가 읽을수 있게 해주는 용도
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 	
 		int no = sqlSessionFactory.openSession().selectOne("sql.test");
@@ -43,7 +43,7 @@
 1.4 src/main/java -> 우클릭 -> new -> class -> Package에 com.java, Name에 Home 입력 -> Browser 클릭 -> HttpServlet 검색 후 클릭-> @WebServlet("/home") 입력
 -> source -> override -> doGet -> 아래의 코드 작성 -> Tomcat v9.0에서 Add and remove -> 원하는 서버 넣기 -> 서버 가동
 		String resource = "mybatis.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
+		InputStream inputStream = Resources.getResourceAsStream(resource); // Resources.getResourceAsStream 의 의미는 자바가 읽을수 있게 해주는 용도
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 	
 		int no = sqlSessionFactory.openSession().selectOne("sql.test");
