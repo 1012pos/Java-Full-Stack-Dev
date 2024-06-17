@@ -50,6 +50,29 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 }
 
+10-1 패키지 -> 우측키 -> New -> class 생성시 -> Browser -> AbstractAnnotationConfigDispatcherServletInitializer를 상속 받으면
+아래의 코드들이 자동으로 @Override 된다.
+
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return null; // 외부 설정 내용 등록(Mybatis)
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] {SpringConfig.class}; // 스프링 관련 설정 내용 등록
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] {"/"}; // URL 패턴 등록
+	}
+
+}
+
+
 11. src -> main -> webapp-> WEB-INF -> web.xml 파일의 코드에서 <context-param> 이부분이랑 같은 맥략은 아래와 같다.
 : @Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -121,9 +144,11 @@ public class HomeController {
 : 프로젝트 -> 우측키 -> build path - > Configure build path -> Java Compiler -> JDK Compliance -> 원하는 버전 선택
 : 프로젝트 -> 우측키 -> build path - > Configure build path -> Java -> 원하는 버전 선택 / Dynamic Web Module 4.0 선택
 
+
 23. tomcat v9.0 Server 실행이 안될시
 : Add and Remove 서버 빼고, 톰캣 실행 중지 시키고, 수정해야 할 것들을 수정해야함
 톰캣 서버를 빼고, 정지하고 수정하지 않으면 내가 적용한 내용이 수정이 안된다.
+
 
 24. html 파일을 jsp 파일로 변환할때 한글이 깨지는 이유는 html 파일에는
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 이부분이 없기 때문에
