@@ -154,6 +154,36 @@ public class HomeController {
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 이부분이 없기 때문에
 위의 코드를 추가해주면 html -> jsp 파일로 변환했을때 한글이 깨지지 않는다.
 
+25. SpringConfig.java 파일에 있는 코드들의 작성 방법
+: 패키지 -> 우측키 -> new -> class -> Add -> WebMvcConfigurer -> finish
+: 프로젝트에서 -> source -> Override -> configureViewResolvers 검색 -> finish
+: 프로젝트에서 -> source -> Override -> addResourceHandlers 검색 -> finish
+
+아래의 코드참고 할 파일은 servlet-context.xml 파일에서 참고하면 된다.
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = {"app"})
+public class SpringConfig implements WebMvcConfigurer {
+
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		InternalResourceViewResolver ivs = new InternalResourceViewResolver();
+		ivs.setPrefix("/WEB-INF/views/");
+		ivs.setSuffix(".jsp");
+		registry.viewResolver(ivs);
+	
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+
+	
+}
+
+
+
 
 
 package app.config;
