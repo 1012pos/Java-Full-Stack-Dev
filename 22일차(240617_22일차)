@@ -1,2 +1,75 @@
 20240617
-1. 
+1. C:\IDE\sts-4.22.1.RELEASE\work\git
+: 강사님 github 파일
+
+2. github 하는 방법 및 clone 해서 프로젝트 여러개 하는 방법 공부하기
+
+3. 커머스 회사
+AS-IS, TO-BE
+
+4. AS-IS -> TO-BE를 만들어야 한다.
+
+5. 현행 시스템 분석하기
+: AS-IS
+
+6. 요구사항 확인하기
+: TO-BE
+
+7. 이번주 목요일 1~2장 발표
+
+8. 분석 클래스 목록 (요구사항 확인)
+
+9. Maven 
+
+10. AbstractAnnotationConfigDispatcherServletInitializer 이거를 상속받으면 web.xml을 만들지 않아도 사용가능
+WebConfig.java 파일
+
+package app.config;
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
+11. src -> main -> webapp-> WEB-INF -> web.xml 파일의 코드에서 <context-param> 이부분이랑 같은 맥략은 아래와 같다.
+: @Override
+	protected Class<?>[] getRootConfigClasses() {
+		return null; // 외부 설정 내용 등록(Mybatis)
+	}
+	
+12. src -> main -> webapp -> WEB-INF -> web.xml 파일의 코드에서 <servlet> 이부분이랑 같은 맥략은 아래와 같다.
+: @Override
+	protected Class<?>[] getServletConfigClasses() {
+		return null; // 스프링 관련 설정 내용 등록
+	}	
+ 
+ 
+ 13. src -> main -> webapp-> WEB-INF -> web.xml 파일의 코드에서 <servlet-mapping> 이부분이랑 같은 맥략은 아래와 같다.
+ : @Override
+	protected String[] getServletMappings() {
+		return null; // URL 패턴 등록
+	}
+
+14. http://localhost:8080/SpringStudy2/
+: 안녕이 떠야함.
+
+15. 
