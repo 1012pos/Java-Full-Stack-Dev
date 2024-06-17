@@ -72,4 +72,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 14. http://localhost:8080/SpringStudy2/
 : 안녕이 떠야함.
 
-15. 
+15. servlet-context.xml에서 beans:beans에서 엑박 뜨면 아래와 같이 해결해주면 된다.
+: window -> Preferences -> XML(Wild Web Developer) 여기서 체크해줘야함
+
+16. 
+
