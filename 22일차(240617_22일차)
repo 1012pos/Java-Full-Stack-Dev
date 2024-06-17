@@ -116,7 +116,11 @@ public class HomeController {
 
 21. @Controller -> @Service -> @Repository
 
-22. 
+22. build Path 설정
+: 프로젝트 -> 우측키 -> build path - > Configure build path -> Java Build Path-> Library 탭 -> Edit -> 원하는 버전 체크하기
+: 프로젝트 -> 우측키 -> build path - > Configure build path -> Java Compiler -> JDK Compliance -> 원하는 버전 선택
+: 프로젝트 -> 우측키 -> build path - > Configure build path -> Java -> 원하는 버전 선택 / Dynamic Web Module 4.0 선택
+
 
 
 
