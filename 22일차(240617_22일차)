@@ -347,3 +347,26 @@ public class HomeController {
 </html>
 
 
+====================================================================
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HOME</title>
+</head>
+<body>
+ <h1>안녕</h1>
+ <%
+ 	Object obj = request.getAttribute("name");
+ 	out.println(obj);
+ %>
+ 
+ <p>${name}</p> <!-- 위의 코드로 작성하면 불편해서 ${name}식으로 표현식을 사용(데이터 출력용)  -->
+ 
+</body>
+</html>
+====================================================================
+
+
