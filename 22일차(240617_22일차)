@@ -121,6 +121,9 @@ public class HomeController {
 : 프로젝트 -> 우측키 -> build path - > Configure build path -> Java Compiler -> JDK Compliance -> 원하는 버전 선택
 : 프로젝트 -> 우측키 -> build path - > Configure build path -> Java -> 원하는 버전 선택 / Dynamic Web Module 4.0 선택
 
+23. tomcat v9.0 Server 실행이 안될시
+: Add and Remove 서버 빼고, 톰캣 실행 중지 시키고, 수정해야 할 것들을 수정해야함
+톰캣 서버를 빼고, 정지하고 수정하지 않으면 내가 적용한 내용이 수정이 안된다.
 
 
 
