@@ -1,0 +1,183 @@
+20240614
+1. https://docs.spring.io/spring-framework/docs/5.3.37/reference/html/ 사이트에 들어가서 core 클릭 -> 1.1. Introduction to the Spring IoC Container and Beans 클릭
+2. org.springframework.beans및 패키지 org.springframework.context는 Spring Framework의 IoC 컨테이너의 기초입니다.
+3. 자바 프로젝트에서 -> 우측키 -> configure -> Convert to Maven project에서 Group Id에 com.java
+Artifact Id, Name에 Spring Version 1 Packaging에는 jar이다 이유는 현재 사용하는 프로젝트가
+java project이기 때문이다.
+4. pom.xml이 만들어 지면 Maven 프로젝트라고 인지가 되기 때문에 프로젝트 이미지에 M이라고 붙여 진다.
+5. pom.xml이 있으면 이 프로젝트는 Maven이다라고 생각하면 된다.
+6. 외부라이브러리를 넣을때는 name 와 build 사이에 넣는다.
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.java</groupId>
+  <artifactId>Spring</artifactId>
+  <version>1</version>
+  <name>Spring</name>
+  
+  
+  
+  
+  
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>21</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+7. 외부라이브러리를 넣기 위해 구글에서 Maven Repository를 사이트에 들어간다. 그다음 Spring을 검색하고
+Spring Context 클릭한 후 -> 5.3.36(37)을 클릭한다. 그다음 Maven 탭에 있는 dependency를 복사 붙여넣기 한다.
+그렇게 되면 프로젝트로 돌아오면 Maven Dependencies에 보면 spring이 들어온것을 확인할 수 있다. 총6개
+ex) spriong-beans-5.3.36. jar, spriong context-5.3.36. jar 등
+
+8. 위의 spring 관련 .jar 파일이 있어야 spring 시작이다.
+
+9. 1.2.1. Configuration Metadata에서 XML 코드 부분이 있는데 이 부분을 복사한다.
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="..." class="...">  
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <bean id="..." class="...">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions go here -->
+
+</beans>
+
+10. src -> 우측키 -> new -> File -> app.xml을 만든다.
+
+11. beans라는 태크안에 bean을 만들것이다.
+
+<bean id="test" class="com.java.Test">
+    
+</bean>
+
+여기서 id는 클래스명을 이용하고, 소문자로 작성한다. class에는 패키지명.클래스명을 작성한다.
+그리고 id는 식별해야하기 때문에 유일해야 한다. 왜냐면 bean을 여러개 생성하게 될수도 있기 때문에이다.
+
+12. new Test(); 는 아래의 코드와 같은 것을 의미한다.
+	<bean id="test" class="com.java.Test">
+		
+	</bean>
+	
+13. 1.2.2. Instantiating a Container에서 ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");을
+복사한 후 Study01에 붙여 넣는다.
+
+14. <!-- property는 setter에 있는 메소드를 제어한다. name은 변수명, value 값을 기입한다. -->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="test" class="com.java.Test">
+    	<property name="a" value="1234"/> <!-- setter에 있는 메소드를 제어한다. name은 변수명, value 값을 기입한다. -->
+    	
+    </bean>
+
+</beans>
+
+15. Study01.java
+package com.java;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Study01 {
+
+	public static void main(String[] args) {
+
+//		Test test = new Test();
+		ApplicationContext context = new ClassPathXmlApplicationContext("app.xml"); // app.xml 파일 경로 위치 중요
+		Test test = context.getBean(Test.class);
+		
+		int a = test.a();
+		System.out.println(a);
+	}
+
+}
+
+
+16. Test.java
+package com.java;
+
+public class Test {
+
+	private int a;
+	
+	private int a() {
+		return a;
+	}
+	public void setA(int a) { // setter 생성
+		this.a = a;
+	}
+	
+	public Test(int a) { // 생성자 생성
+		this.a = a;
+	}
+	
+
+}
+
+17. app.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="test" class="com.java.Test">
+		<constructor-arg name="a" value="1111"/>
+    	<!-- <property name="a" value="1234"/> setter에 있는 메소드를 제어한다. name은 변수명, value 값을 기입한다. -->
+    	
+    </bean>
+
+</beans>
+
+18. spring에서는 views 밑에 jsp파일이 꼭와야 한다.
+
+19. spring에서는 resources 밑에 정적파일이 와야 한다. 예를들어 image 파일이 와야한다.
+
+20. 위의 내용이 적혀 있는곳은 servlet-context.xml파일의 <beans:bean> </beans:bean>와 <resources />에 명시되어 있다.
+
+21. @Controller 어노테이션
+: @Controller 어노테이션의 의미는 이 클래스에 있는 모든 메소드중의 어노테이션이(ex, @GetMapping("/")) 붙어 있는 것은 전부다 화면처리용이다라고
+정의하는 어노테이션이다.
+그렇기 때문에 @Controller 어노테이션이 있으면 화면용으로 쓰는 클래스 파일이다.
+
+22. @GetMapping // doGet();
+
+23.@Controller
+ public class HomeContorller{
+
+	@GetMapping("/") // doGet();
+		publicv string home(Model model){
+			model.addAttribute("txt", "전송데이터");
+			return "home"; // 여기서 return home으로 적혀 있는 이유는 @Controller 어노테이션이 있기 때문에 
+						   // home 으로 return을 하면 home.jsp를 의미한다. 그리고 화면처리이기(@Controller)때문에
+						   // 메소드의 return 되는 자료형은 무조건 String 이다. 그리고 home.jsp라고 확장명까지 작성하지 않은 이유는
+						   // Spring 설정에 View Resolver라는 기능 때문에 자동으로 붙게 되어 있다.
+		}
+
+ }
+ 
+ 24. 스프링과 다이나믹 웹 프로젝트랑 다른점은 메소드로 URL 패턴을 만든다. 그전에는 클래스가 상속받는거였다.
+ httpServlet이라는 객체를 상속받아 가지고 클래스당 URL 패턴을 만들었다면 스프링 프레임워크부터는 메소드한테 URL 패턴을
+ 만드는 것이다. 그때 사용하는 방법이 어노테이션이다. 어노테이션으로 바인더해서 메소드한테 주입하는 것을 DI라고 한다.
+ DI이는 의존적 주입이라고 한다. 스프링으로 만들때 DI 형식으로 만든다. 자동으로 코드를 심어준다. 그렇기 때문에 메소드 하나면
+ 화면처리가 끝난다.
