@@ -110,6 +110,10 @@ public class HomeController {
 -> /WEB-INF/views/  +    home)+ .jsp
 따라서 위의 적은 코드 처럼 조합이 될수 있는게 있는게, "Spring의 ViewResolver"가 해준다.
 
-19. 
+19. Spring은 MVC2 이다. / Controller + view를 함께 한게 MVC1 모델이다.
 
+20. Service영역, DAO영역, Domain영역이 Model이라고한다.
 
+21. @Controller -> @Service -> @Repository
+
+22. 
