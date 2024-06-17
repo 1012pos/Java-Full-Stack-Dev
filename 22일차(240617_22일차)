@@ -75,5 +75,41 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 15. servlet-context.xml에서 beans:beans에서 엑박 뜨면 아래와 같이 해결해주면 된다.
 : window -> Preferences -> XML(Wild Web Developer) 여기서 체크해줘야함
 
-16. 
+16. WEB-INF 밑에 web.xml 파일을 만들지 않기 위해 위의 내용들을 한것이다.
+
+17. SpringConfig.java 파일에 있는 코드 때문에 -> HomeController.java에 있는 코드를 사용할 수 있다.
+
+18. /WEB-INF 하위 파일들을 만드는 이유는 원래부터 하위 파일들을 접근할수 없게 설정되어 있기 때문이며,
+JSP파일을 직접적으로 부를수 없게 할수 있는 방법이 이 방법뿐이다. 그렇기 때문에 URL을 통해 접근할수가 없다.
+그리고 Spring에서 ViewResolver를 사용하기 위함도 있으며 화면을 출력용을 만들기 위해서이다.
+@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		InternalResourceViewResolver ivs = new InternalResourceViewResolver();
+		ivs.setPrefix("/WEB-INF/views/");
+		ivs.setSuffix(".jsp");
+		registry.viewResolver(ivs);
+	
+	}
+	
+package app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+	
+}
+
+: /WEB-INF/views/  +   ? 가변적(ex, home)+ .jsp
+-> /WEB-INF/views/  +    home)+ .jsp
+따라서 위의 적은 코드 처럼 조합이 될수 있는게 있는게, "Spring의 ViewResolver"가 해준다.
+
+19. 
+
 
