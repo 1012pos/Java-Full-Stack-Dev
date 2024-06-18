@@ -224,4 +224,119 @@ public class ParameterUtil {
 	
 }
 
+package app.config;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+@Configuration  // 설정 파일이라는 어노테이션
+public class MybatisConfig {
+	
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/edu");
+		dataSource.setUsername("root");
+		dataSource.setPassword("1234");
+		return dataSource;
+	}
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource, ApplicationContext applicationContext) throws Exception {
+		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+		sessionFactoryBean.setDataSource(dataSource);
+		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/sql/*.xml")); // src/main/resources에 sql 폴더를 만들어서 거기에 .xml 파일 넣기
+		return sessionFactoryBean.getObject();
+	}
+	
+	@Bean
+	public SqlSession sqlSession(SqlSessionFactory sqlSessionFactory) throws Exception {		
+		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+
+}
+
+package app.config;
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] {MybatisConfig.class} ;  // 외부 설정 내용 등록 (Mybatis)
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] {SpringConfig.class}; // 스프링 관련 설정 내용 등록
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] {"/"};  // URL 패턴 등록
+	}
+
+}
+
+package app.controller;
+
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import app.service.HomeService;
+import app.util.ParameterUtil;
+
+@Controller
+public class HomeController {
+
+	@GetMapping("/")
+	public String home(Model model) {
+		model.addAttribute("name", "홍길동");
+		return "home";
+	}
+	
+	@GetMapping("/page1")
+	public String page1() {
+		return "page1";
+	}
+	
+	@Autowired
+	private HomeService hs;
+	
+	@Autowired 
+	private ParameterUtil pUtil;
+	
+	@GetMapping("/page2")
+	public String page2(Model model, HttpServletRequest req) {
+		hs.page2(model, pUtil.param(req));
+		return "page2";
+	}
+	
+	@Autowired
+	private SqlSession session;
+	
+	@GetMapping("/test")
+	public String test() {
+		int no = session.selectOne("sql.test");
+		System.out.println("no : " + no);
+		return "";
+	}
+	
+}
 
