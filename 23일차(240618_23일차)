@@ -36,7 +36,53 @@ public void page2(Model model, HttpServletRequest req) {
 - 필드
  
 위의 3가지의 경우에 Autowired를 사용할 수 있다. 그리고 Autowired는 기본값이 true이기 때문에
-의존성 주입을 할 대상을 찾지 못한다면 애플리케이션 구동에 실패한다. 
+의존성 주입을 할 대상을 찾지 못한다면 애플리케이션 구동에 실패한다.
+
+11. app-contet.xml 파일 참조를 해서 아래의 코드를 작성해야 해야 함.
+package app.config;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+@Configuration  // 설정 파일이라는 어노테이션
+public class MybatisConfig {
+	
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/edu");
+		dataSource.setUsername("root");
+		dataSource.setPassword("1234");
+		return dataSource;
+	}
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource, ApplicationContext applicationContext) throws Exception {
+		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+		sessionFactoryBean.setDataSource(dataSource);
+		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/sql/*.xml")); // src/main/resources에 sql 폴더를 만들어서 거기에 .xml 파일 넣기
+		return sessionFactoryBean.getObject();
+	}
+	
+	@Bean
+	public SqlSession sqlSession(SqlSessionFactory sqlSessionFactory) throws Exception {		
+		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+
+}
+
+12. service -> DAO
+
+13. 데이터베이스는 전체행을 가져오지 못한다. 그래서 HashMap을 사용한다. list 형식이 아닌.
 
 
 
