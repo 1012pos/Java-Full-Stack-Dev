@@ -1,2 +1,214 @@
 20240618
-1.
+1. http://localhost:8080/SpringStudyTest2/page2
+2. @Service 어노테이션 
+3. 로직은 Service에서 해라 그렇게 되면 컨트롤은 간소화 됨 Spring에서는 컨트롤은 제어만 하면 된다.
+4. Model이라는 것은 ui까지도 가능하게 되어 있기 때문에, 실행되는 메소드의 리턴타입이 void라도 model.addAttribute("~~~", ~~~~)
+Model은 데이터를 담기위한 그릇이다. Spring에서 Model은 담기만 하면 화면쪽으로 보낼수 있다.(UI쪽으로 간다.)
+public void page2(Model model, HttpServletRequest req) {
+ }
+5. model은 화면쪽에 보내는 데이터 그릇이다. 어디에서 데이터를 담았던간에 화면쪽으로 무조건 간다.(spring의 model의 특징)
+6. 
+
+ // 아래의 String dan의 파라미터가 바뀌었을 경우에는 사용할 수 없어지기 때문에, 파라미터의 값을 공통으로 빼기 위한 작업
+				ParamDTO pDto = new ParamDTO();
+				pDto.setState(false);
+				Enumeration enu = req.getParameterNames(); // 파라미터의 이름을 반환
+				Map<String, String> map = new HashMap<String, String>();
+				while(enu.hasMoreElements()) { // 끝날 때 까지 반복
+					Object name = enu.nextElement(); // 다음에 있는 오브젝트(name)을 가져옴
+//					System.out.println("name :" + name);
+					String str = req.getParameter(name.toString());
+//					System.out.println("value: " + str); // name에 해당하는 값을 가져옴
+					map.put(name.toString(), str); // Object이여서 String으로 바꿔주기 위해 toString() 사용
+					pDto.setState(true);
+					
+7. 파라미터를 공통으로 빼고 Util에 그 코드를 넣는다.
+
+8. controller에서 보내고 Service에서 받는다.
+
+9. Enumeration enu = req.getParameterNames(); // 모든 파라미터의 이름을 가져온다. 옆에 처럼 사용해야 함. 공식같은 느낌
+
+10. 
+
+package app.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import app.service.HomeService;
+import app.util.ParameterUtil;
+
+@Controller
+public class HomeController {
+
+	@GetMapping("/")
+	public String home(Model model) {
+		model.addAttribute("name", "홍길동");
+		return "home";
+	}
+	
+	@GetMapping("/page1")
+	public String page1() {
+		return "page1";
+	}
+	
+	@Autowired
+	private HomeService hs;
+	
+	@Autowired 
+	private ParameterUtil pUtil;
+	
+	@GetMapping("/page2")
+	public String page2(Model model, HttpServletRequest req) {
+		hs.page2(model, pUtil.param(req));
+		return "page2";
+	}
+	
+}
+
+
+package app.dto;
+
+import java.util.Map;
+
+public class ParamDTO {
+	
+	// 상태값을 확인하기 위해
+	private boolean state;
+	private Map resultMap;
+	public boolean isState() {
+		return state;
+	}
+	public void setState(boolean state) {
+		this.state = state;
+	}
+	public Map getResultMap() {
+		return resultMap;
+	}
+	public void setResultMap(Map resultMap) {
+		this.resultMap = resultMap;
+	}
+	
+	@Override
+	public String toString() {
+		return "ParamDTO [state=" + state + ", resultMap=" + resultMap + "]";
+	}
+	
+	
+
+}
+
+
+package app.service;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import app.dto.ParamDTO;
+import app.util.ParameterUtil;
+
+@Service
+public class HomeService {
+	
+	public void page2(Model model, ParamDTO pdto) {
+		int s = 1;
+		int d = 0;
+		
+		if(pdto.isState()) { // 구구단 데이터 가져와야 함
+		
+			Map map = pdto.getResultMap();
+			String dan = map.get("dan").toString();
+			
+			if("A".equals(dan)) {
+				d = 10;
+			}
+			
+			switch (dan) {
+				case "1":
+				case "2":
+				case "3":
+				case "4":
+				case "5":
+				case "6":
+				case "7":
+				case "8":
+				case "9":
+					s = Integer.parseInt(dan);
+					d = s + 1;
+					break;
+			}
+			data(model, s, d);
+		} else {
+			data(model, s, 10);
+		}
+		
+	}
+	
+	private void data(Model model, int s, int d) {
+		List<List<String>> list = new ArrayList<List<String>>(); 
+		for(int i = s; i < d; i++ )
+		{
+			List<String> list2 = new ArrayList<String>();
+			for(int j = 1; j < 10; j++) {
+				String str = i + " * " + j + " = " + (i * j);
+				list2.add(str);
+			}
+			list.add(list2);
+		}
+		model.addAttribute("dan", s);
+		model.addAttribute("list", list);
+	}
+
+}
+
+
+package app.util;
+
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Component;
+
+import app.dto.ParamDTO;
+
+@Component // 공통 코드 사용할 때 사용하는 어노테이션
+public class ParameterUtil {
+
+	public ParamDTO param(HttpServletRequest req) {
+	// 아래의 String dan의 파라미터가 바뀌었을 경우에는 사용할 수 없어지기 때문에, 파라미터의 값을 공통으로 빼기 위한 작업
+				ParamDTO pDto = new ParamDTO();
+				pDto.setState(false);
+				Enumeration enu = req.getParameterNames(); // 파라미터의 이름을 반환
+				Map<String, String> map = new HashMap<String, String>();
+				while(enu.hasMoreElements()) { // 끝날 때 까지 반복
+					Object name = enu.nextElement(); // 다음에 있는 오브젝트(name)을 가져옴
+//					System.out.println("name :" + name);
+					String str = req.getParameter(name.toString());
+//					System.out.println("value: " + str); // name에 해당하는 값을 가져옴
+					map.put(name.toString(), str); // Object이여서 String으로 바꿔주기 위해 toString() 사용
+					pDto.setState(true);
+				}
+				pDto.setResultMap(map);
+				return pDto;
+	
+	}
+	
+}
