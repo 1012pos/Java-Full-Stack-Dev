@@ -83,6 +83,7 @@ public class ParamDTO {
 	// 상태값을 확인하기 위해
 	private boolean state;
 	private Map resultMap;
+
 	public boolean isState() {
 		return state;
 	}
