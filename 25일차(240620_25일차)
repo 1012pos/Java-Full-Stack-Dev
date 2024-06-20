@@ -1,2 +1,110 @@
 20240620
-1.
+1. List, Map 설명
+- List, Map은 인터페이스이다.
+- ArrayList, HashMap은 클래스(=구현 클래스)이다.
+- List -> ArrayList
+- Map -> HashMap
+
+2. 구현 클래스는 new 해서 만들수 있다.
+
+3. 배열은 초기값인 공간이 필요하다.
+
+4. 
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Study01 {
+
+	public static void main(String[] args) {
+		
+		// List < 인터페이스 >> 구현 클래스 : ArrayList
+		// Map  < 인터페이스 >> 구현 클래스 : HaspMap
+		
+       ArrayList al = new ArrayList<>();
+       List list = new ArrayList<>();
+       
+       // List의 목적 : 배열로 자료를 담을수 있으면 좋겠다.
+       // 1. 순차 > index 개념
+       // 2. 다양한 자료형을 담아줬으면 좋겠다. 기본이 Object이다.
+       // 3. 배열에서 초기값인 공간 개념이 유연 했으면 좋겠다.
+       
+//     Object[] obj = new Object[10]; // ?[10] 부분에서 문제가 발생
+       
+//       Object[] obj1 = new Object[1];
+//       Object[] obj2 = new Object[1];
+//       Object[] obj3 = new Object[1];
+//       Object[] obj4 = new Object[1];
+//       Object[] obj5 = new Object[1];
+//       
+//       Object[] obj = new Object[5];
+//       obj[0] = obj1;
+//       obj[1] = obj2;
+//       obj[2] = obj3;
+//       obj[3] = obj4;
+//       obj[4] = obj5;
+       
+//       MyList ml = new MyList();
+         MyList <Integer> ml = new MyList<Integer>();
+         ml.set(1);
+         ml.set(2);
+         ml.set(3);
+         ml.set(4);
+         ml.set(5);
+         System.out.println(ml.size());
+       
+       for(int i = 0; i <ml.size(); i++) {
+    	   System.out.println(ml.get(i));
+       }
+       
+       
+       list.add("가");
+       list.add("나");
+       list.add("다");
+       list.add("라");
+       
+       for(int i = 0; i < list.size(); i++ ) {
+    	   System.out.println(list.get(i));
+       }
+       
+	   HashMap hm = new HashMap<>();
+	   Map map = new HashMap<>();
+		
+		
+	}
+
+}
+
+
+
+public class MyList<T> {
+
+	private Object[] obj;
+	private int i;
+	
+	public void set(T o) {
+		i = i + 1;
+		Object[] obj2 = new Object[i];
+		if(obj != null) {
+			for(int j = 0; j < obj.length; j++) {
+				obj2[j] = obj[j];
+			}
+		}
+		obj = new Object[i];
+		obj2[i - 1] = o;
+		obj = obj2;
+		
+	}
+	
+	public int size() {
+		return i;
+	}
+	
+	public Object get(int j) {
+		return obj[j];
+	}
+	
+}
