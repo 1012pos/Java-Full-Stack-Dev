@@ -9,7 +9,13 @@
 
 3. 배열은 초기값인 공간이 필요하다.
 
-4. 
+4. 자바의 빈 객체는 DTO 같은것 (변수선언 및 setter,getter)
+
+5. List은 배열같은 것이다.
+: add, size, get만 알면 된다.
+
+6. Map 은 자바의 빈객체이다.(DTO 같은 것이다.)
+: put, get만 알면된다. 
 
 
 import java.util.ArrayList;
@@ -108,3 +114,153 @@ public class MyList<T> {
 	}
 	
 }
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Study01 {
+
+	public static void main(String[] args) {
+		
+		// List < 인터페이스 >> 구현 클래스 : ArrayList
+		// Map  < 인터페이스 >> 구현 클래스 : HaspMap
+		
+       ArrayList al = new ArrayList<>();
+       List list = new ArrayList<>();
+       
+       // List의 목적 : 배열로 자료를 담을수 있으면 좋겠다.
+       // 1. 순차 > index 개념
+       // 2. 다양한 자료형을 담아줬으면 좋겠다. 기본이 Object이다.
+       // 3. 배열에서 초기값인 공간 개념이 유연 했으면 좋겠다.
+       
+//     Object[] obj = new Object[10]; // ?[10] 부분에서 문제가 발생
+       
+//       Object[] obj1 = new Object[1];
+//       Object[] obj2 = new Object[1];
+//       Object[] obj3 = new Object[1];
+//       Object[] obj4 = new Object[1];
+//       Object[] obj5 = new Object[1];
+//       
+//       Object[] obj = new Object[5];
+//       obj[0] = obj1;
+//       obj[1] = obj2;
+//       obj[2] = obj3;
+//       obj[3] = obj4;
+//       obj[4] = obj5;
+       
+//       MyList ml = new MyList();
+         MyList <Integer> ml = new MyList<Integer>();
+         ml.add(1);
+         ml.add(2);
+         ml.add(3);
+         ml.add(4);
+         ml.add(5);
+         System.out.println(ml.size());
+       
+//       for(int i = 0; i <ml.size(); i++) {
+//   	   System.out.println(ml.get(i));
+//       }
+       
+//     List<String> list = new ArrayList<String>();
+       list.add("가");
+       list.add("나");
+       list.add("다");
+       list.add("라");
+       
+       for(int i = 0; i < list.size(); i++ ) {
+    	   System.out.println(list.get(i));
+       }
+       
+       
+	   HashMap hm = new HashMap<>();
+//	   Map map = new HashMap<>();
+	   // Map의 목적 : 자바의 빈 객체를 하나로 통일 하자.
+	   // 1. 변수명과 값을 관리해야 한다.
+	   // 2. 변수의 자료형을 자유롭게 쓰고 싶다.
+	   // 3. 변수명으로 값을 꺼내 오고 싶다.
+	   // 4. 변수명은 중복이 있으면 안된다.
+	   
+	   MyMap<String, Object> mm = new MyMap<String, Object>();
+	   mm.put("name1", "홍길동1");
+	   mm.put("name2", "홍길동2");
+	   
+	   System.out.println(mm.get("name"));
+	   
+	   Map<String, Object> map = new HashMap<String, Object>();
+	   map.put("name1", "홍길동1");
+	   map.put("name1", "홍길동2");
+	   
+	   System.out.println(map.get("name1"));
+	   
+	}
+
+}
+
+
+
+public class MyList<T> {
+
+	private Object[] obj;
+	private int i;
+	
+	public void add(T o) {
+		i = i + 1;
+		Object[] obj2 = new Object[i];
+		if(obj != null) {
+			for(int j = 0; j < obj.length; j++) {
+				obj2[j] = obj[j];
+			}
+		}
+		obj = new Object[i];
+		obj2[i - 1] = o;
+		obj = obj2;
+		
+	}
+	
+	public int size() {
+		return i;
+	}
+	
+	public Object get(int j) {
+		return obj[j];
+	}
+	
+}
+
+
+
+public class MyMap<K, V> {
+	// K는 변수명
+	// V는 값
+	
+	MyList ml;
+	
+	public MyMap(){
+		ml = new MyList();
+	}
+	
+	public void put(K k, V v) {
+		Object[] obj = new Object[2];
+		obj[0] = k;
+		obj[1] = v;
+		ml.add(obj);
+	}
+	
+	public V get(K k) {
+		V value = null;
+		for(int i = 0; i < ml.size(); i++) {
+			Object[] obj = (Object[]) ml.get(i);
+			if(k.equals(obj[0])) {
+				value = (V) obj[1];
+			}
+		}
+			return null;
+		}
+	
+	
+	}	
+
+
