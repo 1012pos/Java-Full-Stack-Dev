@@ -1,2 +1,10 @@
 20240621
-1.
+1. 통합구현 -> 화면 설계 -> 인터페이스 구현
+: 총 3번의 시험을 팀별로 하려고 하심
+
+2. Webapp -> resources -> v1
+: http://localhost:8080/SpringStudyTest2/resources/v1/list.html
+
+3. Webapp -> resources 이 위치는 정적 파일 위치
+
+4. 
