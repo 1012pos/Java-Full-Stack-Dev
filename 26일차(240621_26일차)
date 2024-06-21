@@ -7,4 +7,12 @@
 
 3. Webapp -> resources 이 위치는 정적 파일 위치
 
-4. 
+4. TestSpring.zip
+- 파일 복사
+lombok.jar 파일은 STS4.0 경로에 복사
+
+- 설정
+-javaagent: 파일 위치  + lombok.jar
+
+- 샘플
+-javaagent:C:\IDE\sts-4.22.1.RELEASE\lombok.jar
