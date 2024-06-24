@@ -26,3 +26,134 @@
 - import -> 가장 먼저 Maven 클릭후 우측키 -> Project Update -> 경로 확인 -> server clean 3가지
 22. 강사님이 주신 web 프로젝트에서 
 -> web Project Setting에서 context root를 -> "/"로 수정
+
+-> MybatisConfig에서 수정해야함 dataSource.setUrl("jdbc:mariadb://localhost:3306/edu");
+
+23. 쿼리스트링 (V2Controller.java)
+: http://localhost:8080/v2/list?type=0
+24. 삼항 연산자로 제어함
+<c:forEach var="row" items="${list}" varStatus="status">
+        <a class="list-group-item m-1 ${(row.accept)? 'bg-success' : 'bg-warning'} display-6" href="/v2/detail?no=${row.no}">${row.title}</a>
+</c:forEach>
+
+25. order="AFTER"는 입력한 후에라는 뜻
+<insert id="save" parameterType="com.spring.dto.TempDTO">
+		INSERT INTO `temp1`
+			(`title`, `content`)
+		VALUE
+			(#{title}, #{content})
+
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+    		SELECT LAST_INSERT_ID() AS no
+		</selectKey>
+</insert>
+
+26. SELECT LAST_INSERT_ID() AS no
+: 자동으로 no를 받기위한 쿼리이다.
+<selectKey keyProperty="no" resultType="int" order="AFTER">
+    		SELECT LAST_INSERT_ID() AS no
+</selectKey>
+
+
+27. Mybatis의 selectKey에 대한 공부
+
+28. 쿼리스트링을 쓰면 try ~ catch가 필요하다.
+
+29. 파라미터의 값이 null, 숫자가 아닌 다른것이 들어와서 형변환 안될때 try ~ catch를 사용한다.
+형변환 관련되면 try ~ catch를 사용한다.
+
+30. 승인여부가 끝난후에 화면에 값을 바꿔야 한다.
+
+// Detail 화면 데이터 가져오는 메소드 : 조건 데이터 식별하기 위한 no를 확인 후 하나의 정보만 출력
+  public boolean findOne(HttpServletRequest req, Model model) {
+    try {
+      int no = Integer.parseInt(req.getParameter("no"));
+      String type = req.getParameter("type");
+      if(type != null) {
+        // Detail 화면 승인 여부 제어 : 조건 식별자인 no와 승인인 accept 값을 확인 후 Table에 수정 후 식별자 no를 이용하여 다시 출력
+        boolean accept = ("1".equals(type)) ? true : false;
+        dao.accept(TempDTO.builder().no(no).accept(accept).build());
+      }
+      model.addAttribute("dto", dao.findOne(TempDTO.builder().no(no).build()));
+    } catch (NumberFormatException e) {
+      return false;
+    }
+    return true;
+  }
+
+31. 폼으로 action 가는 것만 Post를 사용했다.
+
+32. 쿼리스트링이기 때문에 no를 전달한다.
+:  <a class="btn btn-success btn-min-size" href="/v2/detail?no=${dto.no}&type=1">승인</a>
+
+33. save는 insert가 실행 /edit은 update가 실행
+
+34. 코드 확인할 때는 함수(메서드)를 타고타고 가면서 흐름 이해하기
+
+35. ORDER BY 1 DESC 에서 1은 SELECT `no`, `title`, `accept` 부분에서 처음에 오는 컬럼을 의미한다.
+
+<select id="findAll" parameterType="com.spring.dto.TempDTO" resultType="com.spring.dto.TempDTO">
+		SELECT `no`, `title`, `accept`
+		FROM `temp1`
+		WHERE 1 = 1
+		<if test="type != null">
+			AND `accept` = #{accept}
+		</if>
+		ORDER BY 1 DESC
+</select>
+
+36. WHERE 1 = 1
+: 아무의미 없고 전체를 가져와라라는 의미
+
+37. PathVariable 형식 (V1Controller.java)
+  @GetMapping("/list")
+  public String list(Model model) {
+    v1.findAll(model);
+    return "v1/list";
+  }
+
+  @GetMapping("/list/{type}")
+  public String list(@PathVariable("type") Object type, RedirectAttributes ratt) {
+    ratt.addFlashAttribute("type", type);
+    return "redirect:/v1/list";
+  }
+  
+38. // List 화면 데이터 가져오는 메소드 : 조건 accept 상태값 유무로 3가지 방법으로 출력
+  public void findAll(Model model) {
+    Object type = model.getAttribute("type");
+    boolean accept = false;
+    if(type != null || !"".equals(type)) {
+      accept = ("1".equals(type)) ? true : false;
+    }
+    model.addAttribute("list", dao.findAll(TempDTO.builder().type(type).accept(accept).build()));
+  }
+  
+39. pathVariable 형식을 사용하면 주소가 노출되지(암호화 된다.) 않는다.
+
+40. pathVariable를 사용하면 메소드가 2개씩 나누어서 만들어 진다.
+ @GetMapping("/list")
+  public String list(Model model) {
+    v1.findAll(model);
+    return "v1/list";
+  }
+
+  @GetMapping("/list/{type}")
+  public String list(@PathVariable("type") Object type, RedirectAttributes ratt) {
+    ratt.addFlashAttribute("type", type);
+    return "redirect:/v1/list";
+  }
+  
+41. 승인 미승인 관련 내용 
+ @GetMapping("/detail/{no}/{accept}")
+  public String detail(@PathVariable("no") String no, @PathVariable("accept") String accept) {
+    if(v1.accept(no, accept)) {
+      return "redirect:/v1/detail/" + no;
+    } else {
+      return "redirect:/v1/list";
+    }
+  }
+
+42. @ModelAttribute는 자동으로 매핑시켜라
+
+43. HttpServletResponse 객체는 스프링에서 사용하면 안된다.
+HttpServletRequest는 경우에 따라 사용해도 되지만 왠만하면 어노테이션을 사용해야 한다.
