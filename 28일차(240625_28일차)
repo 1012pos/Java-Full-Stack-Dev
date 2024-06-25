@@ -1,5 +1,5 @@
 20240625
-1. 스프링 URL
+1. 스프링 URL 패턴 공부
 2. 파라미터 전달(MODEL, REDIRECT)
 
 ================
@@ -9,6 +9,51 @@
 - 메모장 관리자모드로 켜기 C:\Windows\System32\drivers\etc -> 127.0.0.1 lh 로 수정
 그다음 처음에 주소창에 http://lh/ 검색
 5. 
+
+
+package app.study;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+//@RequestMapping("/s1") // 아래의 메소드는 s1 아래의 주소라고 명시함, 그리고 s1은 클래스에 주는 주소다.
+@RequestMapping("/study/s1") // 아래의 메소드는 s1 아래의 주소라고 명시함, 그리고 s1은 클래스에 주는 주소다.
+public class Study01 {
+
+	// RequestMapping 방식
+//	@RequestMapping("/") // url >> /s1/
+//	@RequestMapping("") // url >> /s1/ >> /s1
+	@RequestMapping("/url") // url >> /s1/ >> /s1
+//	public String url1() {
+	public void url1() {
+		System.out.println("기본 화면");
+//		return "study/s1/url"; // 폴더와 파일명까지 작성해야 한다.
+//		return "url"; // 폴더와 파일명까지 작성해야 한다.
+	}
+	
+	// RequestMapping 특정 메소드 선택 방식
+//	@RequestMapping(value = "/", method = RequestMethod.GET) // 하나의 주소로 인지함(http://lh/s1/)
+//	@RequestMapping(value = "/", method = RequestMethod.POST) // 주소로 인지 못함(http://lh/s1/)
+	@RequestMapping(value = "/s", method = RequestMethod.GET)
+//	@RequestMapping(value = "/s", method = RequestMethod.POST)
+	public void url2() {
+		System.out.println("고정 메소드 처리");
+	}
+	
+	// GetMapping 방식
+	public void url3() {
+		
+	}
+	
+	// PostMapping 방식
+	public void url4() {
+		
+	}
+	
+}
+
 
 
 
