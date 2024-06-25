@@ -166,6 +166,133 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 : var="s" s이부분이 반복되면서 데이터가 담기는 부분이다.
 
+==============================
+성민씨가 준 [testSpring 프로젝트]
+- 마이바티스설정 수정 필요 -> MybatisConfig.java
+주소 http://lh/TestSpring/list 로 호출 하면됨 포트 변경했기 때문에
+
+질의사항
+1. @GetMapping, @PostMapping 구분 이유?
+: form 태그 안에 있는것의 메서드를 post로 작성을 해야하고, 다른거는 get으로 구현해도 됨 
+2. detail 같은 경우 어떤건 @GetMapping? @PostMapping?
+3. VieW
+
+- TestSpringY 구현 순서
+: new -> detail -> list
+: 프로젝트 하나 생성해서 하기 / pom.xml쪽 수정해야함
+: 기존에 있는걸 주석처리하면 오류가 발생하니, 프로젝트 새로 만들어서 구현하기
+
+
+[코드 추가]
+package app.config;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import org.springframework.web.filter.GenericFilterBean;
+
+public class UTF8Filter extends GenericFilterBean {
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		chain.doFilter(request, response);
+	}
+
+}
+
+[코드 추가]
+package app.config;
+
+import javax.servlet.Filter;
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] {MybatisConfig.class} ;  // 외부 설정 내용 등록 (Mybatis)
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] {SpringConfig.class}; // 스프링 관련 설정 내용 등록
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] {"/"};  // URL 패턴 등록
+	}
+
+	@Override
+	protected Filter[] getServletFilters() {
+		return new Filter[] {new UTF8Filter()};
+	}
+}
+
+19. 리다이렉트는 내가 명시한 주소를 요청하는 것임
+
+20. 아래의 코드처럼 했을때, 한글이 깨지는 경우 아래의 코드 추가 (방법 2)
+@GetMapping("/data")
+	public String data(RedirectAttributes ra, HttpServletRequest req) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("UTF-8");
+		ra.addAttribute("a", "다"); // 파라미터 방식 데이터 전달(GET으로 보내는 방식)
+		ra.addFlashAttribute("b", "라"); // 1회성(POST으로 보내는 방식)
+		return "redirect:/s2/";
+	}
+}
+
+21. 데이터 제어, 데이터 바인딩
+- pom.xml에 아래의 코드가 있어야 한다.
+<!-- Servlet -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.1</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+
+22. ${param.a}는 화면 출력용
+
+23.model.addAttribute("c", 1); -> jsp 파일에서 ${c}로 작성해서 화면에 출력됨
+
+24. 화면에서 제어
+1. 반복문, 조건문 사용하면 되는데, 여기서 아래의 코드를 추가해야 한다.
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+25. 표현식 안에는 계산 및 비교도 할 수 있다.
+<c:if test="${ c + d == 6 }">
+	<p>참</p>
+</c:if>
+
+26. String s = list.get(2); 이 코드와 아래의 코드는 같다.
+: <p>${list[2]}</p>
+
+27. <c:forEach items="${list}" var="s" >
+	<p>${s}</p>
+</c:forEach>
+
+: var="s" s이부분이 반복되면서 데이터가 담기는 부분이다.
+
 
 package app.study;
 
