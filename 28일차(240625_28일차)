@@ -321,7 +321,7 @@ public class Study02 {
 	<p>참</p>
 </c:if>
 
-<<c:forEach items="${list2}" var="t">
+<c:forEach items="${list2}" var="t">
 	<p>${t}</p>
 </c:forEach>
 
