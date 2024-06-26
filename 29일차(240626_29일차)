@@ -74,7 +74,7 @@ public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
 
 4. ./list로 작성이유 ? 그리고 취소 버튼 클릭시 404 오류
 : 이런식으로 작성한 이유는 넘어가지 않아서 그렇게 작성하심, 취소 버튼 클릭시 넘어가지 않은것은
-내가 메소드를 만들지 않아서 그런것임
+내가 메소드를 만들지 않아서 그런것임 "controller"에 만들어 줘야 한다.
 
 5. Dao, Service 같은 경우 무조건 interface로 Dao 만들고, DaoImp만든다.
 무조건 1:1 만들어야 한다. 현업에서 지금 그렇게 사용중
