@@ -60,13 +60,24 @@
 public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
     // ...
 }
-[Spring Framework]
-: https://docs.spring.io/spring-framework/docs/5.3.37/reference/html/web.html#mvc-ann-requestmapping-uri-templates
 
-@GetMapping("/owners/{ownerId}/pets/{petId}")
-public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
-    // ...
-}
+
+[TestSpring 질의사항]
+1. <throws IOException 엑박 안뜸>
+: HttpServletResponse를 사용했었어서 엑박이 뜬것 같음 일단 나는 작성은 안하는걸로
+
+2. return "redirect:/detail?no="+dto.getNo();
+: 내가 생각했던게 맞음
+
+3. <action에서./insert, method를 post>
+: 이런식으로 작성한 이유는 넘어가지 않아서 그렇게 작성하심
+
+4. ./list로 작성이유 ? 그리고 취소 버튼 클릭시 404 오류
+: 이런식으로 작성한 이유는 넘어가지 않아서 그렇게 작성하심, 취소 버튼 클릭시 넘어가지 않은것은
+내가 메소드를 만들지 않아서 그런것임
+
+5. Dao, Service 같은 경우 무조건 interface로 Dao 만들고, DaoImp만든다.
+무조건 1:1 만들어야 한다. 현업에서 지금 그렇게 사용중
 
 package app.study;
 
