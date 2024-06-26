@@ -1,5 +1,6 @@
 20240626
 ※ 항상 Properties -> Context root : / 확인하기
+[JSTL 데이터 제어하기]
 - 화면과 컨트롤
 1. 화면 출력
 - jsp 파일에서 조건문1, 조건문2, 반복문을 사용한다.
@@ -30,7 +31,18 @@
 : s.index는 varStatus 와 연관되어 있다.
 : varStatus의 변수명이 s일 경우 s.index, s.count 따라서 index, count와 연관이 있다.
  
+[경로 변수 이용하여 페이지 출력하기]
+1. 주소로 사용한것은 다 String이다.
 
+2. @PathVariable의 아래와 같이 3개의 변수들에 영향을 미치고, 작성하지 않으면 디폴트로 적용된
+- name
+- value
+- required
+(name = "page", value = "page", required = true)
+
+3. @PathVariable(name = "page", value = "page", required = true)
+
+4. 
 
 
 
@@ -38,3 +50,11 @@
 - src/main에서 "파일명 클릭하기"
 : + 는 신규
 : . 은 기존파일 부분 수정
+
+[Spring Framework]
+: https://docs.spring.io/spring-framework/docs/5.3.37/reference/html/web.html#mvc-ann-requestmapping-uri-templates
+
+@GetMapping("/owners/{ownerId}/pets/{petId}")
+public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
+    // ...
+}
