@@ -7,4 +7,13 @@
 1. 정규 표현식 (Regular Expression)
    메타문자 : . ^ $ * + ? {} [] \ | ()
 
-2.
+[스프링 Service 기능 나누기]
+1. Service에서 기능
+
+2. 롬복 추가(Maven Repository)
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.32</version>
+    <scope>provided</scope>
+</dependency>
