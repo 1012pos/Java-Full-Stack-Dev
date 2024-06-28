@@ -1,2 +1,48 @@
 20240628
-1.
+0. 화면(JSP), 컨트롤(@Controller), 모델(@Service, @Repository), DataBase & Mybatis
+
+1. 컨트롤영역은 실행해 달라는 것만 던지면 된다.
+- 화면은 컨트롤이랑 대화만 가능
+- 컨트롤은 서비스랑 대화
+- 컨트롤으 데이터만 조회할 경우 서비스 거치지 않아도 된다.(상황에 맞게)
+
+
+2. 서비스 영역은 로직 2가지 기능을 가진다.
+- 자체적으로 데이터 처리(가공) 및 검증
+- 다른곳(데이터베이스)에서 뭘 주세요라는 메소드도 있다.
+
+3. DAO는 혼자서 사용 못한다. 그래서 외부라이브러리인 Mybatis를 사용, Mybatis는 필수적으로 확실하게 알아야 나중에 JPA를 사용할 수 있다.
+
+
+4. 메소드 명칭은 첫글자는 소문자로 시작
+
+5. 주입받으려면(객체를 가져와 쓴다.) 매개변수로 받아온다.(MybatisConfig.java 참고)
+
+6. Mapper
+- xml에 만들 수 있다. 
+: <mapper namespace="temp1"> 여기서 namespace에 들어가는 거는 패키지라고 생각하면 된다.
+: <select id="findList" resultType="HashMap"> 여기서 id는 DAO의 메소드명을 id에 일치 시켜준다.
+
+- interface에 만들수 있다.
+
+
+7. Mybatis는 Mapper 안에 ~~~ 를 작성한다.
+
+
+8. 외부에서 전달 받을때는 2가지가 있다. @PathVariable 과 쿼리스트링
+
+9. 일단 @Controller에 조건문을 작성하고 그게 잘 동작하면 xml에 쿼리문으로 작성을 하고
+그 부분을 지우면 된다.
+
+10. Map은 인터페이스, HashMap은 구현체(클래스)
+: 인터페이스는 명확하지 않고, 구현체는 명확하다.
+
+11. <select id="findList" parameterType="Object" resultType="HashMap">
+: resultType="HashMap"을 작성한 이유는 구현체인 클래스명을 명확하게 작성해주는게 좋다.
+
+
+
+=====강의 질의사항 정리=======
+1. 
+
+
