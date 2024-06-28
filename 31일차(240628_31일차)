@@ -40,9 +40,14 @@
 11. <select id="findList" parameterType="Object" resultType="HashMap">
 : resultType="HashMap"을 작성한 이유는 구현체인 클래스명을 명확하게 작성해주는게 좋다.
 
+12. 인터페이스에는 무조건 public 작성해줘야 한다.
 
 
 =====강의 질의사항 정리=======
-1. 
+- 타임어택
+1. 어떤 순서대로 진행을 해야할지 난감했음
+2. new.jsp 페이지에서 생성을 눌렀을때, 어느 페이지에서 데이터를 받아야 하는지 모르겠음(java파일? , jsp 파일?)
+3. 데이터베이스에 저장한 데이터를 화면에 띄우는걸 못했음
+4. 성민씨는 HttpServletRequest 대신 -> @ModelAttribute를 사용함
 
 
