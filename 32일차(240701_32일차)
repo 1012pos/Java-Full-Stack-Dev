@@ -9,7 +9,7 @@
 2. insert, update
 
 3. 스프링 Service 기능 나누기
-- 화면에 데이터를 출력하기 위해서는 아래의 순서가 필요
+3.1 화면에 데이터를 출력하기 위해서는 아래의 순서가 필요
 1. void -> String으로 수정
 2. 화면에 보여주기 위해서 Model 사용, 그러기 위해 매개변수 Model 추가
 3. model.addAttribute("list", list); 작성
@@ -19,6 +19,82 @@ return 에 주소 입력
 list.jsp 파일에서 ${list} 작성하면 화면에 데이터가 출력된다.(${~~~}이거는 model을 사용하면 사용할 수 있는 문법)
 6. ${변수이름}
 - 뷰(.jsp 파일)에서는 ${}를 이용해서 값을 가져온다.
+
+3.2 list.jsp 파일에서 승인, 미승인을 삼항연산자로 제어
+		<c:forEach items="${list}" var="row">
+        	<a class="list-group-item m-1 ${(row.accept)? 'bg-success':'bg-warning'} bg-success display-6" href="/s6/detail">
+                ${row.title}
+                ${row.content}
+            </a>
+        </c:forEach>
+
+
+
+// 강사님 코드(Study06.java)
+	@GetMapping(value = {"/findList/{accept:[0-1]}", "/findList"})
+	public String url(@PathVariable(required = false) Object accept, Model model) {
+		log.info("accept : {}", accept);
+		List<Map> list = study06dao.findList(accept);
+		log.info("temp1 LIST SIZE : {}", list.size());
+		for(Map map : list) {
+//			int check = 0;
+//			if((boolean)map.get("accept")) {
+//				// 참
+//				check = 1;
+//			}
+//			if(accept == check) {
+				log.info("ROW : {}", map);
+//			}
+		}
+		// 화면에 데이터를 보여주기 위함 -> list.jsp 파일에서 ${list} 작성하면 화면에 출력
+		model.addAttribute("list", list);
+		return "study/s6/list";
+		
+	}
+	
+	
+} 
+
+(list.jsp)
+<div class="container mt-3">
+        <h1 class="text-center bg-success text-dark bg-opacity-50">LIST</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/s6/findList" class="btn btn-secondary">전체</a> // 경로 수정(accept가 없는 경우(전체))
+            <a href="/s6/findList/1" class="btn btn-success">승인</a> // 경로 수정(accept가 1일 경우)
+            <a href="/s6/findList/0" class="btn btn-warning">미승인</a> // 경로 수정(accept가 0일 경우)
+            <a href="new.html" class="btn btn-primary">추가</a>
+        </div>
+        <div class="list-group mt-2 text-center">
+        	<c:forEach items="${list}" var="row">
+        	<a class="list-group-item m-1 ${(row.accept)? 'bg-success':'bg-warning'} bg-success display-6" href="/s6/detail">
+                ${row.title}
+            </a>
+        	</c:forEach>
+        </div>
+    </div>
+
+3.3 승인, 미승인 처리를 할때, /findList/{accept:[0-1]}, /findList 외의 문자나, 다른 글자가 입력 될때의
+예외 처리는 추후에 알려주시기로함.
+
+
+
+
+
+
+
+
+
+
+
+
+4. 앞으로는 질문에 대해 세세하게 물어보는것 대신 스스로 해결하려고 노력해야함
+그래야 성장할 수 있음.
+그리고 설명이 필요한 부분을 팀끼리 논의해서 강사님께 말씀드리면
+강사님께 강의로 설명이 필요한 부분을 해결해주실 수 있음
+
+
+=====강의 질의사항 정리=======
+1. 
 
 
 
