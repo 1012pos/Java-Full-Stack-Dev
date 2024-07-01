@@ -1,2 +1,244 @@
 20240701
-1.
+0. 7월16일날 타임어택
+
+1. 다음주 월요일까지 화면 설계할 예정
+- UI 요구사항 확인하기
+- UI 설계하기
+
+
+2. insert, update
+
+3. 스프링 Service 기능 나누기
+- 화면에 데이터를 출력하기 위해서는 아래의 순서가 필요
+1. void -> String으로 수정
+2. 화면에 보여주기 위해서 Model 사용, 그러기 위해 매개변수 Model 추가
+3. model.addAttribute("list", list); 작성
+4. 위의 void에서 String 으로 타입을 수정했고, 어느 페이지로 리턴할 것인가에 대해서
+return 에 주소 입력
+5. return "study/s6/list"; 이렇게 입력 했기 때문에 list.jsp 파일에서 화면에 데이터를 출력하기 위해
+list.jsp 파일에서 ${list} 작성하면 화면에 데이터가 출력된다.(${~~~}이거는 model을 사용하면 사용할 수 있는 문법)
+6. ${변수이름}
+- 뷰(.jsp 파일)에서는 ${}를 이용해서 값을 가져온다.
+
+
+
+
+// 강사님 코드
+	@GetMapping(value = {"/findList/{accept:[0-1]}", "/findList"})
+	public String url(@PathVariable(required = false) Object accept, Model model) {
+		log.info("accept : {}", accept);
+		List<Map> list = study06dao.findList(accept);
+		log.info("temp1 LIST SIZE : {}", list.size());
+		for(Map map : list) {
+//			int check = 0;
+//			if((boolean)map.get("accept")) {
+//				// 참
+//				check = 1;
+//			}
+//			if(accept == check) {
+				log.info("ROW : {}", map);
+//			}
+		}
+		// 화면에 데이터를 보여주기 위함 -> list.jsp 파일에서 ${list} 작성하면 화면에 출력
+		model.addAttribute("list", list);
+		return "study/s6/list";
+		
+	}
+	
+	
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+4. 앞으로는 질문에 대해 세세하게 물어보는것 대신 스스로 해결하려고 노력해야함
+그래야 성장할 수 있음.
+그리고 설명이 필요한 부분을 팀끼리 논의해서 강사님께 말씀드리면
+강사님께 강의로 설명이 필요한 부분을 해결해주실 수 있음
+
+
+=====강의 질의사항 정리=======
+1. 
+
+
+
+
+
+
+
+package app.study;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+@RequestMapping("/s6")
+public class Study06 {
+	
+	/******************************************************************************
+	 * log level    설명
+	 * trace		debug 보다 세분화된 정보
+	 * debug		디버깅하는데 유용한 세분화된 정보
+	 * info			진행상황 같은 일반 정보
+	 * warn			오류는 아니지만 잠재적인 오류 원인이 될 수 있는 경고성 정보
+	 * error		요청을 처리하는 중 문제가 발생한 오류 정보
+	 * 
+	 * trace > debug > info > warn > error
+	 *
+	 ******************************************************************************/
+	
+	@Autowired
+	private Study06Service service;
+
+	// Service에서 연산 호출하여 결과값 받아 오기
+	@GetMapping("/{a}/{b}/{c}/{d}")
+	public void url(@PathVariable int a, @PathVariable int b,
+			@PathVariable int c, @PathVariable int d) {
+		
+//		System.out.println(service.run(type));
+//		System.out.println(service.run(1));
+//		log.info("run() : {} {}", service.run(1), 4);
+		
+		int value = service.run(a,b,c);
+		log.info("run() : {} {}", value, (value == d));
+		log.debug("run() : {} {}", value, (value == d));
+		
+	}	
+	
+	
+	@Autowired
+	Study06Dao study06dao;
+	
+//	@GetMapping("/findList")
+//	public void url() {
+//		List<Map> list = study06dao.findList();
+////		for(int i = 0; i < list.size(); i++) {
+////			log.info("temp1 LIST : {}", list.get(i));
+////			System.out.println(list.get(i));
+////		}
+//		
+//		// jstl에서 뽑는 방법
+//		for(Map map : list) {
+//			log.info("ROW : {}", map);
+//		}
+//		
+//		log.info("temp1 LIST SIZE : {}", list.size()); // 리스트에 몇개가 담겨 있는지 확인
+//	}
+	
+	// 내가 한 코드
+//	@GetMapping("/findList/{accept}")
+//	public void url(@PathVariable boolean accept) {
+//		List<Map> list = study06dao.findList(accept);
+//		
+//		for(Map map : list) {
+//			log.info("ROW : {}", map);
+//		}
+//		
+//	}
+	
+	// 강사님 코드
+	@GetMapping(value = {"/findList/{accept:[0-1]}", "/findList"})
+	public String url(@PathVariable(required = false) Object accept, Model model) {
+		log.info("accept : {}", accept);
+		List<Map> list = study06dao.findList(accept);
+		log.info("temp1 LIST SIZE : {}", list.size());
+		for(Map map : list) {
+//			int check = 0;
+//			if((boolean)map.get("accept")) {
+//				// 참
+//				check = 1;
+//			}
+//			if(accept == check) {
+				log.info("ROW : {}", map);
+//			}
+		}
+		// 화면에 데이터를 보여주기 위함 -> list.jsp 파일에서 ${list} 작성하면 화면에 출력
+		model.addAttribute("list", list);
+		return "study/s6/list";
+		
+	}
+	
+	
+}
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://github.com/JosephBean/SpringStudy2/blob/main/src/main/webapp/resources/images/logo.png?raw=true" rel="icon" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>LIST</title>
+    <style>
+        a.list-group-item:hover {cursor: pointer;font-weight:bold;color:#fff;background-color:#b2327d;box-shadow:5px 5px 10px 5px rgba(77, 71, 71, 0.2);}
+    </style>
+</head>
+<body>
+${list}
+    <div class="container mt-3">
+        <h1 class="text-center bg-success text-dark bg-opacity-50">LIST</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="#" class="btn btn-secondary">전체</a>
+            <a href="#" class="btn btn-success">승인</a>
+            <a href="#" class="btn btn-warning">미승인</a>
+            <a href="new.html" class="btn btn-primary">추가</a>
+        </div>
+        <div class="list-group mt-2 text-center">
+            <a class="list-group-item m-1 bg-success display-6" href="detail.html">
+                제목1 정보    
+            </a>
+            <a class="list-group-item m-1 bg-success display-6" href="detail.html">
+                제목2 정보    
+            </a>
+            <a class="list-group-item m-1 bg-warning display-6" href="detail.html">
+                제목3 정보    
+            </a>
+            <a class="list-group-item m-1 bg-warning display-6" href="detail.html">
+                제목4 정보    
+            </a>
+            <a class="list-group-item m-1 bg-success display-6" href="detail.html">
+                제목5 정보    
+            </a>
+            <a class="list-group-item m-1 bg-warning display-6" href="detail.html">
+                제목6 정보    
+            </a>
+            <a class="list-group-item m-1 bg-success display-6" href="detail.html">
+                제목7 정보    
+            </a>
+            <a class="list-group-item m-1 bg-warning display-6" href="detail.html">
+                제목8 정보    
+            </a>
+            <a class="list-group-item m-1 bg-warning display-6" href="detail.html">
+                제목9 정보    
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
