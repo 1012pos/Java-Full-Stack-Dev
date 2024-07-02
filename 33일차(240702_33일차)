@@ -34,8 +34,8 @@
 
 14. 
 	@media only screen and (min-width: 834px) {
-		div {width : calc(100% / 2); height:50px;}
-		.grid3 {width : calc(100% / 3); height:50px;}
+		div {width : calc(100% / 2);}
+		.grid3 {width : calc(100% / 3);}
 	}
 
 : @media는 미디어 쿼리를 의미
@@ -61,7 +61,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,8 +77,8 @@
 	
 	/* calc는 함수임  */
 	@media only screen and (min-width: 834px) {
-		div {width : calc(100% / 2); height:50px;}
-		.grid3 {width : calc(100% / 3); height:50px;}
+		div {width : calc(100% / 2);}
+		.grid3 {width : calc(100% / 3);}
 	}
 	
 	/*
