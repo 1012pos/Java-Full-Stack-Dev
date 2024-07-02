@@ -59,7 +59,8 @@
 	<div class="bg1 grid3"></div>
 </body>
 
-
+15. model.addAttribute("map", map); 작성하면 map안에 있는 값들을 부르는 방법
+: ${map.no}, ${map.content}, ${map.title}, ${map.accetp}
 
 <!DOCTYPE html>
 <html>
