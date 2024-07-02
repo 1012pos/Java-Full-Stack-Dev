@@ -62,6 +62,10 @@
 15. model.addAttribute("map", map); 작성하면 map안에 있는 값들을 부르는 방법
 : ${map.no}, ${map.content}, ${map.title}, ${map.accetp}
 
+16. <form action="/s5/edit/${map.no}" method="post">
+: 메소드가 post 같은 경우 경로로 접근(url을 쳐서)을 할 수 없다는 개념을 잊지 말아야 한다.
+그래서 action의 경로 지정을 잘 해야 한다.
+
 <!DOCTYPE html>
 <html>
 <head>
