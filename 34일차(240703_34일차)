@@ -22,6 +22,44 @@
 
 9. 오늘 오후에 팀이 pdf로 만든거 -> 피그마로 만들고 / 내일 오후에 그것을 HTML 혼자서 만들기
 
+10. main에는 main {height: calc(100vh - 200px); background-color: yellow;} 이런식으로
+calc를 사용하면 안된다. -> main {background-color: yellow;} 이렇게 작성하고 section을 추가한다.
+
+11. div는 기본이 block이다, display:block;. 블록쌓기 처럼 
+
+12. <header>, <footer> 도 div이다.
+
+13. 스타일의 한계점을 극복하기 위해 스크립트 사용하는거
+
+14. 스크립트는 document이기 때문에 태그에 접근해서 가져오려면 아래와 같이 사용한다.
+: document.getElementsByTagName("section")
+
+15. document.getElementsByTagName("section")[0].onmouseover = function() {console.log(1);}
+
+16. 기능(=e1)
+: 호출하는 개념이 아니라, 기능을 넣는다
+<script type="text/javascript">
+function e1() {
+	document.getElementsByTagName("header")[0].style.display = "block";
+}
+function e2() {
+	document.getElementsByTagName("header")[0].style.display = "none";
+}
+
+function load(){
+ document.getElementsByTagName("section")[0].onmouseover = e1;
+ document.getElementsByTagName("section")[0].onmouseout = e2;
+}
+
+17. 호출(e1())
+: 호출하는 개념
+
+18. 자바스크립트를 공부하려면 node.js를 공부해야함
+
+19. 자바스크립트는 브라우저에서 동작하는 언어이며, 브라우저 console을 이용할 수 있다.
+
+20. undefined는 리턴값이 없다라는 뜻
+
 
 <!DOCTYPE html>
 <html>
