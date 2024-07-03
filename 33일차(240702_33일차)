@@ -125,24 +125,3 @@
 	<div class="bg1 grid3"></div>
 </body>
 </html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>시맨틱 웹</title>
-<style type="text/css">
-
-	* {margin: 0;}
-	header {height: 100px; background-color: blue;}
-	main {height: calc(100vh - 200px); background-color: yellow;}
-	footer {height: 100px; background-color: green;}
-</style>
-</head>
-<body>
-	<header>header</header>
-	<main>main</main>
-	<footer>footer</footer>
-</body>
-</html>
