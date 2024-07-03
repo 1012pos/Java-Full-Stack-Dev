@@ -104,3 +104,39 @@
 	<footer>footer</footer>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>시맨틱 웹</title>
+<style type="text/css">
+
+	* {margin: 0;}
+	header {height: 40px; background-color: blue; display: none;}
+	main {background-color: yellow;}
+	section {height: 200px;}
+	footer {height: 100px; background-color: green;}
+	.bg {background-color: gray;}
+	.bg:hover {background-color: olive;}
+	@media only screen and (min-width: 834px) {
+		header {height: 100px; display: block;}
+	}
+</style>
+<script type="text/javascript">
+document.getElementsByTagName("section")[0].onmouseover = function() {console.log(1);}
+</script>
+
+</head>
+<body>
+	<header></header>
+	<main>
+		<section class="bg"></section>
+		<section></section>
+		<section></section>
+		<section></section>
+		<section></section>
+	</main>
+	<footer></footer>
+</body>
+</html>
