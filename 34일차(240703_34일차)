@@ -1,3 +1,85 @@
 20240703
-1.
+1. w3school 에서 CSS 선택자 공부하기
+: CSS Reference -> CSS Selectors
 
+2. 자바스크립트 이해하려면 아래의 내용 숙지해야함 이게 나중에 어느부위를 수정하겠다 할때 도움이 됨
+: /class, #id, element 공부해야함
+
+3. <div id="a" class="bg1 l2"></div> 
+: id를 주는 것은 반복적인거에 사용하는거 아니다.
+: #a
+
+4. 시맨틱 태그 -> 시맨틱 웹
+: HEADER, FOOTER
+
+5. div를 사용하지 않고 HEADER, FOOTER 태그로 사용하면 -> 시맨틱 웹
+
+6. 피그마에서 플러그인을 설치해야 하는데(디스코드 참고)
+
+7. 피그마에서 import 했을때 영역 클릭은 ctrl 누르고 클릭
+
+8. 강사님꺼 프로젝트 후 엑박 뜨면 -> Gradle 클릭 -> Refresh Gradle Project
+
+9. 오늘 오후에 팀이 pdf로 만든거 -> 피그마로 만들고 / 내일 오후에 그것을 HTML 혼자서 만들기
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 메타 코드가 있어야 반응형 쿼리 사용 가능 (1:1기준) -->
+<title>HOME1</title>
+<style type="text/css">
+	* {margin: 0;} /* 여백 초기화 */
+	div {width: 100%; height:50px; float:left;}
+	.bg1 {background-color: red;}
+	.bg2 {background-color: green;}
+	.bg3 {background-color: yellow;}
+	.bg4 {background-color: aqua;}
+	
+	/* #a {background-color: black;} */
+	
+	/* calc는 함수임  */
+	@media only screen and (min-width: 834px) {
+		div {width : calc(100% / 2);}
+		div.l2 {width : calc(100% / 2); height: 100px;}
+		div.l3 {width : calc(100% / 3); height: 100px;}
+	}
+	
+	/*
+	@media only screen and (min-width: 1080px) {
+		div {width : calc(100% / 5); height: calc(100vw / 5);}
+	}*/
+	
+	
+	/*body {background-color: #fff;}
+	h1 {color: #000;}
+	@media only screen and (min-width: 834px){
+		body {background-color: #acacff;}
+	}
+	@media only screen and (min-width: 1080px){
+		body {background-color: #000;}
+	}*/
+	
+</style>
+</head>
+<body>
+	<!-- <h1>안녕하세요</h1> -->
+	<!-- <div id="a" class="bg1 l2"></div> -->
+	<div class="bg1 l2"></div>
+	<div class="bg2 l2"></div>
+	<div class="bg3 l3"></div>
+	<div class="bg4 l3"></div>
+	<div class="bg1 l3"></div>
+	<div class="bg1"></div>
+	<div class="bg2"></div>
+	<div class="bg3 grid3"></div>
+	<div class="bg4 grid3"></div>
+	<div class="bg1 grid3"></div>
+	<div class="bg1"></div>
+	<div class="bg2"></div>
+	<div class="bg3 grid3"></div>
+	<div class="bg4 grid3"></div>
+	<div class="bg1 grid3"></div>
+</body>
+</html>
