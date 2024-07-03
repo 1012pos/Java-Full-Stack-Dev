@@ -124,10 +124,13 @@
 	}
 </style>
 <script type="text/javascript">
+function load(){
 document.getElementsByTagName("section")[0].onmouseover = function() {console.log(1);}
+}
 </script>
 
 </head>
+<body onload="load()">
 <body>
 	<header></header>
 	<main>
