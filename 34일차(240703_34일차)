@@ -60,6 +60,39 @@ function load(){
 
 20. undefined는 리턴값이 없다라는 뜻
 
+21. 피그마 만든 파일 HTML로 변환 방법
+- 지구본 모양에서 figma to html 검색 -> run
+- 내가 html로 만들고자 하는 부분 드래그 -> React -> HTML 변경해 준다. -> Convert
+
+
+22. 피그마 사용방법
+- 그룹화 -> ctrl + G
+- 복사할 대상 Shift 누르고 -> alt 누르고 위로 끌면 됨 
+- Stroke 가 선
+- ctrl 누르고 레이어 선택 -> alt 누르면 간격 확인 가능
+
+
+==== pdf 파일에서  ====
+1. 각 페이지에서 페이지 처리하는 부분 추가하기(추후에 자바스크립트로 제어할 것임)
+2. 브라우저 기본 사이즈 (Frame에서 w=1920, H=1080로 설정)
+
+
+
+============== 강의 질의사항 =================
+1. 아래의 코드
+<script type="text/javascript">
+function e1() {
+	document.getElementsByTagName("header")[0].style.display = "block";
+}
+function e2() {
+	document.getElementsByTagName("header")[0].style.display = "none";
+}
+
+function load(){
+ document.getElementsByTagName("section")[0].onmouseover = e1;
+ document.getElementsByTagName("section")[0].onmouseout = e2;
+}
+
 
 <!DOCTYPE html>
 <html>
