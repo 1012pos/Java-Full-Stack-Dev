@@ -1,11 +1,255 @@
 20240704
-1.
+1. 피그마 반응형
+- Diplay
+1. block
+2. none
+3. flex
+4. grid
 
+- Position
+1. static
+2. relative
+3. fixed
+4. absolute(자기를 감싸고 있는 부모를 기준으로)
+5. sticky
 
+2. W3school에서 CSS Diplay, CSS Position 공부하기
 
+3. 피그마 레이아웃 만들고 -> 텍스트 넣는다.
 
+4. 레이아웃 구역 나누기 -> Layout grid
 
+5. Auto layout : 가운데 정렬 , div로 묶음
+
+6. div 는 블럭이라는 개념을 가지고 있다.
+
+7. display: inline-block;
+
+8. padding-top: 10px;
+
+9. clear: both; : float를 초기화 시켜줌
+
+10. block은 width : 100px; 이 기본값이다.
+
+11. flex 한쪽 방향으로만 간다. 기본적으로 가로방향(x축)으로 간다.
+
+12. justify-content: space-between; 2개가 있을경우 양옆으로 민다. 3개만 하나가 가운데로 온다.
+
+13. align-items: center;
+
+14. flex는 정렬할 때 사용한다.
+
+15. ul {list-style-type: none; padding: 0;}
+: ul 속성 없앤다.
+
+16. flex-direction: column;
+: 아래로 내린다.
+
+17. Grid는 layout 잡기 위해 나옴
+
+18. flex-wrap: wrap;
+: 넘치면 아래로 내려가세요
+
+19. grid-template-columns: 1fr 1fr;
+: 1fr 1fr는 1:1 비율을 의미함.
+
+20. grid로 다 만든 사이트는 없다. 부분적으로 필요할때 grid를 사용한다.
+
+21. Position는 위치값
+
+21. Position의 absolute
+: {position: absolute;}
+
+22. #h2 {display: none;}
+: 숨김
+
+23. @media only screen and (min-width: 834px)
+: 브레이크(break) 포인트
 
 
 =====타임어택 테스트========
 1. 일단 7,8 교시에 하기로 변동될 수 있음
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정렬1</title>
+<style type="text/css">
+	* {margin: 0; box-sizing: border-box;}
+	header {height: 100px; background-color: blue; padding-top: 10px;}
+	main {background-color: yellow;}
+	footer {height: 100px; background-color: green; clear: both;}
+	
+	header div {height: 80px;}
+ 	#h {margin-left: 20px; margin-right: 20px;}
+	#h1 {width: 100px; background-color: black; display: inline-block; float: left;}
+	#h2 {width: 50px; background-color: red; display: inline-block; float: right;}
+	
+	main section {padding-top: 10px;}
+	main section div {height: 200px; background-color: orange;}
+	main section div:nth-child(2) {margin-top: 10px; height: 100px;}
+	
+	ul {list-style-type: none; padding: 0;}
+	li {height: 100px; background-color: white; margin: 10px 0;}
+	@media only screen and (min-width: 834px) {
+		li {width: calc((100vh / 2) - 20px); display: inline-block; float: left; margin: 10px;}
+	}
+	@media only screen and (min-width: 1080px) {
+		li {width: calc((100vw / 3) - 20px);}
+	}
+</style>
+</head>
+<body>
+	<header>
+		<div id="h">
+			<div id="h1"></div>
+			<div id="h2"></div>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div></div>
+			<div></div>
+		</section>
+		<section>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</section>
+	</main>
+	<footer></footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정렬2</title>
+<style type="text/css">
+	* {margin: 0; padding: 0; box-sizing: border-box;}
+	header {height: 100px; background-color: blue;}
+	main {background-color: yellow;}
+	footer {height: 100px; background-color: green;}
+	
+	header div.body {height: 100px; display: flex; justify-content: space-between; align-items: center;}
+	header div div {height: 80px; width: 100px; background-color: orange;}
+	
+	main section {padding-top: 10px;}
+	main section div {height: 200px; background-color: orange;}
+	main section div:nth-child(2) {margin-top: 10px; height: 100px;}
+	
+	ul {list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 10px;}
+	li {height: 100px; background-color: white;}
+	
+	@media only screen and (min-width: 834px) {
+		ul {flex-direction: row; flex-wrap: wrap; justify-content: center;}
+		li {width: 400px;}
+	}
+	
+	@media only screen and (min-width: 1080px) {
+		
+	}
+</style>
+</head>
+<body>
+	<header>
+		<div class="body">
+			<div>1</div>
+			<div>2</div>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div></div>
+			<div></div>
+		</section>
+		<section>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</section>
+	</main>
+	<footer></footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정렬3</title>
+<style type="text/css">
+	* {margin: 0; padding: 0; box-sizing: border-box;}
+	ul {list-style-type: none; padding: 0;}
+	header {height: 100px; background-color: blue;}
+	main {background-color: yellow;}
+	footer {height: 100px; background-color: green;}
+	
+	header div.body {height: 100px; display: flex; justify-content: space-between; align-items: center;}
+	header div div {height: 80px; width: 100px; background-color: orange;}
+	header ul {display: none; justify-content: space-between; align-items: center; width: 100%;}
+	#n1 {width: 100px; height: 80px; background-color: green;}
+	#n2 {width: 200px; height: 80px;}
+	#n2 ul {gap: 5px;}
+	#n2 ul li {width: 100px; height: 80px; background-color: green;} 
+	
+	main section {padding-top: 10px;}
+	main section div {height: 200px; background-color: orange;}
+	main section div:nth-child(2) {margin-top: 10px; height: 100px;}
+	
+	.ul {display: grid; grid-template-columns: 1fr; gap: 10px;}
+	.li {height: 200px; background-color: white;}
+	
+	@media only screen and (min-width: 834px) {
+		.ul {grid-template-columns: 1fr 1fr;}
+		#h1 {position: absolute; left: calc(50% - (100px / 2)); top: 10px;}
+		#h2 {display: none;}
+		header ul {display: flex; justify-content: space-between;}
+	}
+	@media only screen and (min-width: 1080px) {
+		.ul {grid-template-columns: 1fr 200px 1fr;}
+	}
+</style>
+</head>
+<body>
+	<header>
+		<div class="body">
+			<div id="h1"></div>
+			<div id="h2"></div>
+			<ul>
+				<li id="n1"></li>
+				<li id="n2">
+					<ul>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div></div>
+			<div></div>
+		</section>
+		<section>
+			<ul class="ul">
+				<li class="li"></li>
+				<li class="li"></li>
+				<li class="li"></li>
+				<li class="li"></li>
+			</ul>
+		</section>
+	</main>
+	<footer></footer>
+</body>
+</html>
