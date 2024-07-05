@@ -58,4 +58,4 @@ console.log(test, test.a); // 꺼내온다.
 18. {} 는 객체를 의미한다.
 
 19. Extensions에서 -> live Server 설치하기
-: Html 파일에서 Go live를 실행하면 서버를 브라우저에 띄어서 할 수 있다.
+: Html 파일에서 Go live를 실행하면 서버를 브라우저에 띄어서 할 수 있다. -> F12에서 console 창에서 확인 가능
