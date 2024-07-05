@@ -59,3 +59,7 @@ console.log(test, test.a); // 꺼내온다.
 
 19. Extensions에서 -> live Server 설치하기
 : Html 파일에서 Go live를 실행하면 서버를 브라우저에 띄어서 할 수 있다. -> F12에서 console 창에서 확인 가능
+
+20. 피그마에서 화면 PDF로 전환하는 방법
+1. File -> export (한장씩 PDF로 전환)
+2. File ->  Frame frames to PDF (한장의 PDF로 전환)
