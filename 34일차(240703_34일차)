@@ -61,7 +61,7 @@ function load(){
 20. undefined는 리턴값이 없다라는 뜻
 
 21. 피그마 만든 파일 HTML로 변환 방법
-- 지구본 모양에서 figma to html 검색 -> run
+- 지구본 모양에서(Resource -> Plugins -> Figma to Html) figma to html 검색 -> run
 - 내가 html로 만들고자 하는 부분 드래그 -> React -> HTML 변경해 준다. -> Convert
 
 
