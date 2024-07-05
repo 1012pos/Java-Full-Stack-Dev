@@ -17,7 +17,21 @@
 : npm init
 8. NodeJS 초기화 설정하면 pagkage.json이 자동 생성된다.
 
-9. 
+9. node app.js 이런식으로 코드를 치면 NodeJS가 실행된다. 다만 강사님이 "main": "app.js" 설정해서 아래와 같이 코드를 친다.
+: node . 으로 실행
+
+10. Extensions에서 -> Extension Pack for java 를 설치해야 자바를 실행할 수 있다.
+
+11. 아래와 같이 코드를 작성해야 자바스크립트가 실행된다.
+: node .\study01\app.js
+
+12. pwd
+: 현재 디렉토리 위치 확인 가능
+
+13. 자바는 자료형이 필요하니깐 리턴 타입(int, String 등)을 작성하는데 자바스크립트는
+리턴 타입을 따로 작성하지 않는다.
+
+
 
 
 
