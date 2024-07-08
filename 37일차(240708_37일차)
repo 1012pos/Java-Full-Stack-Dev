@@ -1,1 +1,404 @@
 20240705
+1. 자바 스크립트에서 (a == c) 이렇게 비교하면
+: 값만 비교하는 것이다.
+
+2. 자바 스크립트에서 (a === c) 이렇게 비교하면
+: 값 + 자료형 까지 비교 하는 것이다.
+
+3. 자바 스크립트에서 String(c) 타입을 숫자 타입으로 변환하는 방법(형변환)
+: (a === c) -> (a === Number(c))
+
+4. ctrl + c
+: while에서 무한반복일 때 끌수 있는 단축키
+
+
+package study04;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class App {
+
+  public static void main(String[] args) {
+   
+      int a = 1;
+      int b = 5;
+      /*
+      if(a > b){
+        System.out.println("참");
+      } else if (a == b){
+        System.out.println("같다.");
+      } else{
+        System.out.println("거짓");
+      }
+      */
+      String c = "1";
+      if(a == Integer.parseInt(c)){
+        System.out.println("참");
+      } else{
+        System.out.println("거짓");
+      }
+
+      switch (c) {
+        case "1":
+            System.out.println("참");
+          break;
+        default:
+           System.out.println("거짓");
+          break;
+      }
+
+      for(int i=0; i<10; i++){
+        // System.out.println(i);
+      }
+
+      List<Integer> list = new ArrayList<Integer>();
+      list.add(1);
+      list.add(2);
+      list.add(3);
+      
+      for(int d : list){
+        System.out.println(d);
+      }
+
+      List<Map> list2 = new ArrayList<Map>();
+      Map map = new HashMap<>();  // Map 생성
+      map.put("k1", 1);
+      map.put("k2", 2);
+      list2.add(map);
+
+      map = new HashMap<>();
+      map.put("k1", 3);
+      map.put("k2", 4);
+      list2.add(map);
+
+      for(Map i : list2){
+        System.out.println(i);
+        System.out.println(i.get("k1"));
+      }
+      }
+      // 위의 결과 값
+      // {k1=1, k2=2}
+      // {k1=3, k2=4}
+
+       // 위의 결과 값
+       // {k1=1, k2=2}
+       // 1
+       // {k1=3, k2=4}
+       // 3
+
+  }
+
+
+
+// 조건문
+
+let a =1;
+let b =5;
+/*
+if(a > b){
+    console.log("참")
+} else if(a == b){
+    console.log(" 같다.");
+} else{
+    console.log("거짓");
+}
+*/
+let c = "1";
+
+if(a === Number(c)){
+    console.log("참");
+}  else{
+    console.log("거짓");
+}
+
+switch (c) {
+  case "1":
+    console.log("참");
+    break;
+  default:
+    console.log("거짓");
+    break;
+}
+
+
+for(let i = 0; i< 10; i++){
+    // console.log(i);
+}
+
+let d = [1,2,3];  //  배열
+
+for(let i in d){
+  console.log(i);
+}
+
+let e = {k1: "1", k2: "2", k3: "3"}; // 오브젝트(Object) -> { }
+for(let i in e){
+  console.log(i, e[i]);
+}
+
+// 배열 + 오브젝트
+let f = [
+  {k1: "1", k2: "2"},
+  {k1: "3", k2: "4"}
+];
+
+for(let i in f){
+  console.log(i);
+}
+
+// 위의 결과 값은 0, 1이 나온다. 0과 1은 인덱스 값이다.
+// 0
+// 1
+
+for(let i in f){
+  console.log(i, f[i]);
+}
+
+// 위의 결과 값
+// 0 { k1: '1', k2: '2' }
+// 1 { k1: '3', k2: '4' }
+
+for(let i in f){
+  console.log(i, f[i], f[i].k1);
+}
+
+// 위의 결과 값
+// 0 { k1: '1', k2: '2' } 1
+// 1 { k1: '3', k2: '4' } 3
+
+
+package study05;
+
+public class App {
+    public static void main(String[] args) {
+      
+
+      /*
+      while(true){
+        System.out.println(1);
+        break;
+      }
+      */
+      
+      /*
+      int a =1;
+      do{
+        if(a > 1) {break;}
+        System.out.println(a);
+        a++;
+      }while(true);
+      */
+    
+   
+    int a = 1;
+    for(; a <10; a++){
+      for(int b =1; b<10; b++){
+     //   System.out.println(a + " * " + b + " = " + (a * b));
+      }
+    }
+
+
+    // 1차원 배열
+    String [] c = new String[] {"가", "나", "다"};
+      for(int i = 0; i < c.length; i++){
+        System.out.println(c[i]);
+    }
+
+
+    // 2차원 배열
+    String[][] d = new String[][] {
+                    {"가","나"},
+                    {"다","라"}
+                  };
+
+    for(int i =0; i < d.length; i++){
+      for(int j =0; j < d[i].length; j++){
+          System.out.println(d[i][j]);
+      }
+      System.out.println();
+  }
+}
+}
+
+//  반복문 : while, do while
+
+/*
+while(true){
+  console.log(1);
+  break;
+}
+*/
+
+/*
+let a = 1;
+do{
+  if(a > 1) {break;}
+  console.log(a);
+  a++;
+} while(true);
+ */
+
+// 중첩 2개의 반복문 출력 : 구구단
+let a = 1;
+for(; a < 10; a++){
+  for(let b =1; b<10; b++){
+     //console.log(`${a} * ${b} = ${a*b}`);
+  }
+}
+
+// 1차원 배열
+let c = ["가", "나", "다"];
+  for(let i = 0; i < c.length; i++){
+    //console.log(c[i]);
+}
+
+// 2차원 배열
+let d = [
+  ["가", "나"],
+  ["다", "라"]
+];
+for(let i =0; i<d.length; i++){
+  for(let j = 0; j<d[i].length; j++){
+      //console.log(d[i][j]);
+  }
+  //console.log("");
+}
+
+for(let i in d){
+  for(let j in d[i]){
+    console.log(d[i][j]);
+  }
+  console.log("");
+}
+
+// 위의 코드
+// 가
+// 나
+
+// 다
+// 라
+
+package study06;
+
+public class App {
+  public static void main(String[] args) {
+      String[][] a = new String[][] {
+          {"*"}, {"*", "*"}, {"*", "*", "*"}
+      };
+
+      /*
+      for(int i =0; i < a.length; i++){
+        for(int j =0; j < a[i].length; j++){
+          System.out.print(a[i][j]);
+        }
+        System.out.println();
+      }
+
+      for(int i = a.length-1; i >=0; i--){
+        for(int j =0; j < a[i].length; j++){
+          System.out.print(a[i][j]);
+        }
+        System.out.println();
+      }
+       */
+
+      int c = 3;
+
+      for(int i = 0; i < a.length; i++){
+        for(int j = c; j >= 0; j--){ 
+          // j = 0, 1, 2
+          // c : 3 > 1, 2 
+          if(j < a[i].length){ // (0 < 1) 참, (1 < 1) 거짓, (2 < 1) 거짓
+            // System.out.println(" 1 > " + j + " : " + a[i].length);
+            System.out.print(a[i][j]);
+          } else{
+            // System.out.println(" 2 > " + j + " : " + a[i].length);
+            System.out.print(" ");
+          }
+        }
+          System.out.println();
+      }
+
+      for(int i = a.length - 1; i >= 0; i--){
+        for(int j = c; j >= 0; j--){ 
+          // j = 0, 1, 2
+          // c : 3 > 1, 2 
+          if(j < a[i].length){ // (0 < 1) 참, (1 < 1) 거짓, (2 < 1) 거짓
+            // System.out.println(" 1 > " + j + " : " + a[i].length);
+            System.out.print(a[i][j]);
+          } else{
+            // System.out.println(" 2 > " + j + " : " + a[i].length);
+            System.out.print(" ");
+          }
+        }
+          System.out.println();
+      }
+
+    }  
+
+}
+
+
+// 2차원 배열로 별 출력해 보기
+/***************************
+ *  *     ***     *     ***
+ *  **    **     **      **
+ *  ***   *     ***       *
+ ***************************/
+
+let a = [
+  ["*"],
+  ["*", "*"],
+  ["*", "*", "*"]
+];
+
+for(let i = 0; i < a.length; i++){
+  let b = "";
+  for(let j =0; j < a[i].length; j++){
+    // console.log(a[i][j]);
+     b += a[i][j];
+  }
+    console.log(b);
+}
+
+// a.length-1 = 2랑 같은 의미(2부터 시작해야 되서)
+for(let i = a.length-1; i >= 0; i--){
+  let b = "";
+  for(let j =0; j < a[i].length; j++){
+    // console.log(a[i][j]);
+     b += a[i][j];
+  }
+    console.log(b);
+}
+
+let c = 3; 
+for(let i = 0; i < a.length; i++){
+  let b = "";
+  for(let j = c - 1; j >= 0; j--){
+    // console.log(a[i][j]);
+    if(a[i][j] == undefined){
+      b += " ";
+    } else{
+      b += a[i][j];
+    }
+  }
+    console.log(b);
+}
+
+for(let i = a.length -1 ; i >= 0; i--){
+  let b = "";
+  for(let j = c - 1; j >= 0; j--){
+    // console.log(a[i][j]);
+    if(a[i][j] == undefined){
+      b += " ";
+    } else{
+      b += a[i][j];
+    }
+  }
+    console.log(b);
+}
+
+
