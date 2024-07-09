@@ -83,6 +83,26 @@ for(let btn of btns) {
 1. 점심 먹고 타임 어택 하기
 : 50분 + 디코에 못한 부분 올리기
 
+데이터 Insert : (O,X) (ex. X면 어디 부분에서 막혔는지. jsp 또는 java )
+1. 데이터(한개) Select : (X)
+2. 데이터리스트(전부) Select : (O)
+3. 데이터리스트(승인,미승인) Select : (O)
+4. 데이터 Update(title, content) : (X)
+5. 데이터 Update(accept) : (X)
+
+- 타임어택을 혼자서 1시간 동안 진행 하였는데, 3번,4번 까지 밖에 못했습니다.
+
+TestSpring.zip
+: 이걸로 하기로
+: 스프링 MVC 모델로 만든것 / 포트 번호 3306으로 수정해야함
+: @ModelAttribute 사용한 이유는 DTO 처리를 할때 build를 사용하는데, 사용안해도 알아서 자료형이 맞게 맵핑이 되서 사용함
+: sql 쿼리에서 백틱(``)을 사용한 이유는 컬럼을 명시해 주기 위해서 이다. 
+
+webtest.zip
+: 1,2를 혼합한 것
+
+
+
 
 const model = [
     [0,1,0,1,0],
