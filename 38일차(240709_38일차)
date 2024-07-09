@@ -1,2 +1,229 @@
 20240709
-1.
+1. 자바스크립트 없이는 화면 설계 힘듬
+2. 인터페이스 구현
+: 자바스크립트 +  스프링
+3. 스프링 문제 3문제 (7월 16일)
+: IOC 관련, DL, DI
+4. 차근차근 하기 너무 조급해 하지 않아야 함
+5. 7월 19일 팀으로 타임어택(자가진단) + 시험
+6. 애플리케이션 테스트 및 배포 -> 애플리케이션 테스트 관리 -> 애플리케이션 테스트 수행 -> 애플리케이션 배포
+: 스프링으로 진행
+7. 오늘부터 ES6 기준으로 화면 구성할 예정 + 백쪽은 스프링으로 할예정이고, 데이터만 뿌려주는 식으로
+8. 가독성이 떨어지기 때문에 모듈화 해야함
+9. node.js는 백엔드쪽이긴 하다. 노드에서 제공해주는 모듈은 대부분 사용 불가(특정 브라우저에서의 보안 문제 때문에), CommonJS 사용 못함
+10. 기본이 CommonJS 이다. node로는 CommonJS로 사용 가능 하다. 하지만 보안 때문에 사용 안함(웹 브라우저에서 사용 불가)
+그렇기 떄문에 ES6로 해야함
+11. ES6를 사용하려면
+:  package.json에서 "type": "module", 를 추가한다.
+{
+  "name": "javascriptstudy-main",
+  "version": "1.0.0",
+  "description": "NodeJS + Java",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+12. 브라우저에서는 ES6를 사용해야 한다.
+
+13. li는 행, div는 열을 의미한다.
+
+14. 태그는 배열로 담겨 있다.
+
+15. 윈도우에서 사용하는 객체는 document 이다.
+
+16. => 화살표 함수는 this를 사용하면 찾지 못하는 특징이 있다.
+
+17. (e)
+: 이벤트 객체이다.
+
+18. this 랑 e.target 랑 같다.
+const btns = document.getElementsByTagName("button");
+for(let btn of btns) {
+    console.log(btn);
+    btn.onclick = function(e) {
+        console.log(this, e, e.target, e.target.id); // this 랑 e.target 랑 같다.
+        switch (e.target.id) {
+            case "1":
+                ul.innerHTML = "";
+                break;
+            case "2":
+                ul.innerHTML = html;
+                break;
+            default:
+                // 나머지 기능
+                break;
+        }
+    }
+	
+19. 클릭 이벤트 공부하기
+
+20. innerHTML
+: 태그를 가지고 온다.
+
+21. innerText
+: text의 값만 가지고 온다.
+
+22. 동적인 변화를 줄 때 함수(메서드)를 만들어서 작성할 생각 하기
+
+23. 백틱(``)
+
+============================
+1. 점심 먹고 타임 어택 하기
+: 50분 + 디코에 못한 부분 올리기
+
+
+const model = [
+    [0,1,0,1,0],
+    [1,0,1,0,1],
+    [0,1,0,1,0],
+    [1,0,1,0,1],
+    [0,1,0,1,0]
+];
+//module.exports = model; // CommonJS 내보내기
+export default model; // ES6 내보내기
+
+
+// 모듈 사용하기
+/***********************************************
+ * 사용할 객체 : const model = {};
+ ***********************************************/ 
+
+/***********************************************
+ * CommonJS : 사용법
+ * 내보내기 : module.exports = model;
+ * 가져오기 : const model = require("경로 + 파일");
+ ***********************************************/ 
+
+// const model = require("./data1.js"); // CommonJS 가져오기
+import model from "./data1.js"; // ES6 가져오기
+
+/***********************************************
+ * ES6 : 사용법
+ * 내보내기 : export default model;
+ * 가져오기 : import model from "";
+ ***********************************************/
+ 
+// 데이터 확인
+//console.log(model);
+/*
+let html = "";
+for(let y = 0; y < model.length; y++){
+    let temp ="";
+    for(let x =0; x < model[y].length; x++){
+        temp += `<div class="${(model[y][x] == 1) ? "bg1" : "bg2"}"></div>`;
+    }
+    html += `<li>${temp}</li>`;
+}
+
+
+
+
+let html2 = "";
+for(let y = 0; y < model.length; y++){
+    let temp ="";
+    for(let x =0; x < model[y].length; x++){
+        temp += `<div class="${(model[y][x] == 1) ? "bg2" : "bg1"}"></div>`;
+    }
+    html2 += `<li>${temp}</li>`;
+}
+*/
+const dataEvent = (type) => {
+    let html = "";
+    for(let y = 0; y < model.length; y++){
+        let temp ="";
+        for(let x =0; x < model[y].length; x++){
+            if(type){
+                temp += `<div class="${(model[y][x] == 1) ? "bg1" : "bg2"}"></div>`;
+            } else{
+                temp += `<div class="${(model[y][x] == 1) ? "bg2" : "bg1"}"></div>`;
+            } 
+        }
+        html += `<li>${temp}</li>`;
+    }
+    return html;
+}
+
+const ul = document.getElementsByTagName("ul")[0];
+//ul.innerHTML = html;
+ul.innerHTML = "";
+
+
+    const btnEvent = (e) => {
+        //console.log(this, e, e.target, e.target.id); // this 랑 e.target 랑 같다.
+        switch (e.target.id) {
+            case "1":
+                ul.innerHTML = "";
+                break;
+            case "2":
+                ul.innerHTML = dataEvent(true);
+                break;
+            default:
+                // 나머지 기능 부여
+                ul.innerHTML = dataEvent(); // false는 줄 필요 없다.(무시 가능)
+                break;
+        }
+    }
+
+
+const btns = document.getElementsByTagName("button");
+for(let btn of btns) {
+    //console.log(btn);
+    btn.onclick = btnEvent;
+}
+/*
+btns[0].onclick = function(){
+    ul.innerHTML = "";
+}
+btns[1].onclick = function(){
+    ul.innerHTML = html;
+}
+btns[2].onclick = function(){
+    // 기능 부여
+}
+*/
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://github.com/JosephBean/SpringStudy2/blob/main/src/main/webapp/resources/images/logo.png?raw=true" rel="icon" type="image/x-icon">
+    <title>JS</title>
+    <link href="./index.css" rel="stylesheet">
+    <script src="./app.js" type="module"></script>
+</head>
+<body>
+    <main>
+        <nav>
+            <button type="button" id="1">호출1</button>
+            <button type="button" id="2">호출2</button>
+            <button type="button">호출3</button>
+        </nav>
+        <section>
+            <ul>
+                <li>
+                    <div class="bg2"></div><div class="bg1"></div><div class="bg2"></div><div class="bg1"></div><div class="bg2"></div>
+                </li>
+                <li>
+                    <div class="bg1"></div><div class="bg2"></div><div class="bg1"></div><div class="bg2"></div><div class="bg1"></div>
+                </li>
+                <li>
+                    <div class="bg2"></div><div class="bg1"></div><div class="bg2"></div><div class="bg1"></div><div class="bg2"></div>
+                </li>
+                <li>
+                    <div class="bg1"></div><div class="bg2"></div><div class="bg1"></div><div class="bg2"></div><div class="bg1"></div>
+                </li>
+                <li>
+                    <div class="bg2"></div><div class="bg1"></div><div class="bg2"></div><div class="bg1"></div><div class="bg2"></div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+
