@@ -504,6 +504,7 @@ window.addEventListener("keydown", (e) => {
     let point = history[0];
     switch (e.keyCode) {
         case 37: // 왼쪽 : 0 이하는 이동 불가
+	    // [point - 1, point] : [움직일 위치, 돌아갈 위치(현재 위치)]
             if(point > 0) history = [point - 1, point];
             break;
         case 38: // 위쪽 : 4 이하는 이동 불가
