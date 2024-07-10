@@ -1,1 +1,15 @@
 20240710
+1. console.log(id);
+	return;
+: return;를 작성하면 자바스크립트에서 아래의 코드들 작동안하게 할 수 있다.
+
+2. w3school에서 자바스크립트 공부하기
+: localStorage는 문자열만 들어갈 수 있다.
+
+3. json에 대해 알아야 한다.
+
+4. const myJSON = JSON.stringify(obj);
+: 문자열로 바꿔 줄 수 있다.
+
+5. const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+: 배열로 바꿔 줄 수 있다.
