@@ -52,7 +52,14 @@ export const $async = (method, url, params, callback) => {
 
 13. $async("method", url, params, callback);
 
-14. 
+14. 방식이 $async, $get, $post 방식이 있다.
+
+15. 리로드 방식(깜빡하는 화면)을 #을 넣어서 막아 줄수 있다.  
+: <a href="#">가져오기1</a>
+
+16. 아래의 방식이 화살표 함수
+: () => $get("./html/menu1.html", {}, event1);
+
 
 [app.js]
 /***************************************************
