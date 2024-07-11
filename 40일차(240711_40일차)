@@ -72,7 +72,7 @@ const event1 = data => {
 
 $async("GET", "./html/menu1.html", {}, event1);
 
-[aja.js]
+[ajax.js]
 const getParams = (params={}) => {
     let value = "";
     for(let k in params) {
