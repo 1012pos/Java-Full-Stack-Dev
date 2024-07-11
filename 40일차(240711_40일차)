@@ -1,1 +1,150 @@
 20240711
+1. 비동기면 스프링도 사용할 것이다. 필수적으로 알아야 한다.
+
+2. AJAX 는 자바스크립트의 꽃이다. 필수적으로 알아야 한다.(W3School)
+: JS AJAX에서 확인 가능
+
+- Define a Callback Function
+: xhttp.onload = function() {
+  // What to do when the response is ready
+}
+
+- Send a Request
+: xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+
+- XMLHttpRequest Object Methods
+
+
+3. JSON도 알아야 한다.
+
+4. 조각들을 비동기식으로 화면으로 가져오겠다. app.js에서 클릭이벤트로 가져오겠다.
+
+5. /***************************************************
+ * 비동기 통신 방법 (Ajax)
+ * https://www.w3schools.com/js/js_ajax_intro.asp
+ ***************************************************/
+import { $async } from "./ajax.js"; // $async 여기서 $를 붙인 이유는 별명이다.
+
+6. 비동기를 사용하려면 아래의 코드가 필수적이다.
+: const http = new XMLHttpRequest();
+
+7. 화살표 함수를 사용하면 this를 사용 못함
+
+8. AJAX 동작 방식 알아야 한다. 앞으로 수업을 이해할 수 있다.
+
+9. 아래의 코드를 완전히 이해해야 한다.(정해진 규칙이다. 흐름을 이해해야 한다.)
+const http = new XMLHttpRequest();
+export const $async = (method, url, params, callback) => {
+    http.onload = function() {
+        if(callback != undefined) callback(this); // callback(this) 돌려받은 정보
+    }
+    http.open(method, url); // 어딘가에 보낼때 사용 http.open 메서드
+    http.send(getParams(params)); // http.send 메서드는 보내라 , 여기는 객체 형식은 못담는다.
+}
+
+10. 비동기는 데이터베이스에 영향을 준다. 비동기 통신은 뒤에서 처리한다.
+
+11. http.onload는 돌아올 때 사용
+
+12. callback(this) = data = data.response
+: 위의 코드는 다 같은 데이터를 담고 있다.
+
+13. $async("method", url, params, callback);
+
+14. 
+
+[app.js]
+/***************************************************
+ * 비동기 통신 방법 (Ajax)
+ * https://www.w3schools.com/js/js_ajax_intro.asp
+ ***************************************************/
+import { $async } from "./ajax.js"; // $async 여기서 $를 붙인 이유는 별명이다.
+
+const event1 = data => document.getElementById("menu1").innerHTML = data.response;
+
+/* 위의 방식은 코드를 줄인거임 아래의 코드랑 똑같은 거임
+const event1 = data => {
+    //console.log(data.response);
+    document.getElementById("menu1").innerHTML = data.response;
+};
+*/
+
+$async("GET", "./html/menu1.html", {}, event1);
+
+[aja.js]
+const getParams = (params={}) => {
+    let value = "";
+    for(let k in params) {
+        if(value != "") value += "&";
+        value +=  `${k}=${params[k]}`;
+    }
+    return value;
+}
+const http = new XMLHttpRequest();
+export const $async = (method, url, params, callback) => {
+    http.onload = function() {
+        if(callback != undefined) callback(this);
+    }
+    http.open(method, url);
+    http.send(getParams(params));
+}
+export const $get = (url, params, callback) => $async("GET", url, params, callback);
+export const $post = (url, params, callback) => $async("POST", url, params, callback);
+
+
+[index.html]
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://github.com/JosephBean/SpringStudy2/blob/main/src/main/webapp/resources/images/logo.png?raw=true" rel="icon" type="image/x-icon">
+    <title>MENU</title>
+    <link href="./index.css" rel="stylesheet">
+    <script src="./app.js" type="module"></script>
+</head>
+<body>
+    <nav>
+        <article>
+            <img src="https://github.com/JosephBean/SpringStudy2/blob/main/src/main/webapp/resources/images/logo.png?raw=true" alt="로그">
+        </article>
+        <a href="#menu1">고양이</a>
+        <a href="#menu2">강아지</a>
+        <a href="#menu3">햄스터</a>
+        <a href="#menu4">금붕어</a>
+    </nav>
+    <main>
+        <section id="menu1" class="bg bg1">
+            
+        </section>
+        <section id="menu2" class="bg bg2">
+            <ul>
+                <li class="bi bi4"></li>
+                <li class="bi bi5"></li>
+                <li class="bi bi6"></li>
+            </ul>
+        </section>
+        <section id="menu3" class="bg bg3">
+            <ul>
+                <li class="bi bi7"></li>
+                <li class="bi bi8"></li>
+            </ul>
+        </section>
+        <section id="menu4" class="bg bg4">
+            <ul>
+                <li class="bi bi9"></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+
+[menu1.html]
+<ul>
+    <li class="bi bi1"></li>
+    <li class="bi bi2"></li>
+    <li class="bi bi3"></li>
+    <li class="bi bi2"></li>
+    <li class="bi bi3"></li>
+</ul>
