@@ -1,5 +1,4 @@
 240712
-1. 48분 16초부터보면 될듯 -> 1시간 07분
 const a = document.getElementsByTagName("a");
 for(let tag of a) {
     const event = data => console.log(data.response);
