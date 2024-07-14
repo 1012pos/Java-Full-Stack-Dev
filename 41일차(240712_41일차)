@@ -1,5 +1,5 @@
 240712
-const a = document.getElementsByTagName("a");
+1. const a = document.getElementsByTagName("a");
 for(let tag of a) {
     const event = data => console.log(data.response);
     tag.onclick = (e) => {
