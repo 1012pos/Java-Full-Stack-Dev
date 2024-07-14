@@ -1,0 +1,126 @@
+240712
+1. 48분 16초부터보면 될듯 -> 1시간 07분
+const a = document.getElementsByTagName("a");
+for(let tag of a) {
+    const event = data => console.log(data.response);
+    tag.onclick = (e) => {
+        e.preventDefault();
+        let no = Number(tag.id) - 1;
+        console.log(no, model[no]);
+    }
+}
+
+2. http://lh/json/test
+
+3. 백엔드는 스프링쪽 부분에서 처리를 해줄 것이고, 스프링쪽에서는 데이터베이스의 데이터를 json형식으로
+리턴해주는 역할만 할것이다. / 프론트는 화면을 담당할 것이고, 자바스크립트로 스프링에서오는 데이터를 받아서
+화면을 그려주는 역할을 할 것이다.
+
+4. 화면의 버튼을 누르면 스프링쪽에서 오는 정보를 받을 것이다.
+그리고 스프링에서는 status(상태값), message, result(화면에 영향을 줄 정보)가 올것이다.
+
+5. VO(Value Object)형식이나 DTO(Data Transfer Object)형식은 데이터 객체이다. 
+
+6. 아래의 형식이 JSON 형식이며, 이 형식은 자바스크립트에서 사용하는 데이터 형식이다. 이 JSON 형식으로
+자바스크립트에게 전달해줘야 이것을 받아서 사용할 수 있다(데이터를 받을 수 있다.) 그래서 백엔드는 JSON 형식으로 잘 전달해 주면 된다.
+{
+  "status": true,
+  "message": "데이터베이스 접속 성공",
+  "result": {
+    "no": 5
+  }
+}
+
+
+7. 백엔드와 프론트가 대화를 주고 받으려면 접근권한이 필요하고, 이 접근권한은 컨트롤한테 준다.
+컨트롤한테 어떻게 주면 되냐면, 클래스한테 전체를 주거나, 특정 메소드한테 주던지 하면 된다.
+: @CrossOrigin(origins = "*") // 접근권한을 클래스 전체한테 줌
+
+8. data.response는 문자열만 받을 수 있어서, 객체로 전달했지만, 사용할 수 없다. 그렇기 때문에
+JSON.parse를 이용해서 객체(객체화)로 전환 시켜야 한다.(JSON.parse(data.response))
+
+9. 우리가 지금 현재 사용하고 있는 xml, HttpResult라는 객체는 무조건 문자열이다. 그래서 변환하는 작업이 필요하다.
+
+10. document.getElementsByTagName("ul")[0].innerHTML  = html;
+:  index.html에서 ul태그가 하나뿐이고, ul의 첫번째꺼에 innerHTML을 넣는데, 방금 만든 html을
+넣어줄때 위의 코드처럼 작성한다.
+
+const a = document.getElementsByTagName("a");
+for(let tag of a) {
+    const event = data => {
+        console.log(JSON.parse(data.response));
+        const res = JSON.parse(data.response);
+        if(res.status){ // data.status 가 true면 실행
+            let no = res.result.no;
+            let html = `<li>
+                            <img src="${model[no]}">
+                        </li>`
+            console.log(html);
+            document.getElementsByTagName("ul")[0].innerHTML  = html;
+        }
+    }
+	
+11. 테이블 생성
+USE edu;
+
+CREATE OR REPLACE TABLE files 
+(
+	`no` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`type` INT NOT NULL,
+	`domain` VARCHAR(50) NOT NULL,
+	`path` VARCHAR(100) NOT NULL
+);
+
+
+12. 화면에 출력할 데이터를 담아 놓는 테이블을 생성한다.
+
+13. domain
+: https://cdn.pixabay.com
+
+14. path
+: /photo/2023/06/14/06/22/cat-8062388_1280.jpg
+
+15. type
+: 여기서 타입은 동물 유형 타입이고, int로 설정함.(고양이, 강아지 등)
+
+16. 데이터 베이스로 가려면 JsonMapper로 가야 된다.(@Mapper)
+
+17. 아래의 코드에서는 li의 영역과 img의 영역은 같다.
+	<ul>
+		<li>
+			<img src="https://cdn.pixabay.com/photo/2023/06/14/06/22/cat-8062388_1280.jpg">
+		</li>
+	</ul>
+
+18. 자기자신을 찾아주는게 target
+
+19. `del` BOOLEAN DEFAULT (0) 이 컬럼 추가
+
+USE edu;
+
+CREATE OR REPLACE TABLE files 
+(
+	`no` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`type` INT NOT NULL,
+	`domain` VARCHAR(50) NOT NULL,
+	`path` VARCHAR(100) NOT NULL,
+	`del` BOOLEAN DEFAULT (0)
+);
+
+INSERT INTO files (`type`, `domain`, `path`) VALUE (1, 'https://cdn.pixabay.com', '/photo/2023/06/14/06/22/cat-8062388_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (1, 'https://cdn.pixabay.com', '/photo/2019/11/08/11/56/kitten-4611189_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (1, 'https://cdn.pixabay.com', '/photo/2023/06/29/12/28/cats-8096304_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (2, 'https://cdn.pixabay.com', '/photo/2020/03/31/19/20/dog-4988985_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (2, 'https://cdn.pixabay.com', '/photo/2016/02/26/16/32/bulldog-1224267_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (2, 'https://cdn.pixabay.com', '/photo/2022/07/07/07/25/dog-7306691_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (3, 'https://cdn.pixabay.com', '/photo/2018/02/18/13/03/cute-3162209_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (3, 'https://cdn.pixabay.com', '/photo/2016/03/05/22/54/animal-1239398_1280.jpg');
+INSERT INTO files (`type`, `domain`, `path`) VALUE (4, 'https://cdn.pixabay.com', '/photo/2018/02/15/09/12/underwater-3154726_1280.jpg');
+
+COMMIT;
+
+SELECT * FROM files;
+
+UPDATE files SET del = 1 WHERE NO = 2;
+
+SELECT * FROM files WHERE del = 0 AND TYPE =1; 
