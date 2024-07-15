@@ -101,3 +101,11 @@ IOC 컨테이너
 
 23. @RequestParam("type") String type
 : @RequestParam은 쿼리스트링이기 때문에 http://lh/data/test3?type=data1 이렇게 호출한다.
+
+24. DI
+: 스프링 빈객체(@Bean)를 가지고 어노테이션을 주입하여 사용한다.
+
+25. DL
+: 스프링 빈객체(app-context.xml)가 만들어서 검색으로 사용한다.
+
+26. spring io -> Spring Boot -> LEARN 에서 Reference Doc에서 공부하기
