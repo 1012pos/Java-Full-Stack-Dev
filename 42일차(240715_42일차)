@@ -1,2 +1,103 @@
 20240715
-1. 
+1. 내일 시험 
+IOC 컨테이너
+: DL(검색하는거고) + DI(주입)
+
+2. pom.xml
+<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${org.springframework-version}</version>
+</dependency>
+
+3. <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Test1 Bean 등록하기 -->
+	<bean class="com.folder.bean.Test1"></bean>
+	
+	<!-- Test2 Bean 등록하기 -->
+	
+	
+	<!-- Test3 Bean 등록하기 -->
+		
+	
+</beans>
+
+: 위의 기법이 DL 기법이다.
+: <!-- Test1 Bean 등록하기 -->
+	<bean class="com.folder.bean.Test1"></bean>
+	
+4. <!-- Test2 Bean 등록하기 -->
+	<bean class="com.folder.bean.Test2">
+		<property name="a" value="5"></property>		
+		<property name="b" value="오"></property>		
+	</bean>
+	
+: bean 객체의 property를 사용하려면 항상 setter가 필요하다.
+
+5. 생성자에 초기값 넣기 
+
+	<!-- Test3 Bean 등록하기 -->
+	<bean class="com.folder.bean.Test3">
+		<constructor-arg name="a" value="3"></constructor-arg>
+		<constructor-arg name="b" value="삼"></constructor-arg>
+	</bean>
+
+6. getBean
+: 검색해서 가져오는 역할을 한다.(DL)
+
+7. IOC컨테이너 속에 있는 Bean을 검색하기 위한것
+: DL
+
+8. DL은 내가 검색해서 가져오는거고, DI는 내가 넣는거다.
+
+9. 어노테이션을 쓰면 스프링 빈 객체가 된다.
+
+10. @Autowired private TestService ts; 에서 @Autowired 를 사용해야 TestService에서 @Service를 넣어줘야 한다.
+만약 생성자가(new) 있으면 위의 어노테이션을 사용안해도 된다.
+
+11. 어노테이션을 넣어주냐 안넣어주냐는 new를 사용해서 생성자를 만들었냐 안만들어줬냐와 연관이 있다.(DI, 의존적 주입)
+
+12. 빈객체를 만들어줘서 주입을 받는것
+: DI
+
+13. 성격이 맞지 않는거는 @Component를 만들어서 사용하면 된다.
+
+14. 설정 파일은 어노테이션 @Configuration을 작성해서 사용한다.
+
+15. @Bean 어노테이션은 빈객체로 만들어 준다.
+: @Bean 어노테이션을 사용하는게 DI 형식이고, DL 같은 경우 app-context.xml에 만들어 준다.
+
+16. 인터페이스는 추상메서드를 만들수 있다.
+
+17. @Qualifier("Data1Imp"), @Qualifier("Data2Imp")
+: 다형성
+
+18. 서버가 사용중이라고 뜨면
+: application.properties에서 server.port = 80 을 추가해 준다.
+
+19. @Build
+: 이거를 사용하면 new 사용안하고 사용 가능
+
+20. 아래의 어노테이션이 하나의 셋트
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+
+21. return DataDTO.builder().a(a).b(b).build(); // setter
+
+22. grade은 pom.xml이 없기 때문에 lombak(라이브러리)을 사용하려면 build.grade에 아래의 코드를 넣는다.
+: dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+23. @RequestParam("type") String type
+: @RequestParam은 쿼리스트링이기 때문에 http://lh/data/test3?type=data1 이렇게 호출한다.
