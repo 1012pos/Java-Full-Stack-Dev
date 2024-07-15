@@ -137,3 +137,6 @@ INSERT INTO files (`type`, `domain`, `path`) VALUE (4, 'https://cdn.pixabay.com'
 COMMIT;
 
 SELECT * FROM files;
+
+28. @Mapper
+: Mapper는 Mybatis 기술이며, 동적 쿼리를 사용하기 위해 <script></script>를 이용하여 if문 등을 사용할 수 있다.
