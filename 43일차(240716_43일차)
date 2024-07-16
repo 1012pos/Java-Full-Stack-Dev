@@ -178,4 +178,20 @@ spring.servlet.multipart.maxRequestSize=100MB // 용량 제한
 17. @ModelAttribute FileDTO fileDto
 : 한번에 받기위해 사용한 어노테이션
 
-18. 
+18. 파일업로드는 경로가(절대경로) 정말 중요하다.
+
+19. mkdirs();
+: 경로안에 디렉토리 만들어주세요 함수이다.
+
+20. "c:\\upload\\2024-07-16\\"; 여기서 upload 폴더이름은 내가 지정할수 있다 ex "c:\\uploads\\2024-07-16\\"; 하면
+지정한 경로에 자동으로 uploads로 폴더가 생성된다.
+
+	// 파일 저장 경로가 필요하기 때문에 생성해야 한다.
+		String path = "c:\\upload\\2024-07-16\\";
+		try {
+			File f = new File(path + fileName);
+			f.mkdirs(); // 파일 저장할 경로 생성
+			file.transferTo(f); // 파일 복사 내용 생성
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
