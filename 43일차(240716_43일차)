@@ -140,4 +140,42 @@ public class AppConfig {
 	
 </beans>
 
-13. 
+13. application.properties
+server.port=80
+spring.application.name=SpringStudy5
+spring.profiles.active=dev
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=root
+spring.datasource.password=1234
+
+spring.servlet.multipart.maxFileSize=100MB // 용량 제한
+spring.servlet.multipart.maxRequestSize=100MB // 용량 제한
+
+14. @Component
+: 공통 코드
+
+15. 파일업로드
+: 무조건 post로 메소드 지정
+: input type="file"
+: enctype="multipart/form-data"
+
+<form action="/s1/fileUpload" method="post" enctype="multipart/form-data">
+
+<input type="file" name="file" id="file" accept="image/*" autocomplete="off">
+
+@PostMapping("/fileUpload")
+	public String fileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes ra) {
+		ra.addAttribute("url", fc.upload(file));
+	    return "redirect:/s1/view";
+	}
+
+
+16. @RequestParam("url")
+: 하나씩 받을때 사용하는 어노테이션(파라미터로 받는다.)
+
+17. @ModelAttribute FileDTO fileDto
+: 한번에 받기위해 사용한 어노테이션
+
+18. 
