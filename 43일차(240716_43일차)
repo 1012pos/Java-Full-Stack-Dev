@@ -1,0 +1,143 @@
+20240716
+1. DL : 의존적 조회
+
+2. DL : 의존적 주입
+
+3. context.getBean
+: DL 방식
+
+4. @ComponentScan(basePackages = "com.folder.annotation")
+: 위의 코드를 통해서 DL -> DI로 바뀜
+
+5. ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+: Configure를 읽어 온다.
+
+6. No qualifying bean of type 'com.folder.app.AppTest' available
+: 위의 오류 메세지 발견되면 아래의 코드를 작성한다.(빈 객체를 생성한다.)
+public class AppConfig {
+	
+	@Bean
+	public AppTest appTest() {
+		return new AppTest();
+	}
+
+}
+
+즉 @ComponentScan(basePackages = "com.folder.app") 를 사용하면 아래의 코드를 주석처리하고
+
+public class AppConfig {
+	
+	@Bean
+	public AppTest appTest() {
+		return new AppTest();
+	}
+
+}
+
+만약 @ComponentScan(basePackages = "com.folder.app") 를 주석처리하면 아래의 코드를 작성하면 된다.
+
+public class AppConfig {
+	
+	@Bean
+	public AppTest appTest() {
+		return new AppTest();
+	}
+
+}
+
+7. 스프링 빈객체 공부하기
+
+8. xml 방식을 사용하면 DL 방식
+
+9. @ComponentScan(basePackages = "com.folder.app")
+:위의 코드를(basePackages = "com.folder.app")작성하면 IOC 컨테이너 스프링 빈객체로 바뀐다.
+
+10. DAO = Repository 같은 개념
+
+11. IOC의 기본 개념을 공부해야함
+
+12. 아래의 코드를 가지고 app-context.xml에 빈객체 등록하기
+package com.folder.app;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+@ComponentScan(basePackages = "com.folder.app")
+@Configuration
+public class AppConfig {
+
+//	@Bean
+//	public AppTest appTest() {
+//		return new AppTest();
+//	}
+	
+	@Bean // Spring JDBC로 빈 객체 생성
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/edu");
+		dataSource.setUsername("root");
+		dataSource.setPassword("1234");
+		return dataSource;
+	}
+	
+	@Bean  // Mybatis - 접속된 정보 관리
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource, ApplicationContext context) throws Exception {
+		SqlSessionFactoryBean sfb = new SqlSessionFactoryBean();
+		sfb.setDataSource(dataSource);
+		sfb.setMapperLocations(context.getResources("classpath:/sql/*.xml"));
+		return sfb.getObject();
+	}
+	
+	@Bean // Mybatis를 이용하여 접속 통로 가져오기
+	public SqlSession sqlSession(SqlSessionFactory sqlSessionFactory) {
+		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+	
+}
+
+[위의 코드를 가지고 빈객체 등록하기, app-context.xml]
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Bean 등록하기 -->
+	<bean class="com.folder.xml.Spring1Data">
+		<property name="name" value="류관순"/>
+		<property name="email" value="ryu@email.com"/>
+		<property name="password" value="5678"/>
+	</bean>
+	
+	<!-- Spring JDBC로 빈 객체 생성 -->
+	<bean id ="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value=""/>
+		<property name="url" value="jdbc:mariadb://localhost:3306/edu"/>
+		<property name="username" value="root"/>
+		<property name="password" value="1234"/>
+	</bean>
+	
+	<!-- Mybatis - 접속된 정보 관리 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:/sql/*.xml"/>
+	</bean>
+
+	<!--  Mybatis를 이용하여 접속 통로 가져오기 -->	
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>  // return new SqlSessionTemplate(sqlSessionFactory); 여기서 new가 있어서 constructor-arg 생성자를 사용함
+	</bean>
+	
+</beans>
+
+13. 
