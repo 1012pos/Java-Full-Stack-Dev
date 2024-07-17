@@ -5,7 +5,7 @@
 
 3. 자바는 외부라이브러리인 JUnit5을 사용해서 테스트 한다.
 
-4. 금요일 시험에 JUnit 관련 어노테이션이 시험에 나온다.(https://junit.org/junit5/docs/current/user-guide/)
+4. 금요일 시험에 JUnit 관련 어노테이션(Annotations)이 시험에 나온다.(https://junit.org/junit5/docs/current/user-guide/)
 
 5. 이번에는 스프링사이트에서 프로젝트를 생성할 것이다.(https://start.spring.io/)
 
