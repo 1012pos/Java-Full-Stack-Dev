@@ -73,14 +73,54 @@ ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
 : JUnit 5 User Guide 공부하기!!!
 : JUnit 라이브사이클 공부하기
 
-18. @@DisplayName
+18. @DisplayName
 : 메소드 및 클래스에 사용할 수 있다.
 
 19. @Order
 : 위의 어노테이션을 이용해서 메소드 실행순서를 정할 수 있으며 
 클래스에 @TestMethodOrder(OrderAnnotation.class) 줘야 실행순서에 맞게 실행 된다.
+만약, @Order 및 @TestMethodOrder(OrderAnnotation.class) 안넣어주면 이름순으로 실행이 된다.
 
 20. jupiter
 : 5를 의미한다.
 
-21. 
+21. 테스트를 할때는 기준(하나의 법칙)을 정해서 해야 한다.
+
+22. Vue.js 시작!!!
+
+23. npm
+: node가 있다는 뜻
+
+24. Vue 시작하기 위해서는 https://v3-docs.vuejs-korea.org/guide/quick-start.html#creating-a-vue-application 사이트에서
+문서 -> 빠른시작 그다음 VS code에서 npm init vue@latest 를 쳐보기 -> 다 no로 하면 됨
+
+25. 만약 Vue.js가 생성안되면 관리자모드로 VS Code 실행하기
+
+26. Vue.js에서 public은 정적파일이 놓아두는 곳이다. 
+
+27. C:\IDE\Node> cd vue-project -> C:\IDE\Node\vue-project> npm run build
+
+28. node는 모듈이 필요하다. VS Code에서 아래의 코드를 작성한다.
+: npm install
+
+29. npm install 설치 후 -> npm run dev 명령어를 친다.
+
+30. VsCode에서 -> Extensions -> Vue 3 Snippets  및 Vue Pack 및 vue-format 설치하기
+
+31. 원래는 부모 자식간에 아래의 방식으로 작성해야 하는데,
+	header nav {
+	 }
+	 
+	sass를 주면 아래처럼 작성할 수 있다.
+	<style lang="sass" scoped>
+	header {
+	  line-height: 1.5;
+	  
+	  nav {
+	  
+	 }
+	}
+	
+32. C:\IDE\Node> npm install -g @vue/cli
+
+33. 
