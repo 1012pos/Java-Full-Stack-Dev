@@ -123,4 +123,35 @@ ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
 	
 32. C:\IDE\Node> npm install -g @vue/cli
 
-33. 
+33. cmd 창에서 vue -v
+: vue 설치 확인
+
+34. cmd 창에서 cd C:\IDE\Node 검색
+
+35. cmd 창에서 vue create app 검색
+
+36. cmd 창에서 cd app 검색
+
+37. cmd 창에서 npm run serve 검색
+
+38. http://localhost:8080/를 검색하면 Vue그림 뜸, 하지만 톰켓하고 충돌 위험 있음
+
+39. package.json에 "type": "module", 를 넣어줘야 ES6 가 된다.
+
+40. <router-view/>
+: 새로고침할때 깜빡깜빡 안하게 하는 기술
+
+41. router 기술은 SPA(single page application)이다.
+
+42. node.js
+1. VS code 에서 web 폴더 생성
+2. VS code Terminal에서 C:\IDE\Node> cd web -> npm init -> node .
+3. index.js 파일 생성, 그리고 node사이트에서 코드 복사해서 넣기
+
+43. package.json에 "type":"module", 추가해야함(ES6)
+
+44. node .
+: Terminal에서 서버 실행 명령어
+
+45. C:\IDE\Node\web> node .
+: 서버 실행됨
