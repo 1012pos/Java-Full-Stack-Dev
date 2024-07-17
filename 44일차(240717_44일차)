@@ -1,2 +1,25 @@
 20240717
-1.
+1. 시험문제가 메소드별 테스트 하는것이다.(애플리케이션 테스트 관리)
+
+2. TDD
+
+3. 자바는 외부라이브러리인 JUnit5을 사용해서 테스트 한다.
+
+4. 금요일 시험에 JUnit 관련 어노테이션이 시험에 나온다.(https://junit.org/junit5/docs/current/user-guide/)
+
+5. 이번에는 스프링사이트에서 프로젝트를 생성할 것이다.(https://start.spring.io/)
+
+6. 스프링부트는 @SpringBootApplication의 어노테이션이 있어서 패키지 하위는(package com.folder) IOC 컨테이너 빈객체가 된다.
+
+7. @SpringBootApplication
+: @SpringBootTest는 위의 어노테이션과 같은 의미이다.
+
+8. @Disabled
+: 실행을 안할꺼다라는 어노테이션이다.
+
+9. @DisplayName
+: 어떤걸 테스트하는지 명확하게 명시해주는 어노테이션이다.
+ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
+
+10. JUnit
+: 메소드와 메소드를 비교한다
