@@ -69,4 +69,9 @@ ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
 	@ContextConfiguration(locations = "classpath:context.xml")
 : SpringFramework에서 xml 파일이 있을때 사용
 
-17. 
+17. https://junit.org/junit5/ -> User Guide
+: JUnit 5 User Guide 공부하기!!!
+: JUnit 라이브사이클 공부하기
+
+18. @@DisplayName
+: 메소드 및 클래스에 사용할 수 있다.
