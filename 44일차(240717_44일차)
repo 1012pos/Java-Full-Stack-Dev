@@ -75,3 +75,12 @@ ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
 
 18. @@DisplayName
 : 메소드 및 클래스에 사용할 수 있다.
+
+19. @Order
+: 위의 어노테이션을 이용해서 메소드 실행순서를 정할 수 있으며 
+클래스에 @TestMethodOrder(OrderAnnotation.class) 줘야 실행순서에 맞게 실행 된다.
+
+20. jupiter
+: 5를 의미한다.
+
+21. 
