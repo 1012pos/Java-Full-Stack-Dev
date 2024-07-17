@@ -56,6 +56,7 @@ ex) @DisplayName("정수 6과 변수 a 비교하는 테스트")
 
 15. @ContextConfiguration(locations = "classpath:context.xml")
 : 여기서 classpath(컴파일되는 위치)가 중요하다. xml을 사용할때 classpath를 작성해줘야 한다.
+: classpath는 경로지정 (자바가 컴파일 된 경로 위치), 자바가 컴파일되면 class가 됨
 
 16. 테스트가 동작하는 방법 3가지
 1. @SpringBootTest
