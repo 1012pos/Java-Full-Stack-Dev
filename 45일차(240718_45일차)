@@ -37,4 +37,25 @@
 
 13. @MockBean // 테스트를 위하여 대상 클래스 비어 있는 상태로 생성해 준다.
 
-14. 
+14. TDD(Test-Driven Development, 애자일)
+: 테스트 주도 개발
+
+15. 팀프로젝트에 Junit 테스트 넣어주면 좋겠다.(강사님 권유)
+
+16. node를 설치가 완료되면 아래의 코드로 확인하기
+- node -v
+- npm -v
+- npx -v
+
+
+17. C:\IDE\Node> mkdir app
+	C:\IDE\Node> cd app
+	C:\IDE\Node\app> npm init
+	
+18. index.js
+: 첫페이지용
+
+19. node의 기본 설정 및 개념
+// node 설치 확인
+// npm init
+// node index.js (main으로 등록 되어 있으면 "." 으로 실행 가능)
