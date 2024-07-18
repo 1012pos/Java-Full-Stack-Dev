@@ -1,2 +1,40 @@
 20240718
-1. 
+1. @BeforeAll
+: 맨처음 한번만 실행
+
+2. @ExtendWith(SpringExtension.class)
+: 위의 어노테이션이 있으면 Junit 테스트가 활성화 된다.
+
+3. @ContextConfiguration(locations = "classpath:context.xml")
+: DL 방법이며, context.xml이 있어야함
+
+3. @Import({AppService.class})
+: 위의 어노테이션이 있으면 DI로 주입받을수 있다.
+
+4. Junit 테스트를 하면 "단위 테스트" 이다 Junit 테스트는 3가지 방법이 있어서
+상황에 맞게 하면 된다.
+
+5. 전체를 테스트하면 "통합 테스트" 이다.
+
+6. assertEquals(기대값, 결과값);
+: 위의 메소드는 비교하는 메소드
+
+7. @BeforeEach
+: 메소드 실행하기 전에 실행한다.
+
+8. Junit 라이프 사이클 외우기
+
+9. @TestMethodOrder(OrderAnnotation.class)
+: Order관련 메소드 어노테이션
+
+10. @TestClassOrder(ClassOrderer.OrderAnnotation.class)
+: Order관련 클래스 어노테이션
+
+11. @Nested
+: Junit Test case로 클래스 파일 만들었을때 위의 어노테이션을 작성해야 Run as -> Junit 활성화 됨
+
+12. mockito
+
+13. @MockBean // 테스트를 위하여 대상 클래스 비어 있는 상태로 생성해 준다.
+
+14. 
