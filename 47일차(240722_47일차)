@@ -52,11 +52,23 @@
 > docker pull {이미지명:태그}
 
 4. 컨테이너 생성 및 실행
-> docker run
+[옵션]
+-p (포트 정의) 호스트포트 : 컨테이너포트
+-- name (이름 정의) 컨테이너명
+-e (환경변수 정의)
+-d (데몬환경에서 동작)
+> docker run 
+	-p 23306:3306
+	--name db
+	-e MARIADB_ROOT_PASSWORD=4321
+	-d
+	mariadb
 
-5. docker hub 검색 후 -> mariadb 검색
+: docker run -p 23306:3306 --name db -e MARIADB_ROOT_PASSWORD=4321 -d mariadb
 
-6. cmd창에서 docker pull mariadb -> docker images
+- docker hub 검색 후 -> mariadb 검색
+
+- cmd창에서 docker pull mariadb -> docker images
 ===============================================
 
 
