@@ -39,7 +39,7 @@
 12. Mockito.when(t1Service.findList(null)).thenReturn(list);
 : 껍데기 만들기
 ===============================================
-13. Docker를 사용하려면 image를 받아야 한다.
+13. Docker를 사용하려면 image를 내려 받아야 한다.
 1. 버전확인
 > docker version
 
@@ -66,7 +66,13 @@
 
 : docker run -p 23306:3306 --name db -e MARIADB_ROOT_PASSWORD=4321 -d mariadb
 
-- docker hub 검색 후 -> mariadb 검색
+
+5. ubuntu
+: docker run -i -it ubuntu /bin/bash (아래와 같지만 아래의 명령어는 현재 안됨.)
+: docker exec -it ubuntu:latest /bin/bash
+
+
+★ docker hub 검색 후 -> mariadb 검색 -> 클릭 후 tag탭 클릭
 
 - cmd창에서 docker pull mariadb -> docker images
 ===============================================
