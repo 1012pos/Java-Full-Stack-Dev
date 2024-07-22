@@ -36,8 +36,28 @@
 	}
 : 리턴 타입이 TestDTO 일 경우는 데이터 타입으로 리턴한다고 생각하면 된다.
 
-12. 
+12. Mockito.when(t1Service.findList(null)).thenReturn(list);
+: 껍데기 만들기
+===============================================
+13. Docker를 사용하려면 image를 받아야 한다.
+1. 버전확인
+> docker version
 
+2. 이미지 확인
+> docker image list
+> docker image ls
+> docker images(이 명령어를 주로 사용한다.)
+
+3. 이미지 받기
+> docker pull {이미지명:태그}
+
+4. 컨테이너 생성 및 실행
+> docker run
+
+5. docker hub 검색 후 -> mariadb 검색
+
+6. cmd창에서 docker pull mariadb -> docker images
+===============================================
 
 
 ========================================================
