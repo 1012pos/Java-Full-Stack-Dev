@@ -77,6 +77,11 @@
 - cmd창에서 docker pull mariadb -> docker images
 ===============================================
 
+14. Terminal에서 현재위치 알수 있는 명령어
+: pwd
+
+15. VSCODE -> 도커 설치 후, 도커이미지 클릭 -> ubuntu 클릭후 우클릭 -> attach visual studio 클릭 -> Terminal -> new Terminal -> pwd
+
 
 ========================================================
 - 팀프로젝트 대략적 일정 -
