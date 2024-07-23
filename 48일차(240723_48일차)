@@ -225,5 +225,9 @@ docker run 옵션
 docker build . -t boot
 docker run -d -it -p 80:80 boot
 
-29.
+29. compose
+: 여러개의 컨터이너를 만들수 있다.
 
+30. cmd 창에서 docker compose up -d 명령어 치기
+
+31. HeidiSQL 포트 번호 33306, 비밀번호 9876으로 새로 만들기(docker2)
