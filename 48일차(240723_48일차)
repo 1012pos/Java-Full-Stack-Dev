@@ -201,3 +201,29 @@ ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=test2", "/app/app.jar"]
 그리고 cmd창에서 docker run -d -it -p 80:80 boot 명령어를 사용하면 다시 생성된다.
 
 28. 
+DockerFile 문법
+FROM        : 사용할 이미지
+MAINTAINER  : 작성자의 정보를 기록
+RUN         : FROM의 이미지 위에서 실행될 명령어
+COPY        : 도커 컨테이너의 경로로 파일을 복사합니다
+ENV         : 도커의 환경변수를 설정
+EXPOSE      : 연결할 포트 번호
+ENTRYPOINT  : 컨테이너 생성 후 실행될 명령어
+CMD         : 컨테이너 시작 이후 실행될 명령어
+
+Docker CLI
+build       : Dockerfile로 이미지를 생성
+run         : 생성한 이미지를 기반으로 도커를 실행
+
+docker run 옵션
+-i          : 컨테이너와 상호 입출력 활성화
+-t          : tty 활성화. 주로 -i옵션과 함께 사용
+-p          : 포트를 지정
+-e          : 환경변수를 지정하거나 값을 변경
+-v          : 로컬 저장소 공유
+
+docker build . -t boot
+docker run -d -it -p 80:80 boot
+
+29.
+
