@@ -1,6 +1,7 @@
 20240723
 1. spring application.properties 검색후 링크 들어가기 -> Data Properties
 : https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.data
 
 2. 위의 링크에서 아래의 키워드 검색할 줄 알아야 함(설정코드 관련)
 - spring.datasource.driver-class-name
@@ -17,4 +18,21 @@ spring.datasource.url=jdbc:mariadb://localhost:3306/edu
 spring.datasource.username=root
 spring.datasource.password=1234
 
-4. 
+4. 배포할때 application.properties 설정 파일이 중요하다.
+
+5. application.yml
+: 아래와 같이 트리구조로 코드를 작성해야 한다.
+	spring:
+	  application:
+		name: BootTest
+	  datasource:
+		driver-class-name: org.mariadb.jdbc.Driver
+		url: jdbc:mariadb://localhost:3306/edu
+		username: root
+		password: 1234
+		
+	server:
+	  port: 80
+	  
+6. 설정파일이 2개가 있을수 있지만 하나만 사용해야 하므로, 주석처리를 해야 하고, 배포하려고
+application.yml 설정파일을 사용할 것이다.
