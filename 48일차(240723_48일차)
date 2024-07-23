@@ -36,3 +36,67 @@ spring.datasource.password=1234
 	  
 6. 설정파일이 2개가 있을수 있지만 하나만 사용해야 하므로, 주석처리를 해야 하고, 배포하려고
 application.yml 설정파일을 사용할 것이다.
+
+7. 배포하려면 아래의 코드가 필요
+   profiles:
+    active:
+    - dev
+	
+8. ---
+: 경계라인
+
+9. application.yml
+: 운영쪽과 개발쪽을 구분지어서 설정코드를 작성(아래의 코드를 작성해도 아래의 오류 코드 뜸 설정을 더해야함)
+- Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+server:
+  port: 80
+  
+spring:
+  application:
+    name: BootTest
+  profiles:
+    group:
+      dev:
+      - commons
+      - dev_profile
+      prod:
+      - commons
+      - prod_profile
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: commons
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev_profile
+  datasource:
+    url: jdbc:mariadb://localhost:3306/edu
+    password: 1234
+    
+---
+ 
+spring:
+  config:
+    activate:
+      on-profile: prod_profile
+  datasource:
+    url: jdbc:mariadb://localhost:23306/edu
+    password: 4321
+
+10. 서버 끄고 cmd 창에서 아래의 코드 작성
+ cd C:\IDE\sts-4.22.1.RELEASE\work\BootTest
+ 
+11. cmd창에서 gradlew bootRun -> 오류가 나야 정상이다.
+
+12.  
