@@ -1,2 +1,20 @@
 20240723
-1. 
+1. spring application.properties 검색후 링크 들어가기 -> Data Properties
+: https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+
+2. 위의 링크에서 아래의 키워드 검색할 줄 알아야 함(설정코드 관련)
+- spring.datasource.driver-class-name
+- spring.datasource.url=jdbc:mariadb
+- spring.datasource.username
+- spring.datasource.password
+
+3. application.properties에 아래의 설정코드 작성해야함
+spring.application.name=BootTest
+server.port=80
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=root
+spring.datasource.password=1234
+
+4. 
