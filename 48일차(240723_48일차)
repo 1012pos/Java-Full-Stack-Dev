@@ -109,4 +109,95 @@ spring:
 
 13. cmd창에서 gradlew bootRun --args='--spring.profiles.active=test1'
 
-14. 
+14. cmd창에서 gradlew bootJar 명령어 검색
+: 배포(프로젝트-버전.jar)
+
+15. C:\IDE\sts-4.22.1.RELEASE\work\BootTest\build\libs
+: BootTest-1.jar 확인
+
+
+16. cmd창에서 아래의 순서대로 명령어 검색(배포할때 검색어)
+1. cd build
+2. cd libs
+3. dir
+4. java -jar -Dspring.profiles.active=test1 BootTest-1.jar
+
+16-1. cmd 창에서 ctrl + c는 끄는 명령어
+
+17. gradlew bootRun -Dspring.profiles.active=test1를 명령어를 사용하려면 build.gradle에서
+아래의 코드 추가해야함
+bootRun{
+	String activeProfile = System.properties['spring.profiles.active']
+	systemProperty "spring.profiles.active", activeProfile
+}
+
+
+bootJar{
+	archivesBaseName = 'App'
+	archiveFileName = 'app.jar'
+	archiveVersion = '1'
+}
+
+18. cmd창에서 gradlew bootRun -Dspring.profiles.active=test1 명령어 검색
+
+19. C:\IDE\sts-4.22.1.RELEASE\work\BootTest> gradle clean -> gradle clean bootJar
+
+20. C:\IDE\sts-4.22.1.RELEASE\work\BootTest> gradle clean test bootJar
+
+21. vscode
+: IDE에 docker 폴더 생성하고 열기
+
+# 대상 이미지
+FROM gradle:latest as builder
+
+# 필요한 설정
+WORKDIR /app
+COPY . .
+RUN ./gradlew bootJar
+
+FROM openjdk:latest
+COPY --from=builder /app/build/libs /app
+
+# 실행 명령어
+EXPOSE 80
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=test2", "/app/app.jar"]
+
+22. COPY . .
+. (프로젝트 위치)
+. (app 위치)
+
+23. bootJar
+: 배포 명령어
+
+24. C:\IDE\sts-4.22.1.RELEASE\work\BootTest에 dockerfile을 복사 붙여 넣기 한다.
+
+25. cmd 창에서 docker build . -t boot(이미지 이름) 검색
+
+26. 아래의 순서대로 진행하면 됨
+1. C:\IDE 경로에 docker 폴더 생성
+
+2. dockerfile에 아래의 코드 작성
+대상 이미지
+FROM gradle:latest as builder
+
+필요한 설정
+WORKDIR /app
+COPY . .
+RUN ./gradlew bootJar
+
+FROM openjdk:latest
+COPY --from=builder /app/build/libs /app
+
+실행 명령어
+EXPOSE 80
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=test2", "/app/app.jar"]
+
+3. C:\IDE\sts-4.22.1.RELEASE\work\BootTest 이 경로에 dockerfile 복사 붙여 넣기
+
+4. cmd창에서 docker build . -t boot
+
+
+27. 만약 boot가 생성되지 않았다면 [docker ps -a] 코드를 써서 설치가 되었는지 확인해야 함
+그리고 cmd창에서 docker run -d -it -p 80:80 boot 명령어를 사용하면 다시 생성된다.
+
+28. 
