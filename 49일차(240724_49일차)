@@ -108,3 +108,18 @@ public class HomeController {
 
 }
 
+6. cmd창 C:\IDE\sts-4.22.1.RELEASE\work\BootTest>gralde clean 명령어 검색
+: build 삭제됨
+
+7. cmd 창 C:\IDE\sts-4.22.1.RELEASE\work\BootTest>gradle test
+: cmd 창에서 test 됨, junit과 같은 기능을 하는 명령어임
+
+8. cmd 창 C:\IDE\sts-4.22.1.RELEASE\work\BootTest>gradle clean test bootJar
+: build 삭제 후, app.jar가 생성된다.(배포 명령어)
+
+9. cmd 창 C:\IDE\sts-4.22.1.RELEASE\work\BootTest>dir
+: cmd 창 C:\IDE\sts-4.22.1.RELEASE\work\BootTest 디렉터리에 
+: build가 생성된것을 알 수 있음 build는 배포되었다는 의미
+
+10. C:\IDE\sts-4.22.1.RELEASE\work\BootTest\build\libs에 가면
+: app.jar가 생성된다.
