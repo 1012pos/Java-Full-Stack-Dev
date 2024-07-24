@@ -173,7 +173,7 @@ image는 docker hub에서 가져올 수 있다.(다운 받을 수 있다.)
 : 이미지 생성하는 명령어
 > C:\IDE\sts-4.22.1.RELEASE\work\BootTest>docker run -d --name Test boot:latest
 : 컨테이너 생성하는 명령어
-> C:\IDE\sts-4.22.1.RELEASE\work\BootTest>docker run -d -p 80:80 --name App boot
+> C:\IDE\sts-4.22.1.RELEASE\work\BootTest>docker run -d -p 80:80 --name app boot
 : 컨테이너 생성하는 명령어인데, 추가적으로 80포트를 추가하는 명령어 
 
 
@@ -186,7 +186,7 @@ image는 docker hub에서 가져올 수 있다.(다운 받을 수 있다.)
 
 # 필요한 설정
 # 해당 폴더 생성 및 이동
-#WORKDIR /App
+#WORKDIR /app
 
 # 파일 또는 폴더 복사 (로컬, 컨테이너)
 #COPY . .
@@ -194,10 +194,10 @@ image는 docker hub에서 가져올 수 있다.(다운 받을 수 있다.)
 #RUN gradle clean test bootJar
 
 # 도커파일을 이용하여 이미지 생성
-# docker run -it boot
+# docker run -it boot(images의 이름이다. 내가 작성하는것임(변경 가능))
 
 # 생성된 이미지를 컨테이너로 생성 및 실행
-# docker run -d --name App boot:latest
+# docker run -d --name app boot:latest
 
 # 현재 위치 : pwd
 # 디렉토리 내용 보기 : ls -al
@@ -219,8 +219,4 @@ EXPOSE 80
 
 # 실행 명령어
 #ENTRYPOINT [ "sleep", "infinity" ]
-ENTRYPOINT [ "java", "-jar", "-Dspring.profiles.active=test2", "/App/build/libs/app.jar"]
-
-
-
-
+ENTRYPOINT [ "java", "-jar", "-Dspring.profiles.active=test2", "/app/build/libs/app.jar"]
