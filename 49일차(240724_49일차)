@@ -1,2 +1,110 @@
 20240724
-1. 
+0. SpringTest
+1. Junit
+- controller 부분
+: TestController.java 참조
+: MvcResult / .andReturn();
+: ResultActions
+: @WebMvcTest({TestController.class, TestDataController.class, ViewController.class})
+
+- service 부분 
+: Temp1ServiceTest.java 참조
+
+
+
+================================================
+[Test 방법]
+2. HomeController.java
+package com.app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+	
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+
+}
+
+
+3. HomeControllerTest.java
+package com.app.controller;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+
+@WebMvcTest(HomeController.class)
+public class HomeControllerTest {
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	
+	@Test
+	void home() throws Exception {
+		// 방법1(바로 확인하는 방법)
+		ResultActions 결과1 = mockMvc.perform(get("/"));
+		결과1.andExpect(status().isOk()); // 상태값 200
+		
+		
+		// 방법2(꺼내서 확인하는 방법)
+		MvcResult 결과2 = mockMvc.perform(get("/")).andReturn();
+		int status = 결과2.getResponse().getStatus();
+		assertThat(status).isEqualTo(200); // 밑에랑 같은것임
+		assertEquals(200, status); // 위에꺼랑 같은 것임
+	}
+
+}
+
+================================================
+
+4. HomeControllerTest.java
+
+	@Test
+	void home2() throws Exception {
+		MvcResult 결과2 = mockMvc.perform(get("/")).andReturn();
+		
+		// return "home";
+		String viewName = 결과2.getModelAndView().getViewName();
+		assertEquals("home", viewName);
+	}
+
+
+: getModelAndView().getViewName(), 여기서 getModelAndView(), getViewName() 둘다 메소드임
+
+5. HomeController.java
+package com.app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HomeController {
+	
+	@GetMapping("/")
+	public ModelAndView home(ModelAndView mav) {
+		mav.setViewName("home");
+		return mav;
+	}
+	
+//	@GetMapping("/")
+//	public String home() {
+//		return "home";
+//	}
+
+}
+
