@@ -94,7 +94,10 @@ PS C:\IDE\GIT_FILE> docker run -d test
 생성된 도커 container에서 Exec탭에서 pwd 명령어 치기
 git -v
 git --version
-git clone https://github.com/1012pos/TestGit.git , ls -l, cd TestGit, ls -l
+git clone https://github.com/1012pos/TestGit.git ,
+ls -l
+cd TestGit
+ls -l
 gradle clean test bootJar 명령어 치기
 
 vs code에서 아래의 코드 작성 후
@@ -121,7 +124,7 @@ RUN gradle clean test bootJar
 EXPOSE 8080
 
 #ENTRYPOINT [ "sleep", "infinity" ]
-ENTRYPOINT [ "java", "-jar", "/app/TestGit/build/libs/TestGit-1.jar" 
+ENTRYPOINT [ "java", "-jar", "/app/TestGit/build/libs/TestGit-1.jar" ]
 
 ======================================
 VSCODE 최종 코드임
