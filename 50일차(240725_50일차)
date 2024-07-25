@@ -1,2 +1,178 @@
 20240725
-1. 
+1. 배포환경 구성(docker)
+
+2. 버전관리 시스템
+
+3. git
+: 로컬에서 사용
+
+4. GitHub
+: 웹에서 관리
+
+5. git 설치하기
+
+6. cmd 창에서 git -v로 버전 확인하기
+
+7. GitHub에서 Repository 만들기(SpringGitTest)
+
+8. vscode에서 이 SpringGitTest 폴더를 열기
+
+9. vscode에서 Terminal 에서 github 명령어 적기
+
+10. branch는 쉽게 생각하면 사용자다
+
+11. vscode에서 Terminal 에서 github 명령어 적기
+git init
+git branch
+git branch main
+git add *
+스프링부트 team -> share ~
+git commit -m "first commit"
+
+
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/1012pos/SpringGitTest.git
+git push -u origin main
+
+git cofig --global user.name "1012pos"
+git config --global user.email "1012pos@naver.com"
+git config --list
+
+==================================================================
+12. README.md 추가한 상태
+# git hub에서 프로젝트 받기 명령어
+> git clone https://github.com/1012pos/SpringGitTest.git (깃허브주소(저장소))
+
+1. 저장소 폴더 경로 이동(숨어있는 ".git" 폴더 위치)
+2. 신규 또는 수정, 삭제 추가 > git add *
+3. 설명 달기 > git commit -m "내용"
+4. github에 파일 올리기 > git push origin main (브런치 대상 확인 후 정의)
+
+> git add *
+> git commit -m "테스트 파일 올리기"
+> git push origin main
+
+==================================================================
+
+
+PS C:\IDE\GIT_FILE> git clone https://github.com/1012pos/TestGit.git
+: github에 만들었던 README.md가 생성됨
+
+PS C:\IDE\GIT_FILE> cd TestGit
+
+U -> A로 변함
+PS C:\IDE\GIT_FILE\TestGit> git add *
+PS C:\IDE\GIT_FILE\TestGit> git commit -m "F1 파일 올리기"
+
+PS C:\IDE\GIT_FILE\TestGit> git log
+PS C:\IDE\GIT_FILE\TestGit> git push origin main
+그다음 github에서 새로고침하면 F1.txt 나옴
+
+PS C:\IDE\GIT_FILE\TestGit> git add *
+PS C:\IDE\GIT_FILE\TestGit> git commit -m "스프링부트 파일"
+PS C:\IDE\GIT_FILE\TestGit> git push origin main
+그다음 github에서 새로고침하면 스프링부트 파일 나옴
+
+PS C:\IDE\GIT_FILE\TestGit> gradle bootRun
+
+브라우저에서 http://localhost:8080/
+> 환영합니다.
+
+Ctrl + c로 일괄 작업을 끝내겠습니까
+PS C:\IDE\GIT_FILE\TestGit> git add *
+PS C:\IDE\GIT_FILE\TestGit> git commit -m "화면 추가"
+PS C:\IDE\GIT_FILE\TestGit> git push origin main
+> 그다음 github에서 새로고침하면 화면추가 파일 나옴
+
+PS C:\IDE\GIT_FILE> dir
+PS C:\IDE\GIT_FILE> docker build . -t test
+PS C:\IDE\GIT_FILE> docker images
+PS C:\IDE\GIT_FILE> docker run -d test
+> 도커 container 생성됨 이름을 지정하지 않았기 때문에 랜덤으로 생성됨
+
+생성된 도커 container에서 Exec탭에서 pwd 명령어 치기
+git -v
+git --version
+git clone https://github.com/1012pos/TestGit.git , ls -l, cd TestGit, ls -l
+gradle clean test bootJar 명령어 치기
+
+vs code에서 아래의 코드 작성 후
+FROM gradle
+
+# 프로젝트 대상은 GitHub에서 가져 온다.
+WORKDIR /app
+RUN git clone https://github.com/1012pos/TestGit.git
+RUN gradle clean test bootJar
+
+EXPOSE 8080
+
+#ENTRYPOINT [ "sleep", "infinity" ]
+
+docker container Files 탭에서 -> home -> gradle -> TestGit -> build -> libs -> TestGit-1.jar 확인후
+vs code에서 아래의 코드 작성하기
+FROM gradle
+
+# 프로젝트 대상은 GitHub에서 가져 온다.
+WORKDIR /app
+RUN git clone https://github.com/1012pos/TestGit.git
+RUN gradle clean test bootJar
+
+EXPOSE 8080
+
+#ENTRYPOINT [ "sleep", "infinity" ]
+ENTRYPOINT [ "java", "-jar", "/app/TestGit/build/libs/TestGit-1.jar" 
+
+======================================
+VSCODE 최종 코드임
+FROM gradle
+
+WORKDIR /app
+
+# 프로젝트 가져오기(GitHub에서 가져온다.)
+RUN git clone https://github.com/1012pos/TestGit.git
+
+
+# 프로젝트 안으로 이동해서 배포 실행
+WORKDIR /app/TestGit
+RUN gradle clean test bootJar
+
+# 포트 오픈
+EXPOSE 8080
+
+#ENTRYPOINT [ "sleep", "infinity" ]
+ENTRYPOINT [ "java", "-jar", "/app/TestGit/build/libs/TestGit-1.jar" ]
+
+======================================
+
+STUDY01
+dockerfile
+PS C:\IDE\sts-4.22.1.RELEASE\work\study01> docker build . -t  db
+PS C:\IDE\sts-4.22.1.RELEASE\work\study01> docker run -d -p 3306:3306
+PS C:\IDE\sts-4.22.1.RELEASE\work\study01> docker run -d -p 13306:3306 db
+PS C:\IDE\sts-4.22.1.RELEASE\work\study01> docker run -d -p 13306:3306 -e MARIADB_ROOT_PASSWORD=1234 mariadb
+PS C:\IDE\sts-4.22.1.RELEASE\work\study01> docker run -d -p 23306:3306 -e MARIADB_ROOT_PASSWORD=1234 -e MARIADB_DATABASE=edu --name  MariaDB1 mariadb 
+13. autocommit = 0
+: 무조건 commit을 마지막에 사용해야 한다.
+
+14. study01
+docker run -d -p -e --name 이미지
+
+docker run << 실행
+-d  백그라운 실행 옵션
+-p 포트포워드 로컬:도커
+-e 도커쪽 환경 변수 정의
+-v 로컬 저장소와 컨테이너 저장소 공유 정의
+--name 컨테이너 이름 정의
+
+docker run -d 
+    -p 13306:3306 
+    -e MARIADB_ROOT_PASSWORD=1234 
+    -e MARIADB_DATABASE=edu 
+    -v .\mariadb\conf.d:/etc/mysql/conf.d 
+    -v .\mariadb\data:/var/lib/mysql 
+    -v .\mariadb\initdb.d:/docker-entrypoint-initdb.d 
+    --name DB 
+    mariadb:latest
+
+docker run -d -p 13306:3306 -e MARIADB_ROOT_PASSWORD=1234 -e MARIADB_DATABASE=edu -v .\mariadb\conf.d:/etc/mysql/conf.d -v .\mariadb\data:/var/lib/mysql -v .\mariadb\initdb.d:/docker-entrypoint-initdb.d --name DB mariadb:latest
