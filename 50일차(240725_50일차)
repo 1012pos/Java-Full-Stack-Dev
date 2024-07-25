@@ -79,7 +79,7 @@ PS C:\IDE\GIT_FILE\TestGit> gradle bootRun
 브라우저에서 http://localhost:8080/
 > 환영합니다.
 
-Ctrl + c로 일괄 작업을 끝내겠습니까
+Ctrl + c로 일괄 작업을 끝내겠습니까?
 PS C:\IDE\GIT_FILE\TestGit> git add *
 PS C:\IDE\GIT_FILE\TestGit> git commit -m "화면 추가"
 PS C:\IDE\GIT_FILE\TestGit> git push origin main
