@@ -118,6 +118,7 @@ class SpringGitTestApplicationTests {
 
 13. 팀프로젝트 gitHub 연동 연습
 	[gitHub Project1(승균씨 깃 허브), 내꺼는 StoneP2]
+0. IDE 폴더안에 github 폴더 생성하기
 1. vscode로 github 폴더 열기
 2. PS C:\IDE\github> git clone https://github.com/seungkyunIm/Project1.git
 3. cd Project1
