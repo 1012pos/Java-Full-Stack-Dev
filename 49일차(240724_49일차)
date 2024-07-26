@@ -165,7 +165,7 @@ image는 docker hub에서 가져올 수 있다.(다운 받을 수 있다.)
 : 확인하는 명령어
 
 20. docker run -d -p 80:80 --name app boot
-: App이라는 Container에 80 포트가 생성되게 하는 명령어
+: app이라는 Container에 80 포트가 생성되게 하는 명령어
 
 21. cmd 창에서 아래의 명령어 입력
 > C:\IDE\sts-4.22.1.RELEASE\work\BootTest>gradle clean test bootJar
