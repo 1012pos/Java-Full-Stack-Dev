@@ -1,2 +1,118 @@
 20240726
-1. 
+1. VSCODE의 terminal에서 아래의 명령어 치기 
+PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker build . -t  test
+
+2. TestGit 프로젝트에서 application.properties에서 포트 확인 후 
+설정 안했으면 VSCODE 의 EXPOSE에 8080으로 작성하기
+
+3. PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker run -d -p 8080:8080 --name app test
+
+4. docker run -d -p [외부포트:연결포트] --name [컨테이너이름] [연결하고자 하는 이미지이름]
+
+4. vscode STUDY02 로 열기
+  PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker build . -t boot --no-cache
+  PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker run -d -p 80:8080 boot
+  PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker run -d -p 13306:3306 -e MARIADB_ROOT_PASSWORD=1234 -e MARIADB_DATABASE=edu --name mariadb mariadb
+  
+  PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker network list
+  PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker network inspect c43bb719d14f
+  
+  그다음 mariadb 쪽 IPv4Address 를 확인해야함
+		"Name": "mariadb",
+                "EndpointID": "51f0b35ab86a38c43b731a9c34e2fd930f883fdc8eb17621f7afc6d0e4586471",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": "
+				
+  그다음 IPv4Address": "172.17.0.3 확인후 -> 스프링에서
+
+spring.application.name=SpringGitTest
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://172.17.0.3:3306/edu     이쪽 변경
+#spring.datasource.url=jdbc:mariadb://mariadb:3306/edu
+#spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=root
+spring.datasource.password=1234  
+
+5. vscode를 TestGit으로 새로 열기
+   PS C:\IDE\sts-4.22.1.RELEASE\work\TestGit> git add *
+   PS C:\IDE\sts-4.22.1.RELEASE\work\TestGit> git commit -m "JDBC 아이피 변경"
+   PS C:\IDE\sts-4.22.1.RELEASE\work\TestGit> git push origin main
+   
+6. 브라우저에서 localhost 치면 환영합니다(1) 뜸  
+
+
+7. DB 켜지고 나서 애플리케이션 켜져야 한다.
+services:
+  
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    ports:
+      - 13306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=1234
+      - MARIADB_DATABASE=edu
+    volumes:
+      - .\mariadb/conf.d:/etc/mysql/conf.d:ro
+      - .\mariadb\data:/var/lib/mysql:rw
+      - .\mariadb\initdb.d:/docker-entrypoint-initdb.d:ro
+    networks:
+      - myNet
+
+  springboot:
+    container_name: springboot
+    build: 
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - 80:8080
+    depends_on:
+      - mariadb
+    links:
+      - mariadb
+    command: sleep infinity
+    networks:
+      - myNet
+
+networks:
+  myNet:
+
+spring.application.name=SpringGitTest
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://mariadb:3306/edu    여기도 이렇게 바꿔야함
+#spring.datasource.url=jdbc:mariadb://172.17.0.3:3306/edu
+#spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=root
+spring.datasource.password=1234
+
+
+8. docker-compose.yml 이 실행되어야 함
+
+9. dockerfile 이미지 내역 지우기 명령어 (컨테이너 및 이미지 삭제 후 실행하세요)
+
+10. 아래의 코드에서 @Disabled를 해줘야함
+package com.app;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest @Disabled
+class SpringGitTestApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+11. docker builder prune
+: 캐쉬 삭제 명령어
+
+12. PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker compose up -d
+: docker desttop에 이미지와 컨테이너가 생성되는 명령어(docker-compose.yml)
+
