@@ -116,3 +116,26 @@ class SpringGitTestApplicationTests {
 12. PS C:\IDE\sts-4.22.1.RELEASE\work\study02> docker compose up -d
 : docker desttop에 이미지와 컨테이너가 생성되는 명령어(docker-compose.yml)
 
+13. 팀프로젝트 gitHub 연동 연습
+	[gitHub Project1(승균씨 깃 허브), 내꺼는 StoneP2]
+1. vscode로 github 폴더 열기
+2. PS C:\IDE\github> git clone https://github.com/seungkyunIm/Project1.git
+3. cd Project1
+4. git branch
+5. git branch StoneP2
+6. git branch
+7. git checkout StoneP2
+8. git branch
+위의 순서대로 Terminal에서 명령어 치면 됨
+
+14. 서버 담당자가 cmd창에서 ipconfig 서버 담당자 Ipv4주소 알려달라고 해야함
+그다음 HeidiSQL의 호스트명 / IP 127.0.0.1 -> 192.168.0.66 로 변경
+port : 13306 비밀번호 : 1234
+
+15. 학원 외부에서 우리 서버 DB에 접속하는 방법
+1. HeideSQL 설치
+2. 호스트명/IP : 220.71.94.70 
+ 포트  :  23306 
+ root
+ 1234
+3. 접속
