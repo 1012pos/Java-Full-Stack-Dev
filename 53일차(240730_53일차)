@@ -59,3 +59,6 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.datasource.url=jdbc:mariadb://localhost:3306/edu
 spring.datasource.username=test
 spring.datasource.password=4321
+
+17. @Mapper 어노테이션
+:  Interface를 매퍼로 등록하기 위해 @Mapper 어노테이션을 사용합니다. 또한, 주로 Mybatis 프레임워크와 함께 사용합니다.
