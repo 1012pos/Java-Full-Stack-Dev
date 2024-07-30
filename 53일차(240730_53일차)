@@ -26,3 +26,11 @@ x
 8. 추후에 팀프로젝트는 서버 담당자에게 root 계정 부여
 
 9. ctrl + shift + F9로 실행하기
+
+10. C:\Program Files\MariaDB 11.3\data -> my.ini -> autocommit=0
+: autocommit 꺼지게 하는 방법
+
+그다음 서비스 -> MariaDB를 찾고 다시 시작 누르면 autocommit=1 -> autocommit=0
+으로 변경됨
+
+11.
