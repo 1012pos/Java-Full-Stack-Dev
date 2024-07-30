@@ -33,4 +33,29 @@ x
 그다음 서비스 -> MariaDB를 찾고 다시 시작 누르면 autocommit=1 -> autocommit=0
 으로 변경됨
 
-11.
+11. DBeaver 설치하기
+- DBeaver 계정 : test
+- DBeaver 비밀번호 : 4321
+
+12. autocommit을 꺼놔야 COMMIT, ROLLBACK에 대해서 공부할 수 있다.
+- COMMIT;   <  데이터의 입력, 수정, 삭제한 내용을 현재 섹션에서 저장하는 명령어
+- ROLLBACK;   <  데이터의 입력, 수정, 삭제한 내용을 현재 섹션에서 취소하는 명령어
+
+13. 만약 INSERT를 했을때, COMMIT을 하게 되면 ROLLBACK 명령어가 적용되지 않음, COMMIT은 완료의 의미이기 때문이다.
+
+14. -- 초기화
+TRUNCATE TABLE t1;
+: ROLLBACK 적용 안됨 그래서 절대 하지 말아야 할 행동임
+
+15. erdcloud.com
+-> git 계정으로 로그인 하기
+
+16. 스프링에서 DB 연결 아래와 같은 방법으로 설정하면 된다.
+- application.properties
+
+spring.application.name=BootTest
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=test
+spring.datasource.password=4321
