@@ -26,6 +26,10 @@ x
 8. 추후에 팀프로젝트는 서버 담당자에게 root 계정 부여
 
 9. ctrl + shift + F9로 실행하기
+: 현재행 실행
+
+9-1. ctrl + F9
+: 드래그한것 실행
 
 10. C:\Program Files\MariaDB 11.3\data -> my.ini -> autocommit=0
 : autocommit 꺼지게 하는 방법
@@ -62,3 +66,5 @@ spring.datasource.password=4321
 
 17. @Mapper 어노테이션
 :  Interface를 매퍼로 등록하기 위해 @Mapper 어노테이션을 사용합니다. 또한, 주로 Mybatis 프레임워크와 함께 사용합니다.
+
+18. a태그면 @GetMapping 시켜준다.
