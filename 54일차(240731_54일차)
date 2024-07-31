@@ -1,2 +1,17 @@
 20240731
-1. 
+1. @Bean @Qualifier("sql1")
+	public SqlSession sql1(@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+		return new SqlSessionTemplate(sqlSessionFactory); // 사용 후 자동 종료 하는 섹션
+	}
+	
+	// 바로 commit이 된다.(SqlSessionTemplate)
+	
+	@Bean @Qualifier("sql2")
+	public SqlSession sql2(@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+		return sqlSessionFactory.openSession(false); // 하나의 섹션 사용하기 위해서 생성 
+	}
+	
+	// 무조건 commit or rollback을 해줘야 데이터가 저장되던 취소되던 한다.(openSession)
+	
+
+2. 
