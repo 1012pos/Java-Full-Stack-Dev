@@ -132,6 +132,7 @@ spring.datasource.password=4321
 
 
 
+
 USE edu;
 
 SELECT * FROM t_menu;
