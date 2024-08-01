@@ -1,2 +1,61 @@
 20240801
 1. 
+
+USE edu;
+
+SELECT * FROM t_menu;
+
+SELECT 종류, SUM(가격) AS 합 FROM t_menu GROUP BY 종류;
+
+-- DROP FUNCTION f_event1;
+
+-- 전체 수를 구하는 사용자 함수(대상 테이블은 t_menu)
+DELIMITER $$
+CREATE FUNCTION f_event1() RETURNS INT
+BEGIN
+	DECLARE f_out int;
+	SELECT COUNT(가격) INTO f_out FROM t_menu;
+	RETURN f_out;
+END;
+$$
+DELIMITER ;
+
+SELECT f_event1();
+SELECT COUNT(가격) FROM t_menu;
+
+-- 두개의 수를 받아서 합한 수를 받는 사용자 함수
+CREATE FUNCTION f_event2(IN a INT, IN b INT) RETURNS INT
+RETURN(a + b);
+
+
+SELECT f_event2(2,5);
+
+
+-- 성별 데이터를 시각화 하기 위해서 변경 해주는 사용자 함수
+CREATE TABLE u (
+	nm VARCHAR(10),
+	gender BOOLEAN
+);
+
+INSERT INTO u VALUES ('홍길동', 1);
+INSERT INTO u VALUES ('류관순', 0);
+
+COMMIT;
+
+
+delimiter $$
+CREATE FUNCTION f_event3(IN f_gender BOOLEAN) RETURNS VARCHAR(20)
+BEGIN
+	DECLARE r_gender VARCHAR(20);
+	if(f_gender = 0) then
+		RETURN '여성';
+	ELSE
+		RETURN '남성';
+	END if;
+END;
+$$
+delimiter ;
+
+SELECT nm, gender, f_event3(gender) FROM u;
+
+SELECT NOW();
