@@ -84,9 +84,47 @@ SELECT @state;
 저장된 프로시저를 호출하여 프로그래밍을 하는것이 훨씬 효율적입니다.
 
 
-13. 
+13. ProcedureWeb 새프로젝트 생성 + 디스코드에서 html 파일 다운 받기
 
+14. gradle에서 포트번호 80으로 변경하는 방법 application.properties에 아래의 코드 추가
+: server.port=80 추가하기
 
+15. gradle 프로젝트시 -> application.properties에서 포트번호 변경(server.port=80)
+
+spring.application.name=ProcedureWeb
+server.port=80
+
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/edu
+spring.datasource.username=test
+spring.datasource.password=4321
+
+16. https://mybatis.org/mybatis-3/ko/sqlmap-xml.html 참조
+
+17. 프로시저는 하나의 프로그램이다.
+
+18. 프로시저는 데이터베이스의 하나의 프로그램이다.
+
+19. 강사님은 프로시저로 팀프로젝트를 할 예정이심.
+
+20. 현재 우리팀은 DB만 만들 상태임 아직 프로젝트랑 연결못한 상태임
+
+21. 팀프로젝트 
+1. 각 기능별 컨트롤러 만들기
+- 회원가입(로그인, 로그아웃)
+- 글작성
+
+2. 회원가입(session 이용)
+
+22. 미니프로젝트
+1. 스프링프레임 워크? 스프링부트 사용할 것인지? 
+2. DB를 이용할때 MyBatis를 사용할것이지? JPA 사용할 것인지?
+3. 개인이 모든 기능을 다 만들것인지? 아니면 나누어서 만들것인지?
+4. 추후에 회원쪽이랑 게시판 연동해서, 회원만 자신이 글작성한거 지울수 있는 기능이나, 비회원은 글만 읽은수 있게 하는 기능등
+추후에 해야할것 같음
+
+23. call p_u2_list(), call p_u2_insert(#{nm}, #{gender})
+: 위의 코드를 프로시저라고 한다.
 
 
 
