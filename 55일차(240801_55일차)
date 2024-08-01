@@ -19,7 +19,73 @@ END;
 $$
 DELIMITER ;
 
-5. 
+5. https://mariadb.com/kb/en/create-procedure/
+
+6. PROCEDURE
+
+7. SET은 값을 넣어준다는 의미
+
+8. PROCEDURE
+: PROCEDURE로 만든다음, CALL을 이용해서 만든 함수를 호출한다.
+delimiter $$
+CREATE FUNCTION f_event5(IN f_a BOOLEAN) RETURNS VARCHAR(20)
+	BEGIN
+		DECLARE f_return VARCHAR(20);
+		if(f_a = 0) then
+		SET f_return = '불가능';
+		ELSE 
+		SET f_return = '가능';
+		END if;
+		RETURN f_return;
+	END;
+$$
+delimiter ;
+
+-- 프로시저
+CREATE OR REPLACE PROCEDURE p_event1()
+SELECT *, f_event5(양조절유무) AS 한글양조절유무 FROM t_menu;
+
+CALL p_event1();
+
+CREATE PROCEDURE p_event2(IN a INT, IN b INT, OUT c INT)
+SET c = a + b;
+
+
+CALL p_event2(4, 3, @r);
+SELECT @r;
+
+9. 묶어서 쓸때 delimiter $$, BEGIN, END 사용
+
+10. p_u_i_s
+: insert 후, select 를 줄인말 (강사님이 줄여서 쓰심)
+
+11. -- 프로시저를 이용하여 u 테이블에 데이터를 입력하기
+delimiter $$
+CREATE PROCEDURE p_u_insert(IN p_nm VARCHAR(10), IN p_gender BOOLEAN, OUT state INT)
+BEGIN
+	INSERT INTO u VALUES (p_nm, p_gender);
+	SET state = 1;
+END;
+$$
+delimiter ;
+
+CALL p_u_insert('이순신', FALSE, @state);
+
+SELECT @state;
+
+: 여기서 OUT의 의미는 내보낸다는 의미로 사용된다.
+
+12. 프로시저
+프로시저란 SQL Server에서 제공하는 프로그래밍 기능입니다.
+쿼리문을 마치 하나의 메서드 형식으로 만들고 어떠한 동작을 일괄적으로 처리하는 용도로 사용됩니다.
+여러 개의 칼럼을 조회하고 여러 개의 테이블을 조인하고 거기에 조건까지 넣어줌으로써 하나의 쿼리를 만드는데
+엄청나게 긴 쿼리문이 생기게 됩니다.
+이러한 여러개의 쿼리를 사용할 때마다 긴 쿼리문을 써야 한다면 엄청나게 불편할 텐데 이를 프로시저에 저장하고
+저장된 프로시저를 호출하여 프로그래밍을 하는것이 훨씬 효율적입니다.
+
+
+13. 
+
 
 
 
@@ -82,6 +148,7 @@ delimiter ;
 
 SELECT nm, gender, f_event3(gender) FROM u;
 
+-- 날짜 함수 다루기
 SELECT NOW(), DATE_FORMAT(NOW(), '%Y년%m월%d일') AS 한국식날짜;
 
 SELECT f_event4(NOW()) AS 현재날짜, 
@@ -90,3 +157,79 @@ SELECT f_event4(NOW()) AS 현재날짜,
 
 CREATE FUNCTION f_event4(IN f_date datetime) RETURNS VARCHAR(30)
 RETURN DATE_FORMAT(f_date, '%Y년%m월%d일');
+
+
+delimiter $$
+CREATE FUNCTION f_event5(IN f_a BOOLEAN) RETURNS VARCHAR(20)
+	BEGIN
+		DECLARE f_return VARCHAR(20);
+		if(f_a = 0) then
+		SET f_return = '불가능';
+		ELSE 
+		SET f_return = '가능';
+		END if;
+		RETURN f_return;
+	END;
+$$
+delimiter ;
+
+-- 프로시저
+CREATE OR REPLACE PROCEDURE p_event1()
+SELECT *, f_event5(양조절유무) AS 한글양조절유무 FROM t_menu;
+
+CALL p_event1();
+
+CREATE PROCEDURE p_event2(IN a INT, IN b INT, OUT c INT)
+SET c = a + b;
+
+
+CALL p_event2(4, 3, @r);
+SELECT @r;
+
+-- 프로시저를 이용하여 u 테이블에 데이터를 입력하기
+delimiter $$
+CREATE PROCEDURE p_u_insert(IN p_nm VARCHAR(10), IN p_gender BOOLEAN, OUT state INT)
+BEGIN
+	INSERT INTO u VALUES (p_nm, p_gender);
+	SET state = 1;
+END;
+$$
+delimiter ;
+
+CALL p_u_insert('이순신', FALSE, @state);
+
+SELECT @state;
+
+-- 입력된 정보 내역을 리턴 받기
+delimiter $$
+CREATE PROCEDURE p_u_i_s(IN p_nm VARCHAR(10), IN p_gender BOOLEAN)
+BEGIN
+	INSERT INTO u VALUES (p_nm, p_gender);
+	SELECT * FROM u;
+END;
+$$
+delimiter ;
+
+CALL p_u_i_s('둘리', TRUE);
+
+-- u2 테이블에 데이터를 입력 후 해당 데이터의 식별자인 기본키 값을 받아오기
+CREATE TABLE u2(
+	no INT NOT NULL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nm VARCHAR(50) NOT NULL,
+	gender boolean
+);
+
+SELECT * FROM u2;
+
+delimiter $$
+CREATE PROCEDURE p_u2(IN p_nm VARCHAR(50), IN p_gender BOOLEAN, OUT p_no INT)
+BEGIN 
+    INSERT INTO u2 (nm, gender) VALUES (p_nm, p_gender);
+    SELECT LAST_INSERT_ID() INTO p_no;
+    COMMIT;
+END;
+$$
+delimiter ;
+
+CALL p_u2('참치', TRUE, @NO);
+SELECT @NO;
