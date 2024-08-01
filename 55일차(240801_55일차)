@@ -126,6 +126,9 @@ spring.datasource.password=4321
 23. call p_u2_list(), call p_u2_insert(#{nm}, #{gender})
 : 위의 코드를 프로시저라고 한다.
 
+24. CALL 명령어를 사용해서 프로시저를 호출한다.
+
+
 
 
 
