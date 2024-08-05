@@ -1,0 +1,38 @@
+USE mysql;
+
+-- 데이터베이스 생성
+CREATE DATABASE school;
+-- 테스트 사용자 권한 주기
+GRANT ALL PRIVILEGES ON school.* TO 'test'@'localhost';
+-- 권한 적용하기
+FLUSH PRIVILEGES;
+
+USE school;
+-- school 데이터베이스에 교원 테이블 생성
+CREATE OR REPLACE TABLE 교원 (
+번호 INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+이름 VARCHAR(70) NOT NULL,
+직무 VARCHAR(50) NULL,
+담당 VARCHAR(50) NULL,
+년차 INT NOT NULL DEFAULT 1,
+입사날짜 DATETIME NOT NULL DEFAULT NOW(),
+퇴사날짜 DATETIME NULL
+);
+
+-- 교원 테이블에 사용할 데이터 넣기
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('정몽주','국어','1-1');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('벨','수학','1-2');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('베토벤','음악','1-3');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('찰스','영어','2-1');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('아인슈타인','과학','2-2');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('다빈치','미술','2-3');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('정두홍','체육','3-1');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('짐머','음악','3-2');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('네이든','수학','3-3');
+INSERT INTO 교원 (이름, 직무, 담당) VALUES ('호킹','과학',null);
+
+-- 입력한 데이터 저장하기
+COMMIT;
+
+-- 교원 테이블 데이터 확인하기
+SELECT * FROM 교원;
