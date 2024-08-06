@@ -6,6 +6,28 @@
 셀렉트하는 시간을 줄인다.(데이터가 너무 많을때)
 
 3. 데이터가 1000개로 LIMIT을 정해놨기 때문에, 데이터를 찾을때, SELECT 와 WHERE을 사용해서 데이터 있는지 확인한다.
+
+4. JQuery 할 줄 알아야 한다.
+
+5. MVN REPOSITORY에서 Jquery 관련 라이브러리 가지고 와서 사용해야함
+우리는 스프링 부트로 할것이기 때문에
+1. Gradle(short)에서 라이브러리를 가지고 오면 된다.(JQuery)
+- implementation 'org.webjars.bower:jquery:3.7.1'
+
+2. Gradle(short)에서 라이브러리를 가지고 오면 된다.(Bootstrap)
+- implementation 'org.webjars:bootstrap:5.3.3'
+
+3. Gradle(short)에서 라이브러리를 가지고 오면 된다.(WebJars)
+- implementation 'org.webjars:webjars-locator:0.52'
+
+
+1. 8월 6일까지 팀프로젝트 주제 선정해서 강사님께 말씀드리기(식집사, 식물스케줄러)
+2. 8월 13일까지 선정한 팀프로젝트 시장조사 완료 후 발표
+(현재 다른곳에도 우리가 정한 주제가 있는지 확인, 어떤 기능을 구현할것인지 등..)
+3. 8월 14일에 미니 팀프로젝트 관련 발표 
+4. 8월 30일까지 UI/UX(Figma) 및 HTML
+
+
 USE air;
 
 SELECT COUNT(*) FROM 비행;
