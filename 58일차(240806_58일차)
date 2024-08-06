@@ -1,3 +1,94 @@
 20240806
-1. 
+1. 무결성 때문에 한행씩 나와야 한다 그래서 조인을 걸때 같은 테이블이라도
+무결성을 유지하기 위해서 AS를 다르게 줘야 한다.
 
+2. 먼저 하나의 테이블을 셀렉트하고, 그 이후에 조인을 넣는다. 그리고 데이터가 많으면 WHERE을 사용해서
+셀렉트하는 시간을 줄인다.(데이터가 너무 많을때)
+
+USE air;
+
+SELECT COUNT(*) FROM 비행;
+SELECT 년도, 월 FROM 비행 GROUP BY 년도, 월;
+
+SELECT * FROM 항공사;
+
+SELECT 출발공한코드 FROM 비행 GROUP BY 출발공한코드;
+
+-- 문제 비행 데이블과 항공사 테이블을 조인하여 항공사명과 도시를 조회 하시오.
+
+SELECT a.년도, a.월, a.일,
+       b.항공사명 AS 출발항공사, b.도시 AS 출발도시,
+       c.항공사명 AS 도착항공사, b.도시 AS 도착도시
+  FROM 비행 AS a
+ INNER JOIN 항공사 AS b
+    ON a.출발공한코드 =  b.항공사코드
+ INNER JOIN 항공사 AS c
+    ON a.도착지공항코드 =  c.항공사코드
+ LIMIT 100;
+ 
+-- a.`출발공한코드`, a.`도착지공항코드`
+SELECT a.년도, a.월, a.일, a.`출발공항코드`, 
+		 b.`항공사명` AS 출발항공사, b.`도시` AS 출발도시,
+		 c.`항공사명` AS 도착항공사, c.`도시` AS 도착도시
+FROM 비행 AS a
+INNER JOIN 항공사 AS b
+ ON a.`출발공항코드` = b.`항공사코드`
+INNER JOIN 항공사 AS c
+ ON a.`도착지공항코드` = c.`항공사코드`
+WHERE a.월 = 12
+  AND a.일 = 24
+  AND a.`출발공항코드` = 'PHX';
+
+
+SELECT * FROM 항공사 WHERE `항공사코드` = 'ORD';
+
+-- 항공사 Chicago 지역에서 가장 많이 비행하여 도착한 도시를 조회하시오.
+  
+SELECT 출발공한코드, COUNT(*) FROM 비행 GROUP BY 출발공한코드 ORDER BY 2 DESC; 
+
+SELECT 도착지공항코드, COUNT(*) FROM 비행 GROUP BY 도착지공항코드 ORDER BY 2 DESC;
+
+
+
+SELECT 출발공항코드, a.도착지공항코드, COUNT(a.도착지공항코드) AS 도착횟수,
+	b.`항공사명`, b.`도시`
+	 FROM 비행 AS a
+	INNER JOIN 항공사 AS b
+	   ON a.`도착지공항코드` = b.`항공사코드` 
+	WHERE a.출발공항코드 = 'ORD'
+	GROUP BY a.출발공항코드, a.도착지공항코드
+	ORDER BY 3 DESC;
+
+
+
+SELECT 출발공항코드, a.도착지공항코드, COUNT(a.도착지공항코드) AS 도착횟수,
+	b.`항공사명`, b.`도시`
+	 FROM 비행 AS a
+	INNER JOIN 항공사 AS b
+	   ON a.`도착지공항코드` = b.`항공사코드` 
+	WHERE a.출발공항코드 = (SELECT 항공사코드 FROM 항공사 WHERE 도시 = 'Chicago' AND 항공사코드 = 'ORD')
+	GROUP BY a.출발공항코드, a.도착지공항코드
+	ORDER BY 3 DESC;
+
+SELECT 항공사코드 FROM 항공사 WHERE 도시 = 'Chicago' AND 항공사코드 = 'ORD';
+
+
+-- WHERE a.출발공항코드 = 'ORD' 와 서브쿼리인 SELECT 항공사코드 FROM 항공사 WHERE 도시 = 'Chicago' AND 항공사코드 = 'ORD';의 결과값은 같다.
+
+
+SELECT 출발공항코드, COUNT(*) FROM 비행 GROUP BY 출발공항코드 ORDER BY 2 DESC;
+
+-- 출발항공사별 비행 거리가 가장 높은 도착항공사 10건를(Limit을 사용) 조회하시오.
+-- Limit 10
+ 
+-- 강사님
+SELECT 출발공항코드, 비행거리, 도착지공항코드
+ FROM 비행
+ WHERE 비행거리 <> 'NA'
+ GROUP BY 출발공항코드, 비행거리, 도착지공항코드
+ ORDER BY 2 DESC
+ LIMIT 10;
+ 
+SELECT 비행거리 FROM 비행 GROUP BY 비행거리 ORDER BY 1 DESC;
+ 
+ 
