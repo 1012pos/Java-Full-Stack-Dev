@@ -19,7 +19,7 @@
 
 -- 년도, 월, 일 -->> 주를 만들자 !
 -- WEEK라는 내장함수를 사용
--- CAST를 사용해서 형변환
+-- CAST를 사용해서 형변환(숫자 -> 문자로)
 -- CONCAT를 사용해서 문자열을 합쳐준다.
 SELECT WEEK('1987-10-01'), CAST(1987 AS CHAR), CAST(10 AS CHAR), CAST(1 AS CHAR),
 		 CONCAT(CAST(1987 AS CHAR), '-', CAST(10 AS CHAR), '-', CAST(1 AS CHAR)),
@@ -32,7 +32,6 @@ SELECT WEEK('1987-10-01'), CAST(1987 AS CHAR), CAST(10 AS CHAR), CAST(1 AS CHAR)
  WHERE 월 = 10
  GROUP BY WEEK(CONCAT(CAST(년도 AS CHAR), '-', CAST(월  AS CHAR), '-', CAST(일 AS CHAR)))
 ;
-
 
 
 
