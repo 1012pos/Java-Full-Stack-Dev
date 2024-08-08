@@ -1,3 +1,45 @@
 20240808
-1. 
+1. FiveStones css 깨지는거 타임리프 관련해서 변경해줘야함
+
+2. SQL문은 사고력을 많이 키워야 풀수 있다.
+
+
+
+
+USE air;
+
+SELECT 요일, COUNT(*) FROM 비행 WHERE 월 = 10 GROUP BY 요일 ORDER BY 2 DESC;
+
+-- 3개월의 비행 이력 중 가장 많이 비행 이력이 있는 월과 요일를 구하시오
+
+SELECT 월, 요일, COUNT(*)
+	FROM 비행
+ WHERE  비행취소여부 = 0
+ GROUP BY 월, 요일
+ ORDER BY 3 DESC;
+
+SELECT 월, 요일, COUNT(*) FROM 비행 GROUP BY 월, 요일 ORDER BY 3 DESC;
+
+
+-- 3개월의 비행 이력 중 가장 많이 비행 이력이 있는 월과 요일를 구하시오
+-- 단, 달의 기준으의 가장 높은 요일 한건씩 조회 하세요.
+
+SELECT 월, 요일, COUNT(*) FROM 비행 WHERE 월 = 10 GROUP BY 월, 요일 ORDER BY 3 DESC LIMIT 1;
+SELECT 월, 요일, COUNT(*) FROM 비행 WHERE 월 = 11 GROUP BY 월, 요일 ORDER BY 3 DESC LIMIT 1;
+SELECT 월, 요일, COUNT(*) FROM 비행 WHERE 월 = 12 GROUP BY 월, 요일 ORDER BY 3 DESC LIMIT 1;
+
+
+-- 비행 이력 중에 예정출발시간 가장 많은 오전 또는 오후 중 어느것인지 찾으시오.
+
+SELECT  '종합', COUNT(*) FROM 비행
+UNION
+SELECT '오전', COUNT(*) FROM 비행 WHERE 예정출발시간 < 1200
+UNION
+SELECT '오후', COUNT(*) FROM 비행 WHERE 예정출발시간 >= 1200
+;
+
+
+ 
+
+
 
