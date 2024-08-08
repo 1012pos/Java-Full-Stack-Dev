@@ -38,6 +38,7 @@ UNION
 SELECT '오후', COUNT(*) FROM 비행 WHERE 예정출발시간 >= 1200
 ;
 
+
 SELECT  '종합', COUNT(*) FROM 비행
 UNION
 SELECT * FROM
@@ -47,6 +48,20 @@ UNION
 SELECT '오후', COUNT(*) FROM 비행 WHERE 예정출발시간 >= 1200
 ) AS a ORDER BY 2 DESC;
 
+
+-- 항공 이력이 있는 운반대 중 가장 비행 이력이 높은 운반대 10개를 조회 하시오.
+SELECT 항공사코드, COUNT(*) FROM 비행 GROUP BY 항공사코드;
+SELECT COUNT(*) FROM 운반대;
+ 
+ 
+SELECT b.`설명`, COUNT(*) AS 운행수 
+ FROM 비행 as a 
+ INNER JOIN 운반대 AS b
+ ON a.`항공사코드` = b.`코드`
+ WHERE a.비행취소여부 = 0
+ GROUP BY b.`설명`
+ ORDER BY 2 DESC
+ LIMIT 10;
 
  
 
