@@ -7,6 +7,33 @@
 
 4. 데이터가 많으면 인덱스 걸면 된다.
 
+5. 인덱스는 비교하려고 하는 WHERE 절에 사용하는 컬럼들에 인덱스를 거는데, 이것도 많으면 성능저하가 됨
+
+6. 마리아DB 내장 함수 참고할 주소
+: https://mariadb.com/kb/en/week/
+: https://mariadb.com/kb/en/cast/
+: https://mariadb.com/kb/en/concat/
+
+7.  -- 10월 기준으로 각 주마다 비행 이력을 조회 하시오.
+ SELECT 일, 요일, COUNT(*) FROM 비행 WHERE 월 = 10 GROUP BY 일, 요일;
+
+-- 년도, 월, 일 -->> 주를 만들자 !
+-- WEEK라는 내장함수를 사용
+-- CAST를 사용해서 형변환
+-- CONCAT를 사용해서 문자열을 합쳐준다.
+SELECT WEEK('1987-10-01'), CAST(1987 AS CHAR), CAST(10 AS CHAR), CAST(1 AS CHAR),
+		 CONCAT(CAST(1987 AS CHAR), '-', CAST(10 AS CHAR), '-', CAST(1 AS CHAR)),
+		 WEEK( CONCAT(CAST(1987 AS CHAR), '-', CAST(10 AS CHAR), '-', CAST(1 AS CHAR)))
+;
+
+
+ SELECT WEEK(CONCAT(CAST(년도 AS CHAR), '-', CAST(월 AS CHAR), '-', CAST(일 AS CHAR))) AS 주, COUNT(*) 
+ 	FROM 비행 
+ WHERE 월 = 10
+ GROUP BY WEEK(CONCAT(CAST(년도 AS CHAR), '-', CAST(월  AS CHAR), '-', CAST(일 AS CHAR)))
+;
+
+
 
 
 
