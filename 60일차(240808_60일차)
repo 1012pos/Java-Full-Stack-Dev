@@ -38,6 +38,15 @@ UNION
 SELECT '오후', COUNT(*) FROM 비행 WHERE 예정출발시간 >= 1200
 ;
 
+SELECT  '종합', COUNT(*) FROM 비행
+UNION
+SELECT * FROM
+(
+SELECT '오전', COUNT(*) FROM 비행 WHERE 예정출발시간 < 1200
+UNION
+SELECT '오후', COUNT(*) FROM 비행 WHERE 예정출발시간 >= 1200
+) AS a ORDER BY 2 DESC;
+
 
  
 
