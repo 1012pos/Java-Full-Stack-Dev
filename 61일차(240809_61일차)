@@ -1,7 +1,48 @@
 20240809
-1. 
+1. user 테이블에 userRole 컬럼을 넣는이유?
+: 우리 회사 직원과 외부 사람 이렇게 구분 지으려고 넣는다. 그리고 더불어서 role 테이블을 추가적으로 만든다.
+: 권한 구분 지으려고 한다.
 
+2. 다대다를 막기 위해 중간에 징검다리 테이블을 만들어서 다대다를 방지한다.
 
+3. @RestController는 뷰를 쓰지 않을 때 사용하고 뷰를 사용할때는 @Controller를 사용해야 한다.
+
+4. 자바스크립트에서 const를 사용해서 변수 처리한다.
+
+5. $("tbody tr").on("click", function(){alert("접근 불가");});
+     {대상자 찾기}
+
+6. $("tbody tr").on("click", function(){
+console.log(this);
+});
+
+7. $("tbody tr").on("click", function(){
+	//console.log(this, $(this));
+	console($(this).children("td"));
+});
+
+: console창(F12)에서 innerHTML, innerText 를 찾아야 한다.
+
+8. 7. $("tbody tr").on("click", function(){
+	//console.log(this, $(this));
+	alert($(this).children("td").eq(0).text()+ "번호에 접근 불가");
+});
+
+9. 이벤트는 "행"한테 주는것이다.
+
+10. 세션을 만들어줘서 로그인 후 번호, 이름 롤 가지고 다니는 로직
+//	@ResponseBody
+	@PostMapping("/login")
+	public String login(@ModelAttribute UserDTO userDTO, HttpServletRequest req) {
+		UserResultDTO userResultDTO = companyService.findByUser(userDTO);
+		if(userResultDTO.isStatus()) {
+			HttpSession http = req.getSession();
+			http.setAttribute("userNo", userResultDTO.getUserDTO().getUserNo());
+			http.setAttribute("userNm", userResultDTO.getUserDTO().getUserNm());
+			http.setAttribute("userRole", userResultDTO.getUserDTO().getUserRole());
+			return "redirect:/";
+		}
+		return "redirect:/login";
 
 
 
