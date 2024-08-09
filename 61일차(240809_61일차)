@@ -1,0 +1,97 @@
+20240809
+1. 
+
+
+
+
+
+
+-- root 사용자로 접속 후 실행
+USE mysql;
+
+CREATE DATABASE company;
+
+GRANT ALL ON company.* TO 'test'@'localhost';
+
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'test'@'localhost';
+
+-- test 사용자로 접속 후 실행
+USE company;
+
+CREATE TABLE `user` (
+	userNo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	userNm VARCHAR(50) NOT NULL,
+	userPwd VARCHAR(50) NOT NULL,
+	userEnable BOOLEAN NOT NULL DEFAULT 1,
+	userRole VARCHAR(10) NOT NULL DEFAULT 'USER'
+);
+
+CREATE TABLE `notice` (
+	noticeNo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	noticeTitle VARCHAR(50)NOT NULL,
+	noticeContent VARCHAR(255)NULL,
+	userNo INT NOT NULL
+);
+
+CREATE TABLE `role` (
+	roleNo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	roleNm VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE `notice` (
+	noticeNo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	noticeTitle VARCHAR(50)NOT NULL,
+	noticeContent VARCHAR(255)NULL,
+	userNo INT NOT NULL
+);
+
+SELECT * FROM notice;
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목1', '내용 테스트', 1);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목2', '글 넣어 보기', 2);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목3', '하나 부터 열까지!!', 4);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목4', '자유게시판 가즈아', 5);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목5', '테스트 중입니다.', 6);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목6', '글 작성 잘 됩니다.', 9);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목7', '연습용1', 11);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목8', '연습용2', 11);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목9', '누군지 알아보세요', 14);
+INSERT INTO  notice (noticeTitle, noticeContent, userNo) VALUES ('글제목10', '아무도 모르겠지?', 16);
+
+COMMIT;
+
+CREATE TABLE `user` (
+	userNo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	userNm VARCHAR(50) NOT NULL,
+	userPwd VARCHAR(50) NOT NULL,
+	userEnable BOOLEAN NOT NULL DEFAULT 1,
+	userRole VARCHAR(10) NOT NULL DEFAULT 'USER'
+);
+
+
+SELECT * FROM user;
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자1', 'pwd1', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자2', 'pwd2', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자3', 'pwd3', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자4', 'pwd4', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자5', 'pwd5', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자6', 'pwd6', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자7', 'pwd7', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자8', 'pwd8', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자9', 'pwd9', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자10', 'pwd10', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자11', 'pwd11', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자12', 'pwd12', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자13', 'pwd13', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자14', 'pwd14', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자15', 'pwd15', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자16', 'pwd16', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자17', 'pwd17', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자18', 'pwd18', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자19', 'pwd19', 1, 'USER');
+INSERT INTO  user (userNm, userPwd, userEnable, userRole) VALUES ('사용자20', 'pwd20', 1, 'USER');
+COMMIT;
+
+
