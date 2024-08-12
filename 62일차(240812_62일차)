@@ -48,3 +48,51 @@
 
 10. JSON.parse()
 : JSON 문자열을 JavaScript 객체로 변환 
+
+11. Window btoa()
+: 암호화 한다.
+: setCookie("roles", window.btoa(JSON.stringify(roles)), 1);
+: document.cookie
+: function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+: console.log(getCookie("roles"));
+: console.log(window.atob(getCookie("roles")));
+: console.log(JSON.parse(window.atob(getCookie("roles"))));
+
+
+12. Window atob()
+: 암호화 한것을 복호화 해준다.
+: console.log(window.atob(getCookie("roles")));
+: console.log(JSON.parse(window.atob(getCookie("roles"))));
+
+
+13. 공통코드 만들기(나중에 팀프로젝트 할때 공통코드로 만들어서 암호화한것을 복호화할 수 있다.)
+: function getData(name){
+    return JSON.parse(window.atob(getCookie(name)));
+}
+: getData("roles");
+
+14. W3SChool을 잘 활용해야 한다.
+
+15. JWT(JSON Web TOkens)
+: 프론트와 백엔드를 완전히 분리 했을때 사용하는 방법
+
+16. base64
+: Base64란 Binary Data를 Text로 바꾸는 Encoding(binary-to-text encoding schemes)의 
+하나로써 Binary Data를 Character set에 영향을 받지 않는 
+공통 ASCII 영역의 문자로만 이루어진 문자열로 바꾸는 Encoding이다.
+
+17. 오늘은 사용자 정보를 다루는 기술과 및 보안을 다루는 수업을 함
