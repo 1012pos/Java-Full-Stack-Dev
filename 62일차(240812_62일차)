@@ -13,4 +13,38 @@
 	roleNo INT
 );
 
+5.# 세션 시간 제어
+: server.servlet.session.timeout=1m
 
+6. Cookie는 브라우저에서 사용하는 기술이며 주로 자바스크립트에서 사용한다.
+: W3SChool -> JS Brower BOM -> JS Cookies 에서 아래의 코드는 예시임
+: function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+: setCookie('test', '연습', 1);
+: document.cookie
+
+7. 쿠키는 브라우저에서 사용하는 데이터 저장소이다.
+
+8. 쿠키는 브라우저에서 다루고, 자바에서 다룰수는 있지만 다루지는 않는다.그리고 세션은 자바에서 다룬다.
+
+9. JSON.stringify()
+: JavaScript 객체를 JSON 문자열로 변환
+// 브라우저에서 F12 Console창에서 아래의 코드 순서대로 실행
+: const roles = [{roleNm: "ADMIN"}, {roleNm:"USER"}];
+: roles
+: function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+: setCookie("roles", JSON.stringify(roles), 1);
+: document.cookie
+
+10. JSON.parse()
+: JSON 문자열을 JavaScript 객체로 변환 
