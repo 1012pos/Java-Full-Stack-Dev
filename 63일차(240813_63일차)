@@ -23,3 +23,12 @@ public class Pointcuts {
 	@Pointcut("publicMethod() && inTrading()")
 	public void tradingOperation() {} 
 }
+
+6. @Component // 이 어노테이션을 사용하면 Bean을 따로 생성안해도 된다.
+
+7. DAO(Application) -> Spring Data JPA -> JPA + Hibernate(ORM) -> JDBC API(JDBC Interfaces) -> JDBC Driver(JDB Implementation) -> DB(Persistence Layer)
+
+8. Hibernate
+: 엔티티와 데이터 베이스 테이블이 서로 연결해주는 역할을 한다.
+
+9. @Entity(테이블)를 DTO(그릇)라고 생각하지 말고 하나의 테이블이라고 생각해야 한다.
