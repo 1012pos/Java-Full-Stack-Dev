@@ -1,2 +1,25 @@
 20240813
-1. 
+1. 오늘부터 데이터베이스 구현
+
+2. 앞으로 Spring 쪽은 아래의 기술을 배울 것이다. 
+- Spring JPA
+- Spring Secutity(AOP는 로직을 검사해준다. AOP는 Secutity에 적용된다.)
+
+3. 우리나라는 거의 80% 이상 MyBatis를 사용하고 있고, JPA는 거의 대기업만 사용하는 중이다.
+
+4. AOP -> JPA -> Secutity 순으로 공부할 예정
+
+5. AOP는 Pointcut을 알아야 한다. 아래의 코드는 예시이다.
+: package com.xyz;
+
+public class Pointcuts {
+
+	@Pointcut("execution(public * *(..))")
+	public void publicMethod() {} 
+
+	@Pointcut("within(com.xyz.trading..*)")
+	public void inTrading() {} 
+
+	@Pointcut("publicMethod() && inTrading()")
+	public void tradingOperation() {} 
+}
