@@ -40,4 +40,11 @@
 		userEntityRepository.save(user);
 	}
 
-13. 
+13. JPA에는 Entity파일을 무조건 만들어야 하고, 절대 없어서는 안될 파일이 Entity 파일이다.
+
+14. https://docs.spring.io/spring-data/jpa/reference/3.2/jpa/query-methods.html#jpa.query-methods.query-creation 참조
+
+15. "interface" 파일에는 어노테이션을 사용하지 않는다. @Controller, @Service 등의 어노테이션에는 "class"에만 사용한다.
+
+16. Optional
+: null에 대한것을 처리해준다.
