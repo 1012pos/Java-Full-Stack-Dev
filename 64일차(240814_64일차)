@@ -1,5 +1,43 @@
 20240814
 1. ConsoleJPA 에서 ConsoleJpaApplication.java 파일이 main 메소드가 있는 파일이다.
 
-2. 
+2. JPA 는 무조건 Entity가 있어야 한다.
 
+3. @GeneratedValue(strategy = GenerationType.IDENTITY)
+: Auto_Increment랑 같은 의미 
+
+4.eManager.persist(user); 
+: 테이블에 데이터 적용해줘
+
+5. persist(영속성)
+
+6. Transation persistence context
+: Application <-> persistence context(영속성 컨텍스트) <-> DB
+
+7. https://www.baeldung.com/spring-data, https://www.baeldung.com/jpa-hibernate-persistence-context 스프링 JPA에 관련된 사이트
+
+8. 영속성 컨텍스트가 임시 저장된 데이터에서 새로운 데이터가 들어오면 알아서 수정한다.
+이말은 즉슨 업데이트를 하지 않아도 자동으로 판단해서 수정해 준다.
+
+9. 업데이트는 순서와 상관없이 트랜잭션 후(Commit, Rollback)에 마지막에 데이터를 업데이트 해준다.
+
+10. public interface UserEntityRepository extends JpaRepository<UserEntity, Integer> {}
+: Integer는 PK의 자료형을 적어주면 된다.
+
+11. orElseThrow()
+: 오류 발생
+
+12. @Transactional
+: 업데이트 할때 사용해야 한다. 만약 @Transactional 없으면 save() 메서드를 사용한다.
+둘다 사용하지 않으면 데이터는 휘발성으로 날라간다.
+//	@Transactional
+	public void run() {
+		log.info("UserService Run!");
+		// insert();
+		// select();
+		UserEntity user = userEntityRepository.findById(4).orElseThrow();
+		user.setUserNm("고길동");
+		userEntityRepository.save(user);
+	}
+
+13. 
