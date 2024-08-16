@@ -1,3 +1,112 @@
 20240816
-1. 
+1. @Column(name="user_id")
+: name을 빼도 가능하다, 하지만 한번 빼보고 실행시켜 보기
 
+2. UserEntity.java 파일에 있는 어노테이션 공부하기
+@Getter
+@Setter
+@ToString
+@Entity(name = "user")
+@Table(name = "user2")
+public class UserEntity {
+
+	@Id
+	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userId;
+	
+	@Column(name = "user_pwd", length = 255, nullable = false)
+	private String userPwd;
+	
+	@Column(name = "user_nm", unique = true, length = 100, nullable = false)
+	private String userNm;
+	
+	@Column(name = "del_yn", nullable = false, columnDefinition = "boolean default false")
+	private boolean delYn;
+	
+	@Column(name = "reg_date")
+	@CreationTimestamp
+	private LocalDateTime regDate;
+	
+}
+
+3. @Lob
+: 대용량 데이터 사용할수 있게 하는 어노테이션
+
+4. Entity.java 만들고 repository.java 안만들었을 떄 차이점 확인해보기
+
+5. Many To Many 어노테이션의 디폴트는 (fetch = FetchType.LAZY) 이다.
+
+6. @PageableDefault(size = 2) Pageable pageable
+: 페이지 관리하는 어노테이션 2는 화면에 노출되는 갯수
+
+7. @PageableDefault(size = 3) Pageable pageable)
+: size 3은 한 화면에 3개씩 나오게 하는 것
+
+8. 	int cnt = 5;
+	int end = Math.min(users.getTotalPages(), users.getPageable().getPageNumber() + cnt);
+	int start = Math.max(1, end - (cnt-1));
+: 페이징 처리
+
+9. (1안)
+package com.app.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.app.model.BoardEntity;
+
+public interface BoardEntityRepository extends JpaRepository<BoardEntity, Integer> {
+
+		@Query(value = "SELECT board2.board_no, board2.board_title, user2.user_nm, role2.role_nm "
+				+ "   FROM board2, user2, urmapping, role2 "
+				+ "  WHERE board2.user_id = user2.user_id "
+				+ "   AND user2.user_id = urmapping.user_id "
+				+ "   AND urmapping.role_no = role2.role_no "
+				+ "  ORDER BY 1 ",
+		nativeQuery = true)		
+	public List<Boards> getBoards();
+	
+}
+
+@ResponseBody
+	@GetMapping("/boardAll")
+	public List<BoardEntity> boardAll(){
+		return bRepository.findAll();
+	}
+	
+9. (2안)
+package com.app.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.app.model.BoardEntity;
+
+public interface BoardEntityRepository extends JpaRepository<BoardEntity, Integer> {
+
+		@Query(value = "SELECT board2.board_no, board2.board_title, user2.user_nm, role2.role_nm "
+				+ "   FROM board2, user2, urmapping, role2 "
+				+ "  WHERE board2.user_id = user2.user_id "
+				+ "   AND user2.user_id = urmapping.user_id "
+				+ "   AND urmapping.role_no = role2.role_no "
+				+ "  ORDER BY 1 ",
+		nativeQuery = true)		
+	public List<Boards> getBoards();
+	
+}
+
+@ResponseBody
+	@GetMapping("/boardAll")
+	public List<BoardEntity> boardAll(){
+		return bRepository.getBoards();
+	}	
+	
+10. JPA는 상속을(extends) 받기 때문에, 어노테이션을 사용안하는거다.
+그리고 원래 interface는 어노테이션을 사용하지 않는다.
+다만 @Mapper 어노테이션 같은 경우 약간 예외이다.	
+	
