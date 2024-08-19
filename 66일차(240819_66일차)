@@ -1,0 +1,56 @@
+240819 (수업 진행 순서)
+1. JPA 스스로 실행
+
+
+2. 데이터 베이스 (내일 시험 준비)
+   DDL / DCL / DML / TCL
+   권한 부여 / 테이블 생성 / SELECT 구문 활용
+   
+#1 사용자 만들기
+-- 계정 : hi
+-- 비밀번호 : hi1234
+-- mysql 데이터베이스 쪽으로 접속 후 실행
+
+CREATE user 'hi'@'localhost' IDENTIFIED BY 'hi1234';
+
+SELECT HOST, user FROM user WHERE user = 'hi';
+
+SELECT * FROM edu;
+
+#2 사용자에게 권한 부여
+-- edu 데이터베이스에 select 권한 부여
+GRANT SELECT ON edu.* TO 'hi'@'localhost';
+
+SELECT * FROM edu.user;
+
+#3 수정한 권한 적용
+FLUSH PRIVILEGES;   
+
+
+
+3. 스키마
+: 스키마는 데이터베이스 전체의 논리적 보기를 나타내는 추상적인 구조 또는 개요입니다. 데이터베이스 스키마 설계는 데이터 범주와 해당 범주 간의 관계를 정의함으로써 
+데이터를 훨씬 손쉽게 검색, 소비, 조작, 해석할 수 있도록 지원합니다.
+
+-- information schema
+
+SELECT * FROM information_schema.TABLES;
+
+SELECT table_schema, TABLE_NAME,
+         SUM(data_length + index_length) / 1024 / 1024 AS 'size(MB)'
+    FROM information_schema.tables
+ WHERE TABLE_schema = 'edu'
+--     AND TABLE_NAME = 'employee';     
+    GROUP BY table_schema, TABLE_NAME;
+
+
+
+4. ETL
+: 추출, 전환, 적재(ETL)는 다양한 소스의 데이터를 데이터 웨어하우스라고 부르는 대형 중앙 집중식 리포지토리에 결합하는 과정입니다. ETL은 원시 데이터를 정리 및 구성해서 스토리지, 데이터 분석, 기계 학습(ML)용으로 준비하기 위한 비즈니스 규칙 세트입니다. 
+사용자는 데이터 분석(비즈니스 의사 결정의 결과 예측, 보고서 및 대시보드 생성, 운영 비효율성 저감 등)을 통해 특정 비즈니스 인텔리전스 요구 사항을 해결할 수 있습니다.
+
+
+5. 이중화
+: 시스템의 가용성 높이기 위해 장비를 다중화 시키는 방법을 말합니다. 
+이중화 구성은 가용성을 높여주기 때문에 고가용성을 뜻하는 HA(Hight Avaliability)라는 용어와 혼재하여 사용하기도합니다.
+가용성이란 쉽게 말해 하나의 서버 장비가 문제가 생겨도 다른 장비에서 서비스가 될 수 있도록 구현 하는 것을 말합니다.
