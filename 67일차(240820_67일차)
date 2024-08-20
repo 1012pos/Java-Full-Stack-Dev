@@ -1,3 +1,100 @@
 20240820
-1. 
+1. JSON 다루는 Jquery 수업
 
+2. 5교시 시험
+
+3. https://api.jquery.com/submit/
+
+4. $(document).ready(() => {
+    console.log("Ready!!");
+});
+
+5. $(document).ready(())
+: html을 다 읽고 나서 준비가 됬다는 의미 중요함
+
+6. $( "#target" ).on( "submit", function( event ) {
+  alert( "Handler for `submit` called." );
+  event.preventDefault();
+});
+
+7. 아래의 코드는 객체화 시킴(key, value)
+let params = {
+            userNm : $("#userNm").val(),
+            userPwd: $("#userPwd").val()
+        }
+
+8. https://api.jquery.com/jQuery.post/#jQuery-post-url-data-success-dataType
+
+9. CORP 에러 메시지 해결 방안
+package com.app.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = {"http://127.0.0.1:5500"})
+@RestController
+public class AuthController {
+
+	@PostMapping("/login")
+	public String login() {
+		return "OK";
+	}
+}
+
+
+10. CORP 에러 메시지 해결 방안
+package com.app.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
+@RestController
+public class AuthController {
+
+	@PostMapping("/login")
+	public String login() {
+		return "OK";
+	}
+}
+
+
+11. 
+$(document).ready(() => {
+    console.log("Ready!!");
+
+    $( "form" ).on( "submit", function( event ) {
+        event.preventDefault(); // form이 가지고 있는 이벤트 정지
+        console.log($("#userNm").val(), $("#userPwd").val());
+        let params = {
+            userNm : $("#userNm").val(),
+            userPwd: $("#userPwd").val()
+        }
+        console.log(params);
+        // 아래의 코드는 key와 변수를 매칭시켜주겠다라는 의미
+        // {params} == {params: params}
+
+/*
+        $.post("http://localhost:80/login", JSON.stringify(params))
+            .done(res => console.log(res))
+            .fail(res => console.log(res));
+/**/ 
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:80/login",
+                data: JSON.stringify(params),
+                dataType: "json",
+                contentType : "application/json; charset=UTF-8"
+            })
+            .done(res => console.log(res))
+            .fail(res => console.log(res)); 
+          
+      });
+});
+
+12. 원래는 로직은 서비스에 넣는것인데, 현재 컨트롤에 넣어 놓으심
+
+13. eq(0)
+: 인덱스를 의미한다.
