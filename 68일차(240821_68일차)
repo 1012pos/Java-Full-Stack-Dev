@@ -17,3 +17,36 @@
 
 8. DECODE
 : 복호화
+
+9. access.auth.interval=1
+: 토큰 유지시간
+
+10. 토근을 먼저 생성하고 -> 생생된 토큰을 URL 넣으면 된다.
+// 토큰을 던져주면, 값을 가지고 올수 있다.
+	// http://localhost/token/생성한 토큰을 기입하며 된다.
+	
+	@GetMapping("/token/{token}")
+	public Claims token(@PathVariable("token") String jwt) {
+		if(token.isValidToken(jwt)) {
+			return token.getToken(jwt);
+		}
+		return null;
+	}
+	
+	
+11. Open API를 사용하려면 식별할 수 있는 토큰을 사용해야 한다.
+	
+12. RSA
+: 공유키(PUBLIC KEY) , 개인키(PRIVATE KEY)
+
+13. TOKEN
+: 토큰에 사용자 정보가 담겨 있다.
+
+14. 로그인 했을때 TOKEN이 생성되면 된다.
+
+15. 스프링 시큐리티 사용하려면 아래의 디펜디시 추가
+: implementation "org.springframework.boot:spring-boot-starter-security"
+: https://docs.spring.io/spring-security/reference/getting-spring-security.html
+
+
+16. 
