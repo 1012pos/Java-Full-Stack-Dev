@@ -1,3 +1,32 @@
 20240822
-1. 
+1. Java Version Check -> Build Path -> Configure Build Path -> java Compiler에서 수정 가능
 
+2. 람다식을 알아야 시큐리티 작성시 이해가 된다.
+
+3. 인터페이스
+: 추상메서드를 보통 넣을수 있다.
+
+4. 인터페이스는 3가지 방식으로 사용가능하다.
+- 추상 메서드
+- 디폴트 메서드
+- 스태틱 메서드
+
+또한, 추상 메서드 및 디폴트 메서드는 new로 객체를 생성해서 사용하고, 
+스태틱 메서드는 바로 사용 가능 다만 인터페이스 명으로 접근 가능 A.print3();
+ 
+
+package study01;
+
+public interface A {
+	
+	public void print1(int a, int b); // 추상 메서드
+	
+	public default void print2(int a, int b) {} // 디폴트 메서드
+	
+	public static void print3(int a, int b) {} // 스태틱 메서드
+	
+}
+
+5. 스태틱 메서드는 바로 사용 가능
+
+6. 
