@@ -15,7 +15,7 @@
 스태틱 메서드는 바로 사용 가능 다만 인터페이스 명으로 접근 가능 A.print3();
  
 
-package study01;
+: package study01;
 
 public interface A {
 	
@@ -27,6 +27,98 @@ public interface A {
 	
 }
 
+
+: package study01;
+
+public class Main {
+
+	public static void main(String[] args) {
+		A.print3(5, 2); // 스태틱 메서드는 인터페이스 A로 바로 호출 가능, //3
+		
+		A a = new A() {
+			
+			@Override
+			public void print1(int a, int b) {
+				System.out.println( a * b );
+			}
+		};
+		
+		a.print2(2, 3); // 5
+		a.print1(2, 1); // 2
+		
+		
+	}
+
+}
+
+
 5. 스태틱 메서드는 바로 사용 가능
 
-6. 
+6. 스태틱은 메모리에 올라가 있다.
+
+7. "람다식은" 인터페이스가 필요하고 "단일 추상 메서드만" 필요하다.
+
+8. @FunctionalInterface
+: 추상 메서드 2개 이상 못 만들게 제약을 걸 수 있는 어노테이션이다.
+
+9. "람다식은" 은 "추상 메서드 일 경우만 하나만 사용" 가능하고, 스태틱 메서드나, 디폴트 메서드는 갯수 상관없다.
+
+10.	A a1 = new A() {
+			@Override
+			public void sum(int a, int b) {
+				
+			}
+		};
+		a1.sum(0, 0);
+		
+		
+		// 람다식 교체 1단계
+		A a2 = (int a, int b) -> {};
+		
+		// 람다식 교체 2단계
+		A a3 = (a,b) -> {};
+		
+11. 	A a1 = new A() {
+			@Override
+			public void sum(int a, int b) {
+				System.out.println(a + b);
+			}
+		};
+		a1.sum(1, 3); // 4
+		
+		
+		// 람다식 교체 1단계
+		A a2 = (int a, int b) -> {System.out.println(a - b);};
+		a2.sum(4, 2); // 2
+		
+		// 람다식 교체 2단계
+//		A a3 = (a,b) -> {System.out.println(a * b);}; // {} 중괄호 생략가능
+		A a3 = (a,b) -> System.out.println(a * b); // {} 중괄호 생략가능
+		a3.sum(2, 1); // 2
+		
+	}		
+	
+12. 람다식을 알야한다. 왜냐면 스프링도 점점 람다식으로 바뀌고 있는 추세이다.
+
+13. 자바가 객체 언어에서 -> 함수언어로 점점 변화하고 있다.
+
+14. https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/function/package-summary.html#package-description
+
+15. https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/function/Consumer.html
+
+16. https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
+
+
+17. 강사님이 추가로 알려주신 것
+	list.forEach(a -> new AA(a));		
+	list.forEach(AA::new);
+		
+		
+	class AA {
+		String nm;
+		public AA(String nm) {
+			this.nm = nm;
+		}
+		
+		
+18. https://docs.spring.io/spring-security/reference/servlet/authentication/logout.html
