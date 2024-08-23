@@ -1,3 +1,12 @@
 20240823
-1. 
+1. 다음주 수요일 시험 시큐리티 포트폴리오 만들기 지금 하고 있는 흐름도 1~2장 정도 제출(JsonAPI) 미리 만들어 놓으면 됨
 
+2. [36mcom.app.controller.ViewController       [0;39m [2m:[0;39m 신규회원 : {_csrf=fqmD2SvyzDWkLSCZ-ONGBDbrNIH2wpxswiTQBmfZyuPvJ3cDG8yy6R_B-VGJH0atnM5yNgXbGbmQp65B9RaxMlHs8oLXHkNi, userNm=22, userPwd=22}
+
+3. http.csrf(csrf -> csrf.disable()); // 비활성화 하면 form action="/sign" 해도 가능하다, 나중에 프론트와 분리시키면 이 코드는 지워야 한다.
+: <form th:action="@{/sign}" method="post"> -> form action="/sign"
+
+4. @Insert("INSERT INTO user_role VALUES (#{userNo}, 3)")
+: userNo 는 생성했을때 번호이고, 3은 role 테이블의 권한을 의미 한다.
+
+5. 
