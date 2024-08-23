@@ -9,4 +9,8 @@
 4. @Insert("INSERT INTO user_role VALUES (#{userNo}, 3)")
 : userNo 는 생성했을때 번호이고, 3은 role 테이블의 권한을 의미 한다.
 
-5. 
+5. SecurityContextHolder.getContext().setAuthentication(token);
+: 사용자 정보가 담긴다.
+
+6. https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html
+
