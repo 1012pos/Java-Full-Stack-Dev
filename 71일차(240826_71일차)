@@ -17,5 +17,50 @@
 아래의 CORS policy 오류 메시지는 CORS 정책을 위반할 때 발생한다.
 :  CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 
-7. 
+7. $(document).ready(()=> {
+    console.log("Token!!");
 
+    const EVENT1 = () => {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/token",
+            //url: "http://197.168.0.56/token",
+            beforeSend : function(xhr){
+                xhr.setRequestHeader("Authorization", "Token");
+            },
+            success: function(res) {
+                console.log(res);
+                $("#token").text(res);
+                $("#tokens").empty();
+                res.split(".").forEach(e => $("#tokens").append(`<li class="text-break">${e}</li>`)); // .을 기준으로 나눔
+            },
+            error: function(res) {
+                console.log(res);
+            }
+        });
+    }
+    EVENT1();
+});
+
+8. localStorage (w3schools)
+
+9. localStorage.setItem("lastname", "Smith");
+: 넣는다.
+
+10. localStorage.getItem("lastname");
+: 가지고 온다.
+
+11.  localStorage.setItem("token", res); // token을 넣는다(key, value).
+     localStorage.getItem("token"); // token을 가지고 온다.
+: F12의 Application에서 확인 가능
+
+12. https://www.w3schools.com/html/html5_webstorage.asp
+
+13. token의 발행처는 스프링이다.
+
+14. d-none
+: display none
+
+15. id를 각각 주어서 서로 다른 이벤트를 처리한다.
+
+16. 
