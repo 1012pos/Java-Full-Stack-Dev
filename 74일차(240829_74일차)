@@ -62,4 +62,5 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 13. http://192.168.0.56:5500/socket.html
 : 접속할 아이피 작성후 url에 접속할 아이피로 접근 -> 접속테스트 누르고 -> 글 작성 후 -> 접속요청
 
-14. 
+14. buffer
+: 스트링을 담아 놓는다.
