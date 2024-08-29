@@ -64,3 +64,16 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 14. buffer
 : 스트링을 담아 놓는다.
+
+15. <nav class="container mt-2">
+: 내비게이션 바(nav)를 페이지의 중앙에 위치시키고, 상단에 약간의 여백을 추가하여 레이아웃을 정돈하는 역할을 합니다.
+: <nav class="container mt-2">에서 class에 container와 mt-2를 넣는 이유는 웹 페이지의 스타일을 조정하기 위해서입니다. 이 클래스들은 CSS 프레임워크, 특히 Bootstrap을 사용할 때 일반적으로 사용됩니다. 
+: 각각의 클래스가 하는 역할은 다음과 같습니다
+
+container 클래스
+역할: 콘텐츠를 중앙에 배치하고, 페이지 너비에 맞게 적절히 정렬합니다.
+결과: 페이지의 중앙에 고정된 너비를 가진 박스가 생성되어, 내용이 이 박스 안에 정렬됩니다.
+
+mt-2 클래스
+역할: 상단에 여백(margin)을 추가합니다.
+결과: 내비게이션 바가 페이지 상단으로부터 일정량 떨어지게 됩니다.
