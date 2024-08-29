@@ -1,3 +1,65 @@
 20240829
-1. 
+1. 네트워크 응용 프로그램 및 프로토콜 구현
 
+2. 소켓(Socket)
+
+3. 네트워크 소켓, 웹 소켓
+
+4. 핸드셰이크(HandShake)
+
+5. 웹소켓
+: 챗봇
+: 소켓은 실시간으로 정보를 받을수 있다.
+
+6. 스레드, 멀티스레드
+: 하나의 프로세스를 계속 동작시키게 하는 흐름의 단위이다.
+
+7. WebSockets
+
+8. STOMP
+
+9. https://docs.spring.io/spring-framework/reference/web/websocket.html
+   https://spring.io/guides/gs/messaging-stomp-websocket
+   https://docs.spring.io/spring-framework/reference/web/websocket/stomp.html
+   https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/Usage.md.html
+   
+10. 소켓은 실시간으로 정보를 받을수 있다.
+
+11. package com.app.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+	@Override
+	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		// JS에서 웹소켓 접속 시 해당 URL로 연결
+		registry.addEndpoint("/ws-app")
+			.setAllowedOrigins("http://127.0.0.1:5500", "http://localhost:5500")
+			.withSockJS();
+	}
+
+	@Override
+	public void configureMessageBroker(MessageBrokerRegistry registry) {
+		// 사용자가 서버에게 메세지를 전송할때 
+		registry.setApplicationDestinationPrefixes("/msg");
+		registry.enableSimpleBroker("/topic");
+	}
+	
+}
+
+: registry.addEndpoint("/ws-app") 이부분의 주소가 프론트에서 접근가능한 주소
+: registry.setApplicationDestinationPrefixes("/msg"); 이부분의 주소가 서버에게 메세지를 받는 주소
+
+12. WebSocket만 넣어도 Web이 가능하다 (dependency 부분)
+
+13. http://192.168.0.56:5500/socket.html
+: 접속할 아이피 작성후 url에 접속할 아이피로 접근 -> 접속테스트 누르고 -> 글 작성 후 -> 접속요청
+
+14. 
