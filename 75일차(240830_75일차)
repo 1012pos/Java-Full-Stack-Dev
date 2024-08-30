@@ -1,3 +1,30 @@
 20240830
-1. 
+1. https://docs.spring.io/spring-framework/reference/web/websocket/stomp/handle-send.html
 
+2. 야놀자, 쿡방, 배민 -> 채널 접속이 떠야 함
+
+3. discord.html, sidebar.js
+: 구동 원리 이해하기
+
+4.  $("#channel").text($(this).children(".channel-txt").text());
+    $("#message").attr("readonly",false);
+    $("#messageForm button").attr("disabled", false);
+: ui적 처리
+
+5. const list = [
+            new User(1, "류관순", "안녕하세요!", "15:23"),
+            new User(2, "홍길동", "안녕!!", "15:25")
+            ];
+            $(".messages").empty();
+            list.forEach(user => DRAW(user));
+			
+: 채팅쪽 처리
+
+6.   EVENT1(server+"/ws-app", "/topic/bean");
+: 서버쪽 접속
+
+7. http://192.168.0.56:5500/discord.html
+// 강사님 서버쪽
+
+8. prefixes
+: 이부분이 가변적이다.
