@@ -1,3 +1,106 @@
 20240902
-1. 
+1. registry.addEndpoint("/ws-app")
+: 서버를 켰다라는 의미(위의 코드가 중요)
 
+2. package com.app.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+	@Override
+	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		// JS에서 웹소켓 접속 시 해당 URL로 연결
+		registry.addEndpoint("/ws-app")
+			.setAllowedOrigins("http://127.0.0.1:5500", "http://localhost:5500", "http://192.168.0.56:5500") // 프론트쪽 주소
+			.withSockJS();
+	}
+
+	@Override
+	public void configureMessageBroker(MessageBrokerRegistry registry) {
+		// 사용자가 서버에게 메세지를 전송할때 
+		registry.setApplicationDestinationPrefixes("/msg"); // 백엔드쪽 메소드 호출 하기 위한 주소
+		registry.enableSimpleBroker("/topic"); // 프론트앤드 함수에서 데이터 돌려 주기 위한 주소
+	}
+	
+}
+
+3. package com.app.controller;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.socket.messaging.SessionConnectEvent;
+import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+
+import com.app.dto.PayloadMessageDTO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+public class MessageController {
+	
+	@Autowired
+	private SimpMessagingTemplate simpMessagingTemplate;
+	
+	// "/msg/conn" >> 접속
+	@MessageMapping("/conn")
+	@SendTo("/topic/bean")
+	public Map<String, String> conn(Map<String, String> paramMap) {
+		log.info("Path : {}", "/conn");
+		return paramMap;
+	}
+	
+	
+	// "/msg/room"
+	@MessageMapping("/room")
+	public void conn1(@Payload PayloadMessageDTO payloadDTO, SimpMessageHeaderAccessor headerAccessor) {
+		log.info("Path : {}", "/room");
+		String sessionId = headerAccessor.getSessionId();
+		log.info("SessionID : {}", sessionId);
+		String topic = payloadDTO.getMessage().getTopic();
+		payloadDTO.getMessage().setTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+		if(topic != null) {
+			log.info("Payload : {}", payloadDTO);
+			simpMessagingTemplate.convertAndSend(topic, payloadDTO);
+		}
+	}
+	
+	@EventListener
+	public void handleSessionConnectEvent(SessionConnectEvent event) {
+		System.out.println("Session Connect Event");
+		System.out.println(event);
+		// STOMP 헤더 접근기
+        StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
+        // 클라이언트가 연결한 Endpoint를 가져오기
+        String sessionId = accessor.getSessionId();
+        // 연결 정보를 출력
+        System.out.println("Client connected with sessionId: " + sessionId);
+	}
+	
+	@EventListener
+	public void handleSessionDisconnectEvent(SessionDisconnectEvent event) {
+		System.out.println("Session Disconnect Event");
+	}
+	
+}
+
+
+4. 
