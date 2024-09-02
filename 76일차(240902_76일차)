@@ -4,12 +4,6 @@
 
 2. package com.app.config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
-import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
-
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
@@ -33,26 +27,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 3. package com.app.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.socket.messaging.SessionConnectEvent;
-import org.springframework.web.socket.messaging.SessionDisconnectEvent;
-
-import com.app.dto.PayloadMessageDTO;
-
-import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @Controller
 public class MessageController {
@@ -67,8 +41,7 @@ public class MessageController {
 		log.info("Path : {}", "/conn");
 		return paramMap;
 	}
-	
-	
+		
 	// "/msg/room"
 	@MessageMapping("/room")
 	public void conn1(@Payload PayloadMessageDTO payloadDTO, SimpMessageHeaderAccessor headerAccessor) {
@@ -101,7 +74,6 @@ public class MessageController {
 	}
 	
 }
-
 
 4. 아래의 코드는 필수 라이브러리이다 
 : <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
@@ -150,11 +122,9 @@ public class MessageController {
                 -->
             </div>	
 			
-7. <!DOCTYPE html>
-<html lang="ko">
-<head>
+7. <html lang="ko">
+	<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <title>PAGE1</title>
@@ -171,18 +141,15 @@ public class MessageController {
         };
         client.connect({}, e1, e2);
         
-
     </script>
 </head>
 <body>  
 </body>
 </html>
 
-8. <!DOCTYPE html>
-<html lang="ko">
-<head>
+8.<html lang="ko">
+	<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <title>PAGE1</title>
@@ -221,3 +188,60 @@ public class MessageController {
             client.subscribe("/topic/get", res => console.log(res)); // 돌려 받는 구독
         }  
 : client.subscribe("/topic/get", res => console.log(res)); // 돌려 받는 구독
+
+
+11. 깃허브
+1. 개인 저장소(팀원 초대)
+- repository 주인이 오너
+- Collaboratiors
+
+2. 조직 저장소 (팀원 초대)
+- organization
+
+둘중 한개 선택
+
+3. 권한선택 main은 뿌리, branch를 각각 개발자한테 준다. 그리고 나서 branch에서 main으로 합치는 방향
+파일이(프로젝트) 올라간 상태에서 branch를 쪼개야 각각에 파일이 올라간다.
+기능 구현시 branch를 쪼개야 한다.
+
+4. branch - > merge
+: Insights -> Network graph에서 로그 확인 가능
+
+5. 동일한 파일명으로 했을경우, merge 할때 오류가 생긴다.
+
+6. 파일 관리는 한명이서 하는게 좋다.
+
+7. 프로젝트명 = repository명
+
+8. 초기셋팅이 중요
+: 초기에 빈파일이면 파일이 올라가지 않는다.
+
+9. 메인에(main) 기본이 되는 파일을 먼저 올리고 나서 -> branch를 쪼개야 한다.
+
+10. branch가 쪼개지는 순간 각자이다.(네이밍중요 겹치지 않게 먼저 설계)
+
+11. 문제 있으면 history back 하면 된다.
+
+12. Pull requests에서 merge하기
+
+13. local에서 할때 cmd 창에서 git clone 주소입력(복사한 주소)
+
+14. git branch
+
+14-1. git branch "나의 branch이름 작성"
+
+14-2. git checkout "나의 branch이름 작성"
+
+15. git add *
+
+16. git commit -m "파일 올릴께요"
+
+17. git push origin main
+
+18. merge를 해야 main애서 볼수 있어야 한다.
+
+19. 파일을 올리거나, 수정하거나 할때 무조건 본인 branch인지 확인하고 merge 해야한다.
+
+20. 강사님 파일 다운 받을때 왜 파일명에 main이 붙은 이유를 알게 됨.
+
+21. 계속 연습해야 한다.
