@@ -238,10 +238,13 @@ public class MessageController {
 
 17. git push origin main
 
-18. merge를 해야 main애서 볼수 있어야 한다.
+18. merge를 해야 main에서 볼 수 있다.
 
 19. 파일을 올리거나, 수정하거나 할때 무조건 본인 branch인지 확인하고 merge 해야한다.
 
 20. 강사님 파일 다운 받을때 왜 파일명에 main이 붙은 이유를 알게 됨.
 
 21. 계속 연습해야 한다.
+
+
+
