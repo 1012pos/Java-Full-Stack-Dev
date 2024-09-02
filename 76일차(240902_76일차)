@@ -103,4 +103,121 @@ public class MessageController {
 }
 
 
-4. 
+4. 아래의 코드는 필수 라이브러리이다 
+: <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+: <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script
+
+5. const EVENT1 = (endpoint) => {
+        stompClient = Stomp.over(new SockJS(server+endpoint)); // 소켓 하나 연결하는 코드이다.
+        stompClient.debug = () => {}; // 코드를 막는 코드
+        stompClient.connect({}, EVENT5, error => {console.log("ERROR",error); alert("서버가 종료 되었습니다."); resetForm();});
+    };
+: stompClient = Stomp.over(new SockJS(server+endpoint)); 	
+// 소켓 하나 연결하는 코드이다.
+
+6. // 웹소켓에서 전달 받은 메세지 출력 이벤트
+    const DRAW = (payload) => {
+        let messagePosition = isValidUse(payload) ? 'message-right' : 'message-left';
+        let messageContentPosition = isValidUse(payload) ? 'message-content-right' : 'message-content-left';
+        let messageTimePosition = isValidUse(payload) ? 'message-left' : 'message-right';
+        let html = `<div class="message ${messagePosition}">
+                <h3 class="message-user">${payload.user.userNm}:</h3>
+                <div class="message-body">
+                    <p class="message-content ${messageContentPosition}">${payload.message.message}</p>
+                    <p class="message-time ${messageTimePosition}">${payload.message.time}</p>
+                </div>
+            </div>`;
+        $(".messages").append(html);
+        $('.messages').scrollTop($('.messages')[0].scrollHeight);
+    };
+	
+	<div class="messages">
+                <!--
+                <div class="message">
+                    <h3 class="message-user">친구1:</h3>
+                    <div class="message-body">
+                        <p class="message-content">안녕하세요!</p>
+                        <p class="message-time message-right">15:32</p>
+                    </div>
+                </div>
+                <div class="message message-right">
+                    <h3 class="message-user">나:</h3>
+                    <div class="message-body">
+                        <p class="message-content">안녕!!</p>
+                        <p class="message-time message-left">15:35</p>
+                    </div>
+                </div>
+                -->
+            </div>	
+			
+7. <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <title>PAGE1</title>
+    <script>
+        const socket = new SockJS("http://localhost:8080/ws-app");
+        const client = Stomp.over(socket); // 소켓 연결하는 코드이다.
+        // 성공 했을때
+        const e1 = () => {
+            console.log("접속 성공");
+        };
+        // 오류 났을때
+        const e2 = () => {
+            console.log("접속 실패");
+        };
+        client.connect({}, e1, e2);
+        
+
+    </script>
+</head>
+<body>  
+</body>
+</html>
+
+8. <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <title>PAGE1</title>
+    <script>
+        const socket = new SockJS("http://localhost:8080/ws-app");
+        const client = Stomp.over(socket); // 소켓 연결하는 코드이다.
+        // 성공 했을때
+        const e1 = () => {
+            console.log("접속 성공");
+            client.subscribe("/topic/get", res => console.log(res));
+        }  
+        // 오류 났을때
+        const e2 = () => console.log("접속 실패");
+        // 소켓 접속 하기 ,e1은 정상 콜백함수, ,e2는 오류 콜백함수
+        client.connect({}, e1, e2);
+        // 메세지 전송 이벤트
+        const e3 = () => {
+            console.log(client);
+            if(client.connected == true){
+                client.send("/msg/set", {}, "Test 글입니다."); // 접속 성공을 확인 한 후에 메세지 전송
+            } else {
+                alert("소켓 정보가 없습니다.");
+            }
+        }
+    </script>
+</head>
+<body>
+     <button type="button" onclick="e3()">메시지 전송</button>
+</body>
+</html>
+
+9. body안에는 "입력한 데이터"가 있다
+
+10.    const e1 = () => {
+            console.log("접속 성공");
+            client.subscribe("/topic/get", res => console.log(res)); // 돌려 받는 구독
+        }  
+: client.subscribe("/topic/get", res => console.log(res)); // 돌려 받는 구독
