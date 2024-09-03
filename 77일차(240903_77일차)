@@ -13,7 +13,8 @@
 WEB SERVER + WEB APPLICATION SERVER 으로 나누어서(프론트와 백엔드) 개발하는 것이다.
 
 3. WEB SERVER
-: Apache24, iis
+: Apache24, iis, Nginx(엔진X, 요즘 가장 많이 사용)
 
-
+4. WEB APPLICATION SERVER
+: Tomcat
 
