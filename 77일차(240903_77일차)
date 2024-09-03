@@ -1,3 +1,19 @@
 20240903
-1. 
+1. client -> WEB SERVER(80포트, 정적인 파일 담당(이미지 파일 등), Flush 기능(연결 시켜줌), 앞에서, 프론트쪽 영역)
+          -> WEB APPLICATION SERVER(뒤에서 담당하는 서버, 동적인 것을 담당, 가공해서 전달), WEB SOCKET SERVER가 WEB APPLICATION SERVER에 들어간다
+          -> WEB SOCKET SERVER(다중 클라이언트에게 동일한 정보를 전달, 데이터를 실시간으로 싱크맞춰줌, 알림용으로 많이 사용, 보통 따로 구분)
+
+: 위의 3가지를 우리가 배우는 내용이다.
+
+
+2. WEB SERVER를 사용하지 않으면 프론트쪽 프레임워크를 사용하지 못하기 때문에 사용해야 한다.
+그렇기 때문에 개발을 할때 WEB SERVER + WEB APPLICATION SERVER 같이 사용해야 하며, 어떤 기능을
+구현하는냐에 따라 WEB SOCKET SERVER도 같이 사용해야 한다.
+그리고 WEB APPLICATION SERVER로만 개발을 할경우 WEB APPLICATION SERVER 다운되면 일이 커지기 때문에
+WEB SERVER + WEB APPLICATION SERVER 으로 나누어서(프론트와 백엔드) 개발하는 것이다.
+
+3. WEB SERVER
+: Apache24, iis
+
+
 
