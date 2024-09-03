@@ -18,3 +18,21 @@ WEB SERVER + WEB APPLICATION SERVER 으로 나누어서(프론트와 백엔드) 
 4. WEB APPLICATION SERVER
 : Tomcat
 
+5. SpringStudy3 프로젝트 활용
+- templates.v2 정적파일이 있음
+- static에서 v2 정적파일이 있음
+=> vscode에서 v2 폴더 생성 후 위의 파일 넣기
+
+6. Data2Conroller.java
+: @CrossOrigin(origins = "*") 추가
+: @CrossOrigin(origins = "http://192.168.0.52:5500") 추가
+: View2Controller.java에는 추가 안해도 됨....
+
+7. http://192.168.0.56:5500/v2/list.html
+: 강사님 주소에서 Network탭 -> 새로고침 -> list.js 비교분석
+
+8. http://192.168.0.52:5500/v2/list.html
+: 내 주소
+
+9. 먼저 소켓을 먼저 SpringStudy3에 세팅해라 -> 디테일 페이지에서 승인 or 미승인 눌렀을때 새로 고침을 눌러야 반영되는것을
+실시간으로 바뀌게끔 해보기
