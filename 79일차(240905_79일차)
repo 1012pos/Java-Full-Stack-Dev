@@ -1,3 +1,79 @@
 20240905
-1. 
+1. F12 -> Application 탭 -> Local storage에서 확인 가능
+2. $.post(host +"/v2/login", params)
+			.done(res => {
+				if(res.state){
+					localStorage.setItem("userNo", res.userNo);
+					$('myModal').modal('hide');
+					alert(res.userNm + "님 환영 합니다.");
+				} else {
+					alert("유효한 사용자가 아닙니다.");
+				}
+			})
+			.fail(errorEvent);	
+	});
+: 위의 코드가 있으면 백쪽에는 조건에 따른 처리가 필요하다.
+@PostMapping("/login")
+	public Map<String, Object> login(@RequestParam Map<String, String> map){
+		log.info("Map : {}", map);
+		UserDTO user = UserDTO.builder()
+				.userNm(map.get("userNm"))
+				.userPwd(map.get("userPwd"))
+				.build();
+		log.info("User : {}", user);
+		user = um.findByUser(user);
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("state", user == null ? false : true);
+		resultMap.put("userNo", user.getUserNo());
+		resultMap.put("userNm", user.getUserNm());
+		return resultMap;
+	}
+: 파라미터를 받아서 데이터베이스에 갔다오는 코드 이고, 이건 원래 @Service에 넣어야 하는 부분이다.
 
+3. 파라미터 받아서 데이터베이스에 갔다 오는거는 "연습"을 많이 해야 한다. 	
+
+4. $("a.link").on("click", (e)=> {
+: a 태그의 클래스명이 link를 의미
+
+
+4-1.
+$("a.link").on("click", (e)=> {
+		e.preventDefault(); // 기본 동작(예: 링크 클릭 시 페이지 이동)을 방지합니다.
+		if(localStorage.getItem("userNo") != null) {
+			if(map.accept){
+				syncData(host +"/v2/detail/" + no + "/0", {});
+			} else {
+				syncData(host +"/v2/detail/" + no + "/1", {});
+			} 
+		} else {
+			alert("접근 권한이 없습니다.");
+			linkEvent();
+		}
+	});
+
+5. e.preventDefault();
+: 이벤트 막기 꼭 넣어줘야 함
+: // 기본 동작(예: 링크 클릭 시 페이지 이동)을 방지합니다.
+
+6. 식별자
+
+7. JWT Token 생성해보기
+
+8. JwtService 프로젝트를 사용해서 로그인 -> 토큰, 토큰 -> 로그인 하는거 만들어 보기
+- token.html 사용
+
+9. 로그를 찍어보면서 어디까지 왔는지 확인하는 연습을 해야함.
+
+10. 우리가 만든 JwtService 프로젝트가 시큐리티로 되어 있기 때문에 암호화된 비밀번호로 해야 한다. 토큰이 발생한다.
+: 관리자, 1234(암호화되어 있는)
+
+11. port 번호를 다르게 주면 애플리케이션을 여러개 켤 수 있다.
+
+12. port 번호를 다르게 주면 애플리케이션 여러개 킬 수 있는데, 그 이유는 과부하를 줄이는 이유도 있고,
+기능별로 나누어서 서버를 사용하면 다른 서버를 꺼도 다른쪽은 서버가 꺼지는 일을 방지할 수 있다.
+요즘은 기능별로 서버를 두는 추세이다.
+
+13. WebSocket.java, JwtService.java 프로젝트를 이용함
+
+14. Spring Cloud 및 토큰 관련된 강의
+: 쉘폴더 팟 캐스터 강의에 있음
