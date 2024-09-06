@@ -1,3 +1,24 @@
 20240906
-1. 
+1. 회원쪽은 선우학생 (const host2 = "http://192.168.0.67:9000"; // 로그인 부분)
+: 아이디: 사용자1, 비밀번호: 1234
 
+2. 리스트 : 내꺼 (const host = "http://192.168.0.52:8080"; // 소켓 부분)
+
+3. 소켓 : 내꺼 (const host = "http://192.168.0.52:8080"; // 소켓 부분)
+
+4. http://127.0.0.1:5500/v2/list.html 로 접근
+
+5. 앞으로 DB를 선우 학생꺼로 오픈시켜서 사용할 예정
+
+6. 시험 대비
+- Socket 프로젝트 참조
+: Note.java 참고
+: Client.java 참고(클라이언트는 소켓 서버가 켜져 있어야 사용가능 하다.)
+: Server.java 참고
+: ClientHandler.java 참고
+: MultiClientServer.java 참고
+
+- WebSocket 프로젝트 참조
+: WebSocketApplication.java 참고
+: WebSocketConfig.java 참고
+: socket.js 참고
