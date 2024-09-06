@@ -24,8 +24,9 @@
 : WebSocketConfig.java 참고
 : socket.js 참고
 
-7. cmd창
+7. VSCODE의 Termianl에서 하기(cmd창에서 하지 말기)
+: docker부터 켜기(DB)
 : cd C:\IDE\sts-4.22.1.RELEASE\work\WebSocket
 : dir
 : gradle bootJar 혹은 gradle clean bootJar, 만약 gradle 이 없을 시 -> gradlew bootJar 혹은 gradlew clean bootJar
-: gradle bootRun
+: ./gradlew bootRun(실행이 됨)
