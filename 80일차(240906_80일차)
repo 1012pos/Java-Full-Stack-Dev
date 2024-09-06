@@ -28,3 +28,4 @@
 : cd C:\IDE\sts-4.22.1.RELEASE\work\WebSocket
 : dir
 : gradle bootJar 혹은 gradle clean bootJar, 만약 gradle 이 없을 시 -> gradlew bootJar 혹은 gradlew clean bootJar
+: gradle bootRun
