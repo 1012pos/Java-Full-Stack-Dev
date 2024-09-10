@@ -38,9 +38,9 @@ document.getElementsByTagName("img")[1].src =  "https://www.w3schools.com/w3imag
 15. function start() {
  
     fetch("/page6/data.json")
-    .then(res => res.text())
+    .then(res => res.text()) // 응답을 텍스트 형식으로 변환합니다.
     .then(result => {
-      const res = JSON.parse(result);
+      const res = JSON.parse(result); // 텍스트 데이터를 JSON 객체로 파싱합니다.
       if(res.state){
         run(res.data);
       }
