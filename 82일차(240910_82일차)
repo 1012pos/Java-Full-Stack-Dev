@@ -1,3 +1,38 @@
 20240910
-1. 
+1. https://www.w3schools.com/w3css/tryw3css_templates_photo2.htm
+: 프론트 연습
+: @media
+
+2. https://www.w3schools.com/w3css/tryw3css_templates_bw_portfolio.htm
+: 이것까지 만들면 메뉴(nav) 만들 수 있음
+
+3. W3.CSS Templates
+
+4. document.getElementsByTagName("img");
+document.getElementsByTagName("img")[1].src =  "https://www.w3schools.com/w3images/wedding.jpg";
+
+5. C:\IDE\Apache24\htdocs
+: htdocs에 파일 있음
+
+6. 요소를 추가한다?
+
+7. document.getElementsByClassName("photo-body")[0].
+: 부모?
+
+8. 부모 노드, 자식 노드 알아야 함
+: 자바스크립트는 노드 방식으로 찾는다
+
+9. appendChild() 함수
+
+10. innerHTML은 교체하는 의미
+
+11. https://www.w3schools.com/js/js_api_fetch.asp
+    https://www.w3schools.com/js/js_json_parse.asp
+
+12. 꺼내쓴다? -> 반복문 돌린다?
+
+13. text타입, object타입
+
+14. JSON은 오브젝트 타입
+
 
