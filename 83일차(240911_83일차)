@@ -29,9 +29,30 @@
 	npx -v
 	npx create-react-app my-app
 	y
+	cd my-app
+	npm start
 	
 
 12. node.js가 설치되어 있어야함 만약 설치되어 있어서 오류가 생길 시 관리자 모드로 실행해보기
 
-13. 
+13. 추후에 깃허브에 올릴시 "node_modules"는 올리면 안됨 용량이 크기 때문에
+
+14. node_modules 없을 시 -> npm i 명령어를 사용하면 됨
+
+15. npm i
+: "npm i" 명령어는 자동 설치해 준다.("node_modules"이 없을 시 사용하면 됨)
+
+16. Axios
+
+17. 디벤던시 추가 
+: cd my-app
+: npm i axios
+
+18. npm run build
+
+19. 웹서버 띄우기 및 화면 띄우기
+: C:\IDE\Apache24\htdocs\my-app\build에 있는 파일들을 C:\IDE\Apache24\htdocs 에 넣어야 배포가 됨
+: C:\IDE\Apache24\bin -> httpd.exe 실행 -> localhost치면 -> 리액트 로고 화면 나옴
+
+20. 
 
