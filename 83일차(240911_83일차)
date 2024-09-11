@@ -18,7 +18,7 @@
 : https://codepen.io/pen?&editors=0010&layout=left
 
 9. JS(Babel)
-:자바 엑스 기술을 사용하려면 Bable이용
+: JSX을 사용하려면 Bable이용 ???
 
 9-1. React를 사용하려면 node.js가 설치되어 있는지 확인 해야함
 
@@ -54,5 +54,87 @@
 : C:\IDE\Apache24\htdocs\my-app\build에 있는 파일들을 C:\IDE\Apache24\htdocs 에 넣어야 배포가 됨
 : C:\IDE\Apache24\bin -> httpd.exe 실행 -> localhost치면 -> 리액트 로고 화면 나옴
 
-20. 
+20. public -> index.html
+    <body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+    </body>
+: <div id="root"></div> 이게 있어야 자바스크립트가 동작한다???(src -> index.js에 root 관련 코드 있음)
+: const root = ReactDOM.createRoot(document.getElementById('root'));
+	root.render(
+	  <React.StrictMode>
+		<App />
+	  </React.StrictMode>
+	);
+: 즉, id="root" 랑 getElementById('root') 에서의 root가 같아야 한다.
 
+21. reportWebVitals();
+: 넣으세요라는 의미
+
+22. 배포는 웹서버에서 동작하고, 개발할때는 노드위에서 동작한다.
+
+23. build에서의 index.html은 배포용이라서 합쳐져 있다.
+개발 할때는 src, public으로 분리되어 있고 우리가 개발할때는 src만 사용하면 된다.
+
+24. 정적파일로 배포가 된다.
+
+25. src의 폴더 트리는 기능별로 묶어서 사용하는게 좋다.
+
+26. 하나의 부모가 묶여서 있어야 한다.(React)
+	 <>
+		<div></div>
+		<div></div>
+	</>
+	
+27. class -> className으로 교체해야함 React에서 돌아감
+
+28. 닫는 태크 필수이다.(React)
+: ex) <hr />
+
+29. // function App() {
+ const App = () => { 
+  return (
+    <div className="bgimg">
+
+    <div className="logo">Logo</div>
+
+    <div className="main">
+      <h1 className="">COMING SOON</h1>
+
+    <hr />
+    <p className="">35 days left</p>
+    </div>
+
+    <div className="logo2 padding">
+      Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+    </div>
+
+  </div>
+  );
+}
+
+30. 위의 코드를 { } 와 return을 뺄 수 있음
+// function App() {
+ const App = () => (
+    <div className="bgimg">
+
+    <div className="logo">Logo</div>
+
+    <div className="main">
+      <h1 className="">COMING SOON</h1>
+
+    <hr />
+    <p className="">35 days left</p>
+    </div>
+
+    <div className="logo2 padding">
+      Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+    </div>
+
+  </div>
+  );
+
+31. 리액트를 다루는 기술 2장을 공부하기
+
+32. UML이 이번주 시험이다.
+: 기본, 구조, 흐름도 작성
