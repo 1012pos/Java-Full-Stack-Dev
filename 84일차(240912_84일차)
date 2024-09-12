@@ -1,3 +1,178 @@
 20240912
-1. 
+1. 강사님이 디코에 올리신 파일로 수정해야 함
+- App.js, App.css에 수정하면 됨
+
+import './App.css';
+
+const App = () => {
+  return (
+    <>
+      <nav>
+        <a href="#page1">PAGE1</a>
+        <a href="#page2">PAGE2</a>
+        <a href="#page3">PAGE3</a>
+      </nav>
+      <section className="content" id="page1">
+        <h1 className="body">페이지1번 내용</h1>
+      </section>
+      <section className="content" id="page2">
+        <h1 className="body">페이지2번 내용</h1>
+      </section>
+      <section className="content" id="page3">
+        <h1 className="body">페이지3번 내용</h1>
+      </section>
+    </>
+  );
+}
+
+export default App
+
+
+html, body {margin: 0; padding: 0;}
+
+nav {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+}
+
+nav a {
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 5px 0;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: bisque;
+}
+nav a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+section.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1.body {
+    text-align: center;
+    margin: 0;
+}
+
+2. httpd.exe실행 + vscode -> terminal -> cd my-app -> npm start로 시작
+-> localhost:3000이 자동으로 실행됨
+
+3. 이번주는 강의 안찍으실 예정
+
+4. 리액트에서는 화면을 자동으로 만들어주는 DOM이 있는데 예를들어
+내가 만든 함수를 단독으로 App(); 이런식으로 호출하면 안된다.
+즉, 리액트가 직접 부를수 있도록 해야 한다.
+
+5. 리턴 부분을 조각 조각 처리한다.
+	return (
+    <>
+      <Nav /> // 함수로 처리 (컴포넌트로 사용)
+      {html} // 변수로 처리
+    </>
+  );
+  
+6. src -> Nav.js, Page1.js, Page2.js, Page3.js 파일 생성
+
+7. 파일을 새로 사용할 수 있게 export 작성
+
+
+8. export default Nav;
+   import Nav from './Nav'
+   
+9. 리액트를 다루는 기술 3~4장 공부
+
+10. React Prop (w3school react부분)
+
+
+11. props 는 담는 그릇, 매개변수
+
+11-1. props 줄인말 ps(강사님)
+
+12. const App = () => {
+  return (
+    <>
+      <Nav pEvent={txt=>alert(txt)} />
+      {html}
+    </>
+  );
+}
+
+const Nav = ps => {
+    return (
+      <nav>
+          <a href="#page1" onClick={()=>ps.pEvent('PAGE1')}>PAGE1</a>
+          <a href="#page2" onClick={()=>ps.pEvent('PAGE2')}>PAGE2</a>
+          <a href="#page3" onClick={()=>ps.pEvent('PAGE3')}>PAGE3</a>
+      </nav>
+    );
+  }
+
+  export default Nav;
+
+
+: ps.pEvent에서 pEvent는 속성값을 의미, ps는 props를 의미하며 그릇을 의미하기 때문에 강사님이 ps로 줄이심
+
+13. 표현식
+: { }
+
+14. 표현식 안에서 반복문 사용(array.map)
+: 리액트에서는 map()함수가 반복문을 사용할때 쓰는 함수이다.
+
+15. 최종 팀프로젝트는 리액트가 필수로 들어가야 한다.
+
+16. 8장 HOOKS 공부해야함 및 w3school에서 Hooks 공부하기
+
+17. useState는 리액트의 함수이기 때문에 import를 해서 사용해야 하고 상태 값을 관리한다.
+그리고 배열을 반환한다.
+: import {useState} from 'react';
+
+18. useState, useEffect 공부하기
+
+19. document.location.hash
+
+20. useEffect(()=>{
+    if(document.location.hash === "#page1") {
+      pageEvent('PAGE1');
+    } else if(document.location.hash === "#page2"){
+      pageEvent('PAGE2');
+    } else if(document.location.hash === "#page3") {
+      pageEvent('PAGE3');
+    }
+  }, []);
+: 새로고침을 해도 페이지가 유지가 된다.
+
+21. 13장 라우터를 사용하려면, 라우터를 설치해야 한다.
+
+22. ctrl + c
+: 작업 종료
+
+23. npm i react-router-dom (https://www.w3schools.com/react/react_router.asp)
+: 위의 명령어는 라우터 설치(package.json에 "react-router-dom": "^6.26.2", 생성됨)
+
+24. npm start
+: 서버 열기 명령어
+
+25. "라우터를" 사용하면 싱글페이지로 교체가 된다???.. (앞시간에 배웠던 내용을 대체해준다???)
+
+26. URL 파라미터와 쿼리스트링 사용법(p.330 참조)
+
+27.  <Route path="/page1/:txt" element={<Page1 />}></Route>
+: 리액트에서 사용하는 path variable 방법
+
+28. page1 : path variable 방법 , page2 : QueryString 방법
 
