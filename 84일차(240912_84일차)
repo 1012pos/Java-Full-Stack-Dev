@@ -177,3 +177,11 @@ const Nav = ps => {
 28. page1 : path variable 방법 , page2 : QueryString 방법
 
 29. useParams 함수, useNavigate 함수 공부하기
+
+30. "F12 -> Console 창"
+    const array = [
+        {href: "/page1/1234", txt: "PAGE1"},
+        {href: "/page2?txt=abcd", txt: "PAGE2"},
+        {href: "/page3/1", txt: "PAGE3"},
+    ];
+: 위의 코드를 치면 어떤 값이 나와 있는지 확인 가능	
