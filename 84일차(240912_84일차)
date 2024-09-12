@@ -176,3 +176,4 @@ const Nav = ps => {
 
 28. page1 : path variable 방법 , page2 : QueryString 방법
 
+29. useParams 함수, useNavigate 함수 공부하기
