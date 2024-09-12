@@ -184,4 +184,8 @@ const Nav = ps => {
         {href: "/page2?txt=abcd", txt: "PAGE2"},
         {href: "/page3/1", txt: "PAGE3"},
     ];
-: 위의 코드를 치면 어떤 값이 있는지 확인 가능	
+: 위의 코드를 치면 어떤 값이 있는지 확인 가능
+
+31. public쪽은 정적파일 넣는 곳
+
+32. src쪽에서 개발
