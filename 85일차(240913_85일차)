@@ -128,7 +128,7 @@ const Html = () => {
 : import List from './List'; // Study02.js 확인
 : <Route path="/" element={<List />}></Route>
 
-12. DB를 사용안하고 있음 -> localStorage를 사용하고있음
+12. 현재는 DB를 사용안하고 있음 DB까지 사용하면 어려워 하기 때문엗... 대신 localStorage를(임시 저장) 사용하고있음
 
 13. console.log(params, array, [...array, params]);
 : params, 기존 array, 그리고 params를 추가한 새로운 배열을 로그에 출력합니다.
@@ -137,5 +137,11 @@ const Html = () => {
 : 기존의 array 배열에 params 객체를 추가하여 새로운 배열 newArray를 생성합니다. 
 스프레드 연산자 ...를 사용하여 기존 배열을 복사하고, 그 뒤에 새 항목을 추가합니다.
 
-15. 
+15. "value는" 사용자 입력 값을 리액트 컴포넌트의 상태와 연결하는 제어 컴포넌트에서 주로 사용되고
+"defalutValue는" 컴포넌트 상태를 업데이트 할 필요가 없는 기본값 설정, 입력 값을 리액트 상태로 관리하지 않는 비제어 컴포넌트에 사용된다.
 
+16. 리액트에서는 value를 사용하면 꼭 onChange를 사용해야함????
+
+17. 리액트에서는 HTML과 JavaScript를 동일한 파일에 포함시켜 컴포넌트 기반 구조를 통해 모듈화, 재사용성, 상태 관리, 효율적인 UI 업데이트 등을 용이하게 합니다. 
+JSX 문법을 사용하여 HTML과 JavaScript를 혼합하여 작성하는 것은 리액트의 핵심적인 기능 중 하나로, 
+더 나은 개발자 경험과 유지보수성을 제공합니다.
