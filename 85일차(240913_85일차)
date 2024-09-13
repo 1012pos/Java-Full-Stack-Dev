@@ -1,3 +1,141 @@
 20240913
-1. 
+1. index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import Study00 from './Study';
+// import Study01 from './Study01/Study01';
+import Study02 from './Study02/Study02';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    {/* <Study00 /> */}
+    {/* <Study01 /> */}
+    {/* <Study02 /> */}
+    <Study02 />
+  </React.StrictMode>
+);
+
+: 각 폴더에 따른 주석을 풀면 다른 화면이 뜸
+
+2. 컴포넌트 개념
+
+3. import './Study02.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import List from './List';
+import Create from './Create';
+import Detail from './Detail';
+import NotFound from './NotFound';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const Study02 = () => {
+  return (
+    <>
+      <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/"><span className="log1">WOO</span><span className="log2">JUN</span></a>
+          </div>
+      </nav>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<List />}></Route>
+          <Route path="/create" element={<Create />}></Route>
+          <Route path="/detail/:id" element={<Detail />}></Route>
+          <Route path="*" element={<NotFound />} /> // 주소 잘못 쳤을때 나오는 화면
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default Study02;
+
+4. 변수로 만들어서 사용({html})
+const List = () => {
+    const html = <a className="list-group-item list-group-item-action" href="/detail/1">제목</a>
+    return (
+        <div className="container" style={{'marginTop': '80px'}}>
+            <h2 className="text-center">게시판</h2>
+            <a href="/create" className="btn btn-success">글작성</a>
+            <div className="list-group mt-3">
+                {html}
+            </div>
+        </div>
+    );
+}
+export default List;
+
+5. 컴포넌트로 쪼개서 사용
+const Html = () => {
+    return(
+        <a className="list-group-item list-group-item-action" href="/detail/1">제목</a>
+    );
+}
+
+6.  let params = {
+            title: e.target.board_title.value,
+            content: e.target.board_content.value
+        }
+// target는 form 태그이다.
+
+7. 표현하는거는 2가지가 있다.
+: 변수? 함수?
+
+8. array.map(row => (
+			<a className="list-group-item list-group-item-action"
+				key={row.id} 
+				href={"/detail/" + row.id}>
+				{row.title}
+				</a>
+		))		
+: 식별할 수 있는 key={row.id} 있어야 한다.
+
+9. List.js
+	 const List = () => {
+		const array = [
+			{id: 1, title: "제목"},
+			{id: 2, title: "제목1"}
+		];
+		return (
+			<div className="container" style={{'marginTop': '80px'}}>
+				<h2 className="text-center">게시판</h2>
+				<a href="/create" className="btn btn-success">글작성</a>
+				<div className="list-group mt-3">
+					{
+						array.map(row => (
+							<a className="list-group-item list-group-item-action"
+								key={row.id} 
+								href={"/detail/" + row.id}>
+								 {row.title}
+							</a>
+						))
+
+					}
+				</div>
+			</div>
+		);
+	}
+	export default List;
+
+10. localStorage 
+: 또다른 DB이며, 잠시 저장할 수 있음
+: https://www.w3schools.com/js/tryit.asp?filename=tryjson_store 참고하면 됨
+
+11. export default List;
+: 호출했다라는 의미
+: import List from './List'; // Study02.js 확인
+: <Route path="/" element={<List />}></Route>
+
+12. DB를 사용안하고 있음 -> localStorage를 사용하고있음
+
+13. console.log(params, array, [...array, params]);
+: params, 기존 array, 그리고 params를 추가한 새로운 배열을 로그에 출력합니다.
+
+14. const newArray = [...array, params];
+: 기존의 array 배열에 params 객체를 추가하여 새로운 배열 newArray를 생성합니다. 
+스프레드 연산자 ...를 사용하여 기존 배열을 복사하고, 그 뒤에 새 항목을 추가합니다.
+
+15. 
 
