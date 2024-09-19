@@ -72,7 +72,7 @@
         event1();
         ">호출</button>
 
-: 1번은 전역으로, 2번은 지역으로 사용
+: 1번은 전역으로(app.js파일에 event1 선언함), 2번은 지역으로 사용
 
 19. 아래의 코드는 같은것을 가져온다.
 : document.getElementsByName("txt1")[0].value
@@ -83,7 +83,7 @@
 21. document.forms[0].txt1.value
 : txt1은 input의 name이다.
 
-22. 값을 불러 왔으니깐 -> 비우고 -> 그 값을 배열에 담아라
+22. 값을 불러 왔으니깐 -> 그 값을 배열에 담아라 -> 비워라
 
 23. const array = []; // 배열 선언
 	array[0] = 1; 	  // 배열에 값 넣기
