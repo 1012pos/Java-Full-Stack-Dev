@@ -52,7 +52,7 @@
 
 13. document.getElementsByTagName("h1")[0]
 	document.querySelector("h1")
-: 둘다 같게 사용할수 있지만, querySelector는 첫번째 태그에만 적용가능하고, querySelectorAll를 사용하면 다 사용가능하다.	
+: 둘다 같게 사용할수 있지만, querySelector는 첫번째 태그에만 적용가능 하다.
 	
 14. innerText
 : 글을 넣을 때 사용
