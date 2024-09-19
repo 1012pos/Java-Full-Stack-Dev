@@ -1,3 +1,99 @@
 20240919
-1. 
+1. 자바스크립트를 언제, 어디서, 어떻게 사용하는지를 알아야 한다.
 
+2. 9월19, 9월20일
+: 자바스크립트 기본 수업할 예정
+
+3. 프론트를 잘 다룰줄 알아야 백엔드에서도 편한다.
+
+4. 9월26일 시험은 기능설계, UI적 태스크 플로우 넣어서 포트폴리오 제출, 참고자료 https://cmidm3.wordpress.com/2010/01/10/task-flow/
+: 발표가 있을 예정
+
+5. 자바스크립트는 "브라우저에서" 동작하는 언어이다. 그래서 F12 -> console창을 사용하는 거다.
+
+6. 자바스크립트, CSS는 "캐시에" 저장되기 때문에 -> 적용이 안될때는 "캐시 비우기를" 하고 나서 하면 적용된다.
+
+7. F12 -> Sources 탭
+: 내가 코드를 바꾼곳이 적용됬는지 확인 해야 한다.
+
+8. 리액트는 브라우저에서도 개발할 수 있지만, node.js에서 개발하는것을 권장한다.
+
+9. 자바 스크립트(인터프리터 언어, 컴파일 없음)
+> 브라우저 JS 동작
+> Node.js V8 엔진 << 백엔드(스프링 x)
+
+10. 자바스크립트는 document를 생각해야함
+
+11. index.html 
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>자바스크립트</title>
+		<script src="app.js"></script>
+	</head>
+	<body onload="run()">
+		<div>
+			<h1></h1>
+		</div>
+	</body>
+	</html>
+
+
+
+12. app.js
+	console.log("안녕");
+	let 글 = "제목";
+
+	function run() {
+		document.getElementsByTagName("h1")[0].innerText = 글;
+	}
+
+13. document.getElementsByTagName("h1")[0]
+	document.querySelector("h1")
+: 둘다 같게 사용할수 있지만, querySelector는 첫번째 태그에만 적용가능하고, querySelectorAll를 사용하면 다 사용가능하다.	
+	
+14. innerText
+: 글을 넣을 때 사용
+
+15. innerHTML
+: HTML을 넣을 때 사용
+
+16. button이 가지고 있는 이벤트 알기 	
+- onclick 이벤트
+
+17. 선언만 하고 호출을 안하면 안된다.
+
+18. 1번. <button type="button" onclick="event1()">호출</button>
+    2번. <button type="button" onclick="const event1 = () => {
+            alert('안녕');
+        };
+        event1();
+        ">호출</button>
+
+: 1번은 전역으로, 2번은 지역으로 사용
+
+19. 아래의 코드는 같은것을 가져온다.
+: document.getElementsByName("txt1")[0].value
+: document.forms[0].txt1.value
+
+20. document.forms
+
+21. document.forms[0].txt1.value
+: txt1은 input의 name이다.
+
+22. 값을 불러 왔으니깐 -> 비우고 -> 그 값을 배열에 담아라
+
+23. const array = []; // 배열 선언
+	array[0] = 1; 	  // 배열에 값 넣기
+	
+24. 전역으로 사용할 경우 ~~~.js 파일에 넣어서 사용해도 된다.
+
+25. onchange
+
+26. querySelector
+: 첫번째꺼만 가지고 온다.
+
+27. querySelectorAll
+: 전체를 가져온다.(배열로)
