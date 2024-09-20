@@ -1,3 +1,29 @@
 20240920
-1. 
+1. 빙고게임을 2가지 방법으로 만들 예정
+- 자바스크립트로 생성(v1)
+- 리액트로 생성(v2)
 
+2. axios 라이브러리를 사용할 예정
+
+3. transform: rotate 때문에 도형이 돌아감(css에 적용하면 됨)
+: app2.css 파일
+
+3-1 transition: transform 1s; 1초 동안 돌아감
+: app.css 파일
+
+4. toggle(왔다 갔다)
+: 넣었냐 안넣었냐 true, false 느낌으로 처리
+
+5. document.querySelectorAll("li")
+: querySelectorAll 배열이기 때문에 forEach 사용 가능
+
+6. 리액트는 JSX를 사용하기 때문에  <script type="text/babel"></script>로 꼭 작성해야 함
+: text/babel
+
+7. Props
+
+8. const [game, setGame] = React.useState({});
+: React.useState({})는 객체
+   
+9. const [list, setList] = React.useState([]);
+: React.useState([])는 배열
