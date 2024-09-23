@@ -1,1 +1,20 @@
-a
+20240923
+1. 
+** 리액트
+
+- 준비물 : node (14.0 버전이상), npm (5.6 버전 이상)
+
+- 프로젝트 생성 및 프로젝트 실행 명령어
+> npx create-react-app [프로젝트명]
+> cd [프로젝트명]
+> npm start
+
+- 프로젝트 구조
+> node_modules(폴더)                - 의존 파일 저장소 (NPM으로 설치한 파일)
+> public(폴더)                      - 정적 파일 저장소 (index.html - <div id="root"></div>)
+> src(폴더)                         - 작업 파일 저장소 (index.js - ReactDOM.createRoot())
+> package.json(설정파일)
+> package-lock.js(의존파일 상세내용)
+
+2. 
+
