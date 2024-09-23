@@ -16,5 +16,125 @@
 > package.json(설정파일)
 > package-lock.js(의존파일 상세내용)
 
-2. 
+- 라우터 적용 (링크 화면 전환)
+> npm i react-router-dom
 
+2. 리액트 초기 버전 및 생성, 프로젝트 실행 확인 명령어
+: node -v
+: npm -v
+: npx -v
+: npx create-react-app 프로젝트명
+: cd 프로젝트명
+: npm start
+
+3. JSX
+
+4. style={a}
+: {} 오브젝트(객체)로 작성
+
+5. textAlign
+: text-align
+
+6. 라우터
+: 페이지 이동 처리?
+
+7. 
+<Route>라는 컴포넌트 사용
+<Route path="주소규칙" component={보여주고싶은 컴포넌트}>
+
+8. "자식일 경우" "모든 주소를" 쓸 필요 없다.
+[App.js] 
+import './App.css';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Page from './Page';
+
+
+function App() {
+  let a = {textAlign: 'center', fontSize: '20px'};
+  return (
+    <>
+      <h1 className='' style={a}>안녕하세요.</h1>
+      {/* <a href="/page.html">링크</a> */}
+      {/* <Page /> */}
+      <div className="nav">
+        <a href="/">홈</a>
+        <a href="/page/">페이지 이동</a>
+      </div>
+      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/page/*" element={<Page />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <h2>푸터</h2>
+    </>
+  );
+}
+
+export default App;
+
+[Page.js]
+import { Routes, Route } from "react-router-dom";
+import Page0 from './Page0'
+import Page1 from './Page1'
+import Page2 from './Page2'
+
+const Page = () => {
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Page0 />}></Route>  ★
+                <Route path="1" element={<Page1 />}></Route>  ★
+                <Route path="2" element={<Page2 />}></Route>  ★
+            </Routes>
+
+            <div className="nav">
+                <a href="/page/1">페이지1 이동</a>
+                <a href="/page/2">페이지2 이동</a>
+            </div>
+        </>
+    );
+}
+
+export default Page;
+
+
+
+9. 라우터는 페이지 처리할 때 사용하기 때문에 먼저 정의해서 하면 편하다.
+
+10. "app3 프로젝트는" 라우터 안쓰고 할 예정
+
+11. const {user, setUser} = useState({});
+: setUser는 user 값을 변경할 때 사용하는 함수이다.
+
+12.  input에 value값 셋팅 할때
+1번: value를 사용할 시 onchange가 꼭 필요 하다.(변수가 변경될 시)
+2번: defaultValue를 사용(변수가 변경 안될 시 ) 
+   {/* <input type="text" name="name" defaultValue={user.name}></input> */}
+      <input type="text" name="name" value={user.name} onChange={(e)=>{
+        // console.log(e.target);
+        let {name, value} = e.target;
+        // console.log(name, value);
+        setUser({
+          ...user, [name]: value
+        });
+      }}></input>
+	 
+13. ...user
+: ...은 깊은 복사이며, user를 새로 만든다.
+
+
+14. 깊은 복사는 "새 주소가" 생성된다고 생각하면된다.
+: ...user, [name]: value
+
+15. userState를 사용할 때는 "무조건 깊은 복사를" 사용해야 한다 안그러면 변경된지 모른다.
+
+16. value를 사용하면 onchange를 같이 사용해야 한다.
+
+17. ...user, [name]: value
+: ...user은 깊은 복사를 의미
+: [name]은 key를 의미
+: value은 value를 의미
+
+18. task flow를 draw.io의 순서도 이용해서 만들기(이번주 시험)
