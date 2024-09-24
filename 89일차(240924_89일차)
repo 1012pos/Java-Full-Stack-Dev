@@ -1,2 +1,69 @@
 20240924
-1. 
+1. ** 파일 업로드 수업
+
+- 준비물 : 스프링 프로젝트(멀티파트 관련), UI 화면(file.html), 데이터베이스(images 테이블)
+
+- 프로젝트 생성 및 프로젝트 실행 테스트
+> npx create-react-app app4
+> cd app4
+> npm start
+
+- 비동기 라이버리 npm 설치
+> npm i axios
+
+- 소스 폴더 구성 (SRC)
+> index.js
+> App.js
+> App.css
+
+2. 인덱스 고정이면(e.target.file.files[0]) file로 보내고 files는 배열로 보낸다.
+
+3. 비동기 통신을 위해 axios 설치하기
+
+4. const host = "http://localhost:8080";
+   const submitEvent = e => {
+   e.preventDefault();
+   console.log(e.target.file.files[0]);
+
+    // 폼 데이터 생성
+    const formData = new FormData();
+    // 폼 데이터에 추가
+    formData.append("file",e.target.file.files[0]); // file은 @RequestParam의 매개변수랑 같아야 한다.
+
+    axios.post(host+"/fileUpload", formData)
+      .then(res => console.log(res)) // 성공 시
+      .catch(error => console.log(error)); // 실패 시
+	  
+5. 요청과 응답 정확히 이해하기
+
+6. <></>
+: 빈것임
+
+7. <input type="file" name="file" accept="image/*" autoComplete="off" multiple/>
+: 여러개 파일 업로드시 multiple 필요
+: 다수니깐 for문 필요
+
+8. map은 반복문일 때 사용하고, key가 필요
+	imgs.map((row, index) => {
+	return (
+	  <img src={row} className="img" key={index} />
+	);
+	})
+	
+9. let [img, setImg] = useState('');
+   let [imgs, setImgs] = useState([]); // 배열
+   
+10. ResponseEntity<?>은 화면으로 결과값을 보낼때 사용(이미지 파일이라서???)
+: ResponseEntity를 사용하여 데이터를 클라이언트에 JSON 형식으로 반환하면, 
+클라이언트는 이 데이터를 JavaScript 등의 방법으로 처리하여 화면에 표시할 수 있습니다.
+
+11. 콜백 함수
+: 콜백 함수는 다른 함수에 인자로 전달되어, 특정 이벤트나 작업이 발생했을 때 호출되는 함수를 말합니다.
+: imgs.map((row, index) => { ... }) 부분에서 (...) => { ... }가 "콜백 함수"입니다. 
+: 이 함수는 map 메서드에 전달되어 각 배열 요소에 대해 호출됩니다.
+
+콜백 함수의 반환값:
+return (<img src={row} className="img" key={index} />); 이 부분은 콜백 함수의 반환값입니다.
+즉, 콜백 함수가 실행될 때, 각 요소에 대해 <img> 태그를 생성하여 반환하는 역할을 합니다. 
+
+12. map 메서드는 배열의 각 요소에 대해 콜백 함수를 호출하고, 그 반환값을 사용하여 새로운 배열을 만듭니다.
