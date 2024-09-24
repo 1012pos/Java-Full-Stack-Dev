@@ -72,3 +72,22 @@ return (<img src={row} className="img" key={index} />); 이 부분은 콜백 함
 따라서, return 문 안의 <img> 태그는 콜백 함수의 결과로서 반환되는 값입니다.
 
 13. map 메서드는 배열의 각 요소에 대해 콜백 함수를 호출하고, 그 반환값을 사용하여 새로운 배열을 만듭니다.
+
+14. FormData
+: FormData는 HTML 폼 데이터를 다루기 위한 "내장 객체로", 파일 업로드와 같은 다양한 웹 애플리케이션에서 유용하게 사용됩니다.
+
+브라우저 지원:
+FormData는 대부분의 최신 웹 브라우저에서 지원되며, HTML 폼 데이터를 쉽게 다룰 수 있도록 도와줍니다.
+
+폼 데이터 처리:
+FormData는 HTML 폼 요소의 입력 값을 쉽게 수집하고, 파일 업로드를 포함한 다양한 데이터를 서버에 전송할 수 있도록 설계되었습니다.
+
+메서드:
+append(name, value) : 데이터를 추가합니다.
+delete(name) : 특정 데이터를 삭제합니다.
+get(name) : 특정 데이터를 가져옵니다.
+has(name) : 특정 데이터가 존재하는지 확인합니다.
+forEach(callback) : 데이터의 각 요소에 대해 콜백 함수를 실행합니다.
+
+14-1. FormData 객체 생성
+: const formData = new FormData();
