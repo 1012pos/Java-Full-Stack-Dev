@@ -1,4 +1,6 @@
 20240925
 1. 강사님 자리에서 파일 업로드 확인 하려면 
-: 1번 VSCODE에서 ip주소 수정(const host = "http://192.168.0.52:8080";) 
-: 2번 스프링에서 @CrossOrigin에 아이피 추가하면 됨
+: 1번 VSCODE에서 ip주소 수정(const host = "http://192.168.0.52:8080";) 
+: 2번 스프링에서 @CrossOrigin에 아이피 추가하면 됨 (@CrossOrigin(origins = {"http://localhost:3000","http://192.168.0.52:3000" }))
+
+2. 
