@@ -113,3 +113,35 @@ const Main = () => {
         </main>
     );
 }
+
+
+31. 
+const InputDom = () =>{
+    const id = useId();
+    return (
+        <>
+            <label htmlFor={id + "-m1"}>메모1</label>
+            <input type='text' id = {id + "-m1"}/>
+            <br />
+            <label htmlFor={id + "-m2"}>메모2</label>
+            <input type='text' id = {id + "-m2"}/>
+            <br />
+        </>
+    )
+	
+const Main = () => {
+    const theme = useContext(ThemeContext);
+    return (
+        <main style={{
+            margin: '0',
+            height: '50vh',
+            backgroundColor: theme.show ? 'black' : 'white',
+            color: theme.show ? 'white' : 'black'
+            }}>
+            <InputDom />
+            {/* <InputDom /> */}
+            {/* <InputDom /> */}
+        </main>
+    );
+}	
+ 
