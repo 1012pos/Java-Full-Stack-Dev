@@ -148,3 +148,9 @@ const Main = () => {
     );
 }	
  
+32. 다른곳에서 import 해서 사용할 때 export를 default로 하면
+import 할때 import "mine" from '../../assets/img/mine' 
+"mine" 이부분을 그냥 작성해도 됨 만약 default로 export를 안했을 때는 { }를 사용한다.
+
+33. 정적 파일 같은 경우 확장자명을 작성해줘야 한다.
+ex) .png, .css 등
