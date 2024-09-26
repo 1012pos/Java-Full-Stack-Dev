@@ -4,7 +4,7 @@ npm i로 설치하면 된다.
 
 2. React Hooks을 잘 알아야함(w3schools 참고), https://ko.react.dev/reference/react-dom/hooks
 
-3. useState()는 함수이고, useState 는 리액트에서 기본으로 제공해주는 훅 함수들 중 하나로, 
+3. useState()는 함수이고, useState는 리액트에서 기본으로 제공해주는 훅 함수들 중 하나로, 
 컴포넌트에 상태 변수를 추가할 수 있도록 해주는 훅 함수입니다. 해당 함수는 2개의 원소를 갖는 배열이 반환되며, 
 "첫번째 원소에는" 상태 값이 반환되며 "두번째 원소에는" 상태 값을 변경할 때 사용되는 setter 함수가 반환되게 됩니다.
 : const [state, setState] = useState(initialState); 
