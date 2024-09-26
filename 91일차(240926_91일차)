@@ -2,4 +2,114 @@
 1. 리액트 실행할 떄 node_modules가 설치되어 있는지 꼭 확인하기 설치가 안되어 있을경우
 npm i로 설치하면 된다.
 
-2.
+2. React Hooks을 잘 알아야함(w3schools 참고), https://ko.react.dev/reference/react-dom/hooks
+
+3. useState()는 함수이고, 배열으로 2개의 인자값을 가진다.
+console.log(useState(0));
+
+4. 값을 바꿔주려면 버튼 이벤트가 필요하다.
+
+5. const [num, setNum] = useState(1);
+: setNum은 함수이며, 값을 넣어줘야 값이 변한다.
+
+6.   const [num, setNum] = useState(1);
+    // (i) => {return (i + 1);} >> i => i + 1
+    // num + 1;
+	
+7. useState는 변경되었을때 화면을 변경해주는 역할을 한다.
+
+8. e.target는 이벤트가 들어간 태그명을 봐야 한다.
+
+9. map(값, 인덱스)함수는 배열을 사용할 때 사용하고, key 값이 있어야 한다.
+
+10. 다시 부른다 -> 리로드
+
+11. ...array 은 깊은 복사, 쪼갠다. 기존값
+
+12. setArray([...array, txt]);
+: 값이 추가 된다.
+
+13. array.toReversed().map((v,i) => 이거에서 toReversed() 함수는
+setArray([...array, txt]); [...array, txt] 이부분을 순서를 교체할 수 있는 함수이다.
+
+14. return 으로 화면을 그린다.
+
+15. 화살표 함수를 통해 콜백함수 리턴을 받는다.
+
+16. useEffect는 useState와 같이 사용
+: useEffect(function, deps);
+- function : 수행하고자 하는 작업
+- deps : 배열 형태이며, 배열 안에는 검사하고자 하는 특정값 or 빈배열
+
+17. 아래의 코드 때문에 2번 찍히는 것임(index.js)
+   // <React.StrictMode>
+    <App />
+  // </React.StrictMode>
+  
+18. 상태값 변경
+
+19.useEffect(()=>{
+        console.log("화면 출력");
+        setNum(num + 1);
+    }, []); 
+: [] 는 디펜던시 영역이며, []를 작성하면 한번만 실행하게 할 수 있다. 만약 작성하지 않으면
+무한 반복이 일어난다. [] 하면 한번 실행한다.
+
+20. 상태값을 변경할 때는 의존이라는 것을 채워야 한다.([])
+
+21. 화면이 새로 그려지거나, 여러개가 동작하거나? 할때 디펜던시 영역에 상태값을([num]) 넣어야줘야 한다.
+const Step3 = () => {
+    const [num, setNum] = useState(0);
+    useEffect(()=>{
+        console.log("화면 출력");
+    }, [num]); 
+    return <input type='number' value={num} onChange={e=>{setNum(e.target.value)}}/>
+}
+
+22. <Step4sub />
+: 이런것을 컴포넌트라고 한다.
+
+23. 값을 넣는다.
+: setNum(v); 상태값
+: ref.current = v; 참조값
+	
+24. 상태값과 참조값의 동작이 다르다.
+
+25. 참조값은 가지고(보유) 있다가 리로드 되면 도출한다.
+
+26. useRef는 변수명.current으로 접근한다.
+
+27.내장된 React Hook
+: https://ko.react.dev/reference/react/hooks
+
+28. 부모가 자식한테 주는 기술 props
+
+29. value={{show:show, setShow:setShow}} 와 value={{show, setShow}} 같다
+키이름과 값의 이름이 같아서 하나로 표현
+
+30. useId라는 HooK을 사용하면 "랜덤한 아이디를" 만들어 준다.
+const InputDom = () =>{
+    const id = useId();
+    return (
+        <>
+            <label htmlFor={id}>메모</label>
+            <input type='text' id = {id}/>
+            <br />
+        </>
+    )
+}
+const Main = () => {
+    const theme = useContext(ThemeContext);
+    return (
+        <main style={{
+            margin: '0',
+            height: '50vh',
+            backgroundColor: theme.show ? 'black' : 'white',
+            color: theme.show ? 'white' : 'black'
+            }}>
+            <InputDom />
+            <InputDom />
+            <InputDom />
+        </main>
+    );
+}
