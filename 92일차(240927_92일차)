@@ -14,10 +14,9 @@
 13. useMemo(메모이제이션)는 성능차이에 영향을 줄 수 있다. 반복 수행을 제거하는 기술
 14. useCallback
 15. 변수는 기본형, / 객체, 함수는 참조형(주소 참조)
-16. { show && <Detail />} 이것의 의미를 정확히 알아야 함
+16. { show && <Detail />}
+: show의 값이 true면 <Detail />를 보여줘라라는 의미
 17. filter()함수는 배열로 보내주는데, "배열에" 있는 "객체로" 보고 싶으면 "인덱스를" 사용하면 된다.
 // .. 해당 id를 이용하여 array에서 동일한 id를 가지고 있는 사용자 정보를 setUser에 넣어보자.
 : console.log(array.filter((row) => {return row.id ===id})[0]);
 : array.filter((row) => {return row.id ===id})[0] // 객체로 보고 싶을때
-
-
