@@ -1,2 +1,17 @@
 20241004
-1.
+1. web1 프로젝트 생성
+
+2. 카카오 지도 API 사용
+: https://apis.map.kakao.com/
+- 카카오 지도 API에서 키 발급받기
+- 지도 생성하기 -> Javascript +HTML에서 <Script>부분 라이브러리 가져와야함
+- env 생성
+- process.env.REACT_APP_MAP_API_KEY
+- npm 사이트에서도 사용할 수 있음(https://www.npmjs.com/package/react-kakao-maps-sdk)
+- npm i react-kakao-maps-sdk 설치
+- https://react-kakao-maps-sdk.jaeseokim.dev/docs/sample/map/basicMap
+: import { Map useKakaoLoader } from "react-kakao-maps-sdk"
+-  
+  
+
+3. CustomOverlayMap를 사용해서 커스텀마이징 할 수 있음
