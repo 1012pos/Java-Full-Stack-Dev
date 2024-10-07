@@ -1,2 +1,18 @@
 20241007
-1.
+1. 팀프로젝트 작업
+2. 부모인 tr에 key를 준다.(key={i})
+3. @GetMapping("/khboardlist")
+	public ResultDTO list() {
+		// 1. Map
+		// 2. DTO
+		
+		boolean state = false;
+		
+		// 조건에 따라서 true;
+		state = true;
+		
+		return ResultDTO.builder()
+				.state(state)
+				.result(khb.findAll())
+				.build();
+	}
